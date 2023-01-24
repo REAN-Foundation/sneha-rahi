@@ -3,6 +3,17 @@ import { get_, put_ } from "./common";
 
 ////////////////////////////////////////////////////////////////
 
+export enum ProgressStatus {
+    Pending    = 'Pending',
+    InProgress = 'In-progress',
+    Completed  = 'Completed',
+    Cancelled  = 'Cancelled',
+    Delayed    = 'Delayed',
+    Unknown    = 'Unknown',
+};
+
+////////////////////////////////////////////////////////////////
+
 export const getAllLearningPaths = async (sessionId: string) => {
     const url = BACKEND_API_URL + '/educational/learning-paths/search';
     return await get_(sessionId, url);
@@ -13,8 +24,9 @@ export const getUserLearningPaths = async (sessionId: string, userId: string) =>
     return await get_(sessionId, url);
 };
 
-export const getUserCourseContents = async (sessionId: string, userId: string) => {
-    const url = BACKEND_API_URL + `/educational/user-learnings/${userId}/course-contents`;
+export const getUserCourseContents = async (sessionId: string, userId: string, learningPathId?: string) => {
+    const queryParams = learningPathId ? `?learningPathId=${learningPathId}`: '';
+    const url = BACKEND_API_URL + `/educational/user-learnings/${userId}/course-contents` + queryParams;
     return await get_(sessionId, url);
 };
 
@@ -38,10 +50,10 @@ export const getAllCourseContents = async (sessionId: string) => {
     return await get_(sessionId, url);
 };
 
-export const updateUserLearning = async (sessionId: string, userId: string, contentId: string) => {
+export const updateUserLearning = async (sessionId: string, userId: string, contentId: string, status = ProgressStatus.Completed, percentageCompletion = 100) => {
     const updates = {
-        ProgressStatus: 'Completed',
-        PercentageCompletion: 100
+        ProgressStatus: status,
+        PercentageCompletion: percentageCompletion
     };
     const url = BACKEND_API_URL + `/educational/user-learnings/${userId}/contents/${contentId}`;
     return await put_(sessionId, url, updates);

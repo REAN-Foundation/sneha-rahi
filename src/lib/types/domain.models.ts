@@ -2,11 +2,14 @@ export interface UserModel{
     id?           : number,
     FirstName?    : string;
     LastName?     : string;
-    Age?          : string;
+    BirthDate?    : Date;
     Phone?        : string;
-    Address?      : string;
-
+    Address?      : AddressDomainModel ;
 };
+export interface AddressDomainModel {
+    AddressLine?        : string; 
+    Type         : string;
+}
 export interface PersonRole {
     id          : number,
     RoleName    : string;

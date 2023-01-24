@@ -1,7 +1,7 @@
 
 import type { PageServerLoad } from "./$types";
 import {redirect } from '@sveltejs/kit';
-import { SessionHelper } from '../../../api/auth/session';
+import { SessionManager } from '../../../api/session.manager';
 
 ////////////////////////////////////////////////////////////////
 
@@ -9,7 +9,7 @@ export const load: PageServerLoad = async (event) => {
 
     const sessionId = event.cookies.get('sessionId');
     console.log('sessionId', sessionId);
-    const session = await SessionHelper.getSession(sessionId);
+    const session = await SessionManager.getSession(sessionId);
     if (!session) {
         throw redirect(307, '/sign-in');
     }

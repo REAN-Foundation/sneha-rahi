@@ -36,8 +36,9 @@
   article {
     color: white;
     padding: 0.75rem 1.5rem;
-    border-radius: 0.2rem;
+    border-radius: 0.3rem;
     display: flex;
+    box-shadow: 1px 1px 1px 1px rgba(249, 249, 249, 0.103);
     align-items: center;
     margin: 0 auto 0.5rem auto;
     width: 20rem;
@@ -49,7 +50,7 @@
     background: MediumSeaGreen;
   }
   .info {
-    background: SkyBlue;
+    background: rgb(78, 143, 247);
   }
   .text {
     margin-left: 1rem;

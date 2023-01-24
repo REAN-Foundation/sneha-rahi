@@ -8,7 +8,7 @@
 		>
 			<div class="card-body">
 				<img
-					src="/assets/sign-in-profile/png/logo.png"
+					src="/assets/images/sign-in-profile/png/logo.png"
 					alt=""
 					class="w-[110px] h-[50px] ml-[110px] mr-[155px] mt-[16px]  mb-[32px]  object-contain "
 				/>
@@ -28,7 +28,7 @@
 					<a href="/home">
 						<div class="flex">
 							<img
-								src="/assets/sign-in-profile/png/sign-in-profile-1.png"
+								src="/assets/images/sign-in-profile/png/sign-in-profile-1.png"
 								alt=""
 								class=" mr-[16px] mb-[25px] ml-[43px]"
 							/>
@@ -41,7 +41,7 @@
 					<a href="/home">
 						<div class="flex">
 							<img
-								src="/assets/sign-in-profile/png/sign-in-profile-2.png"
+								src="/assets/images/sign-in-profile/png/sign-in-profile-2.png"
 								alt=""
 								class=" mr-[16px] mb-[25px] ml-[43px]"
 							/>
@@ -54,7 +54,7 @@
 					<a href="/home">
 						<div class="flex">
 							<img
-								src="/assets/sign-in-profile/png/sign-in-profile-3.png"
+								src="/assets/images/sign-in-profile/png/sign-in-profile-3.png"
 								alt=""
 								class=" mr-[16px] mb-[25px] ml-[43px]"
 							/>
@@ -66,7 +66,7 @@
 					</a>
 				</div>
 			</div>
-			<img src="/assets/sign-in-profile/png/color-strip.png" alt="" />
+			<img src="/assets/images/sign-in-profile/png/color-strip.png" alt="" />
 		</div>
 	</div>
 </body>

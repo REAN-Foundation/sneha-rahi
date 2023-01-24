@@ -23,7 +23,20 @@ export class Helper {
             return false;
 
         return true;
-    }
+    };
+
+    static truncateText = (text, numChars) => {
+		const txt = text.length > numChars ? text.substring(0, numChars-3) + '...': text;
+        return txt;
+	}
+
+    static hasProperty = (obj, prop) => {
+        return Object.prototype.hasOwnProperty.call(obj, prop);
+    };
+
+    static isEmpty = (obj) => {
+        return Object.keys(obj).length === 0 && obj.constructor === Object;
+    };
 
     static isOtp = (str: string): boolean => {
         if (str.length < 4 || str.length > 6) {
@@ -39,7 +52,7 @@ export class Helper {
             }
         }
         return true;
-    }
+    };
 
     static isUrl = (str) => {
         if (!str) {
@@ -51,7 +64,7 @@ export class Helper {
         } catch (err) {
             return false;
         }
-    }
+    };
 
     static formatDate = (date) => {
         const d = new Date(date);
@@ -78,9 +91,14 @@ export class Helper {
             }
         }
         return true;
-    }
+    };
+
     static sanitizePhone = (phone: string): string => {
         if (!phone) {
+            return phone;
+        }
+        if (phone.startsWith('1000001') || phone.startsWith('1000002')) {
+            //Internal test phone numbers
             return phone;
         }
         const prefix = '+91-';
@@ -116,6 +134,50 @@ export class Helper {
             }
         }
         return false;
+    };
+
+    static createResponse = (action: 'message' | 'redirect' | 'error' | 'data', content: string) => {
+        return new Response(JSON.stringify({
+			action: action,
+			content: content
+		}))
+    };
+
+    static toBase64 =  async (file): Promise<string | ArrayBuffer> => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+    };
+
+    static dataURLtoBlob = (dataurl) => {
+        const arr = dataurl.split(',');
+        const mime = arr[0].match(/:(.*?);/)[1];
+        const bstr = atob(arr[1]);
+        let n = bstr.length;
+        const u8arr = new Uint8Array(n);
+
+        while(n--){
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new Blob([u8arr], {type:mime});
+    };
+
+    static downloadAsInlineObjectUrl = (response) => {
+        return Helper.dataURLtoBlob(response.Data.Buffer);
+    };
+
+    static getFileExtensionFromMimeType = (mimeType) => {
+        const parts = mimeType.split('/');
+        return parts.pop();
+    };
+
+    static b64toBlob = async (base64Buffer, mimeType) => {
+        const res = await fetch(`data:${mimeType};base64,${base64Buffer}`);
+        const blob = await res.blob();
+        return blob;
     };
 
 }

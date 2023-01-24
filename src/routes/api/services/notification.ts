@@ -2,15 +2,13 @@ import { BACKEND_API_URL } from "$env/static/private";
 import { get_, put_} from "./common";
 ////////////////////////////////////////////////////////////////
 
-export const getAllNotifications = async (sessionId: string) => {
-    const url = BACKEND_API_URL + '/general/notifications/search';
+export const getAllNotificationsForUser = async (sessionId: string, userId: string) => {
+    const url = BACKEND_API_URL + `/general/notifications/search?userId=${userId}`;
     return await get_(sessionId, url);
 };
 
-export const markAsRead = async (sessionId: string, notificationId: string, readOn:string) => {
-    const updates = {
-       ReadOn : readOn
-    };
+export const markAsRead = async (sessionId: string, notificationId: string) => {
+    const updates = {};
     const url = BACKEND_API_URL + `/general/notifications/${notificationId}/mark-as-read`;
-    return await put_(sessionId, url,updates);
+    return await put_(sessionId, url, updates);
 };

@@ -1,8 +1,8 @@
 
 import type { RequestEvent } from '@sveltejs/kit';
-import { sendOtp } from '../api/auth/send.otp';
+import { sendOtp } from '../api/services/user';
 import { redirect } from 'sveltekit-flash-message/server';
-import { errorMessage, successMessage } from '$lib/utils/message.utils';
+import { errorMessage } from '$lib/utils/message.utils';
 
 //////////////////////////////////////////////////////////////
 
@@ -22,6 +22,10 @@ export const actions = {
 		}
 		const phone = phone_.valueOf() as string;
 		const loginRoleId = loginRoleId_.valueOf() as number;
+
+		if (phone.startsWith('1000001') || phone.startsWith('1000002')) {
+			throw redirect(303, `/sign-in-otp/${phone}`);
+		}
 
 		const response = await sendOtp(
 			phone,

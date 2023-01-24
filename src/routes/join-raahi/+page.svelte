@@ -3,21 +3,23 @@
 	import type { PageServerData } from "./$types";
 	import { onMount } from 'svelte';
 	import { show } from '$lib/utils/message.utils';
+	import { LocalStorageUtils } from "$lib/utils/local.storage.utils";
 
 	export let data: PageServerData;
 
 	onMount(()=> {
 		show(data);
+		LocalStorageUtils.removeItem('prevUrl');
 	});
 
 </script>
 
 <body>
-	<div class=" flex items-center justify-center mt-16 ">
+	<div class=" flex items-center justify-center lg:mt-16 md:mt-16 sm:mt-16 mt-0 ">
 		<div class="card  w-[375px] h-[812px] bg-[#fff] rounded-none border-solid border-2">
 			<div class="card-body items-center text-center">
 				<img
-					src="/assets/join-raahi/png/logo.png"
+					src="/assets/images/join-raahi/png/logo.png"
 					alt=""
 					class="w-[110px] h-[50px]  mt-[10px] mr-[132px] mb-[32px] ml-[133px] object-contain "
 				/>
@@ -34,6 +36,9 @@
 					</p>
 				</div>
 				<form method="post">
+					<!-- <div class="text-[#5B7AA3] mx-2 mt-1 py-2 px-3 font-semibold text-start">
+						<span>First Name</span>
+					</div> -->
 					<input
 						placeholder="First Name"
 						name="firstName"
@@ -49,10 +54,11 @@
 						class=" h-[52px] w-[340px] py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg "
 					/>
 					<input
-						placeholder="Age"
-						type="number"
-						name="age"
+						placeholder="Date of Birth in MM/DD/YYYY"
+						type="text"
+						name="birthDate"
 						class=" h-[52px] w-[340px] py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg "
+						
 					/>
 					<input
 						placeholder="Phone Number"
@@ -84,7 +90,7 @@
 					<a href="/"> <span class=" text-xl tracking-widest  font-bold"> BACK TO HOME </span></a>
 				</div>
 			</div>
-			<img src="/assets/sign-in/svg/color-strip.svg" alt="" />
+			<img src="/assets/images/sign-in/svg/color-strip.svg" alt="" />
 		</div>
 	</div></body
 >

@@ -2,7 +2,7 @@ import { addToast } from '$lib/components/toast/toast.store';
 
 export const showMessage = (
     message: string,
-    type: string,
+    type: "success" | "error" | "info",
     dismissible = true,
     timeout = 3500) => {
     addToast({
@@ -20,7 +20,6 @@ export const show = (data) => {
     if (flashMessage) {
       messageType = flashMessage?.type;
       messageText = flashMessage?.message;
-      console.log(`Layout svelte...${JSON.stringify(flashMessage, null, 2)}`);
       showMessage(messageText, messageType);
     }
 };

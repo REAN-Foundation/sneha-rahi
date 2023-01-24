@@ -9,7 +9,6 @@ export const POST = async ({ request }) => {
 		const response = await markAsRead(
 			data.sessionId,
             data.notificationId,
-			data.readOn
 		);
 		return new Response(response.message);
 	} catch (err) {

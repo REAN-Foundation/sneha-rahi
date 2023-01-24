@@ -10,7 +10,7 @@ export const communityFeeds = [
         id:2,
 		Title : 'Fire Brigade trip',
 		Description : 'Kandivali ke change agents ne Malad ke Fire Brigade visit ki. Senior officer ne apne kaam ke baare mein aur emergency ke waqt kis tarha se kaam karte hai usski jaankari di.',
-		Image : 'https://www.jbcnschool.edu.in/wp-content/uploads/2019/12/field-trip-nehru-science-dec-19-006.jpg',
+		Image : 'https://images.indianexpress.com/2022/04/pune-fire-drill4.jpeg',
 		PubDate: '27 sep 2022'
 	},
 ];

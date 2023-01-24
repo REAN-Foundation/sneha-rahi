@@ -18,6 +18,12 @@ declare namespace App {
       // interface Platform {}
    }
 
+   interface Error {
+    message: string;
+    code?: number;
+    userId?: string;
+  }
+
    interface PageData {
       flash?: { type: 'success' | 'error'; message: string };
     }

@@ -1,7 +1,7 @@
 import type { PageServerLoad } from "./$types";
 import { error, type RequestEvent } from "@sveltejs/kit";
-import { SessionHelper } from "../../api/auth/session";
-import { loginWithOtp } from "../../api/auth/login.with.otp";
+import { SessionManager } from "../../api/session.manager";
+import { loginWithOtp } from "../../api/services/user";
 import { redirect } from 'sveltekit-flash-message/server';
 import { errorMessage, successMessage } from "$lib/utils/message.utils";
 import { CookieUtils } from "$lib/utils/cookie.utils";
@@ -61,13 +61,13 @@ export const actions = {
             throw redirect(303, `/sign-in`, errorMessage(`Unsupported user role!`), event);
         }
 
-        const session = await SessionHelper.constructSession(user, accessToken, expiryDate);
+        const session = await SessionManager.constructSession(user, accessToken, expiryDate);
         if (!session) {
             console.log(`Session cannot be constructed!`);
             throw redirect(303, `/sign-in`, errorMessage(`Use login session cannot be created!`), event);
         }
         console.log('Session - ' + JSON.stringify(session, null, 2));
-        const userSession = await SessionHelper.addSession(session.sessionId, session);
+        const userSession = await SessionManager.addSession(session.sessionId, session);
         console.log(JSON.stringify(userSession, null, 2));
 
         CookieUtils.setCookieHeader(event, 'sessionId', sessionId);

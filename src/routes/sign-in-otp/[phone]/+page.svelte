@@ -123,13 +123,13 @@
 
 </script>
 
-<div class="flex items-center justify-center mt-16">
+<div class="flex items-center justify-center lg:mt-16 md:mt-16 sm:mt-16 mt-0">
 	<div
 		class="card card-compact rounded-none card-bordered border-slate-400 w-[375px]
 	h-[812px] bg-base-100  shadow-none "
 	>
 		<div class="flex items-center justify-center">
-			<img class="mt-12" src="/assets/sign-in/svg/logo.svg" alt="" />
+			<img class="mt-12" src="/assets/images/sign-in/svg/logo.svg" alt="" />
 		</div>
 		<div class="card-body ">
 			<h2 class="mt-40 text-center text-[#d05591] text-xl font-bold">
@@ -169,6 +169,6 @@
 				<a href="/"> <span class=" text-xl tracking-widest  font-bold"> BACK TO HOME </span></a>
 			</div>
 		</div>
-		<img src="/assets/sign-in/svg/color-strip.svg" alt="" />
+		<img src="/assets/images/sign-in/svg/color-strip.svg" alt="" />
 	</div>
 </div>
