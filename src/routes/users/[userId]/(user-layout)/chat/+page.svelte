@@ -154,7 +154,7 @@
 			/>
 		</div>
 		{#if searchPeformed}
-			<div class="overflow-auto scrollbar-medium w-[365px]">
+			<div class="overflow-auto scrollbar-medium w-[365px] max-[425px]:w-full">
 				<div class="grid grid-flow-col auto-cols-max gap-3">
 					{#if searchedUsers.length === 0}
 						<h3 class="text-center font-medium mt-2">No results found!</h3>
@@ -176,7 +176,7 @@
 			</div>
 		{/if}
 		<h2 class="flex justify-left text-normal">Favourites</h2>
-		<div class="overflow-auto scrollbar-medium w-[365px]">
+		<div class="overflow-auto scrollbar-medium w-[365px] max-[425px]:w-full">
 			<div class="grid grid-flow-col mt-2 auto-cols-max gap-3">
 				{#if favourites.length === 0}
 					<h3 class="text-center font-normal mb-2">No favourites so far!</h3>

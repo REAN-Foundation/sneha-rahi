@@ -129,7 +129,7 @@
 				id="submit"
 				name="submit"
 				disabled={!answerSubmitted}
-				class=" bg-[#5b7aa3] disabled:bg-[#7d7d7d] h-[52px] w-[340px] mt-4 mb-4 text-[#fff] justify-center rounded-lg"
+				class=" bg-[#5b7aa3] disabled:bg-[#7d7d7d] h-[52px] w-[340px] max-[425px]:w-full mt-4 mb-4 text-[#fff] justify-center rounded-lg"
 			>
 				SUBMIT
 			</button>

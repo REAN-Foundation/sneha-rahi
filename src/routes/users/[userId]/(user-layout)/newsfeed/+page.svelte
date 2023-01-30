@@ -17,22 +17,22 @@
 		<h2 class=" text-[#5b7aa3] flex  justify-center uppercase tracking-widest font-bold text-base ">
 			Newsfeed
 		</h2>
-		<div class="flex flex-row w-[340px] h-[34px] justify-center ">
+		<div class="flex flex-row max-[425px]:w-full w-[340px] h-[34px] justify-center ">
 			<button
 				disabled={showRaahiUpdates}
-				class="disabled:bg-[#5b7aa3] disabled:text-[#dfe7fd] rounded-2xl w-[170px] text-[#5b7aa3] h-[34px] text-center bg-[#dfe7fd] text-[13px] tracking-wider mr-3"
+				class="disabled:bg-[#5b7aa3] disabled:text-[#dfe7fd] rounded-2xl max-[425px]:w-full w-[170px] text-[#5b7aa3] h-[34px] text-center bg-[#dfe7fd] text-[13px] tracking-wider mr-3"
 				on:click|preventDefault={() => (showRaahiUpdates = true)}>
 				Raahi Updates
 			</button>
 			<button
 				disabled={!showRaahiUpdates}
-				class="disabled:bg-[#5b7aa3] disabled:text-[#dfe7fd] rounded-2xl w-[170px] text-[#5b7aa3] h-[34px] text-center bg-[#dfe7fd] text-[13px] tracking-wider"
+				class="disabled:bg-[#5b7aa3] disabled:text-[#dfe7fd] rounded-2xl max-[425px]:w-full w-[170px] text-[#5b7aa3] h-[34px] text-center bg-[#dfe7fd] text-[13px] tracking-wider max-[375px]:tracking-wide"
 				on:click|preventDefault={() => (showRaahiUpdates = false)}>
 				Community Updates
 			</button>
 		</div>
 		{#if showRaahiUpdates}
-			<div class=" h-[550px] overflow-auto scrollbar-medium">
+			<div class=" h-[550px] overflow-auto scrollbar-medium ">
 				<!-- {#each Object.values($newsFeeds) as news}
 					<h4 class="text-right pr-1 mt-3 mb-2 text-[13px] font-semibold">{news.Title}</h4>
 					<div class="w-[340px] h-[125px]  rounded-lg bg-[#f2e2da]">
@@ -46,7 +46,7 @@
 					<div class="mb-6 ">
 						<a href={`/users/${userId}/newsfeed/${news.id}`}>
 							<h4 class="text-right  text-[13px] font-semibold mb-1">{news.pubDate}</h4>
-							<div class="w-[340px] h-[280px]  rounded-lg bg-[#f2e2da]">
+							<div class="w-[340px] max-[425px]:w-full h-[280px]  rounded-lg bg-[#f2e2da]">
 								<div class="flex flex-row p-1">
 									<div class="w-[70px] mt-2 ml-2 h-[40px] rounded-lg bg-[#fff]">
 										<img
@@ -71,7 +71,7 @@
 								<img
 									src={news.image}
 									alt=""
-									class="w-[324px] mx-2 px-2 mt-4 h-[170px]  rounded-lg "
+									class="w-[324px] max-[425px]:w-full max-[320px]:h-[150px] max-[425px]:mx-[0px] mx-2 px-2 mt-4 h-[170px] rounded-lg "
 								/>
 							</div></a
 						>
@@ -104,7 +104,7 @@
 					<div class="mb-6">
 						<a href={`/users/${userId}/newsfeed/${news.id}`}>
 							<h4 class="text-right  text-[13px] font-semibold mb-1">{news.pubDate}</h4>
-							<div class="w-[340px] h-[280px]  rounded-lg bg-[#d7eaf7]">
+							<div class="w-[340px] max-[425px]:w-full h-[280px]  rounded-lg bg-[#d7eaf7]">
 								<div class="flex flex-row p-1">
 									<div class="w-[70px] mt-2 ml-2 h-[40px] rounded-lg bg-[#fff]">
 										<img
@@ -126,7 +126,7 @@
 										</p>
 									</div>
 								</div>
-								<img src={news.image} alt="" class="w-[324px] mx-2 px-2 mt-4 h-[170px] rounded-lg"/>
+								<img src={news.image} alt="" class="w-[324px] max-[425px]:w-full max-[320px]:h-[150px] max-[425px]:mx-[0px] mx-2 px-2 mt-4 h-[170px] rounded-lg "/>
 							</div>
 						</a>
 					</div>

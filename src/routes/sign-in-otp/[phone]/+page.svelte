@@ -125,20 +125,20 @@
 
 <div class="flex items-center justify-center lg:mt-16 md:mt-16 sm:mt-16 mt-0">
 	<div
-		class="card card-compact rounded-none card-bordered border-slate-400 w-[375px]
+		class="card card-compact rounded-none card-bordered max-[425px]:border-none border-slate-400 max-[425px]:w-full w-[375px]
 	h-[812px] bg-base-100  shadow-none "
 	>
 		<div class="flex items-center justify-center">
 			<img class="mt-12" src="/assets/images/sign-in/svg/logo.svg" alt="" />
 		</div>
-		<div class="card-body ">
+		<div class="card-body items-center justify-center ">
 			<h2 class="mt-40 text-center text-[#d05591] text-xl font-bold">
 				Enter the 6-digit OTP
 			</h2>
-			<p class="  text-center leading-tight text-base ">
+			<p class="text-center leading-tight text-base ">
 				Check your messages for OTP.
 			</p>
-			<form method = 'post'>
+			<form class="max-[375px]:w-full" method = 'post'>
 				<div class="hidden">
 					<input name="phone" class="hidden" value="{data.phone}">
 				</div>
@@ -149,20 +149,21 @@
 					<input name="loginRoleId" class="hidden" value="{loginRoleId}">
 				</div>
 			<div class="flex flex-row mt-5">
-				<input name="otp1" required on:input={onOtpDigitEntered} bind:this={otp1} use:selectTextOnFocus use:blurOnEscape class=" bg-[#fde2e4] h-[3.25rem] w-[3.25rem] rounded-lg mr-[0.375rem]  text-center font-bold text-lg"/>
-				<input name="otp2" required on:input={onOtpDigitEntered} bind:this={otp2} use:selectTextOnFocus use:blurOnEscape class=" bg-[#fde2e4] h-[3.25rem] w-[3.25rem] rounded-lg mr-[0.375rem]  text-center font-bold text-lg" />
-				<input name="otp3" required on:input={onOtpDigitEntered} bind:this={otp3} use:selectTextOnFocus use:blurOnEscape class=" bg-[#fde2e4] h-[3.25rem] w-[3.25rem] rounded-lg mr-[0.375rem]  text-center font-bold text-lg" />
-				<input name="otp4" required on:input={onOtpDigitEntered} bind:this={otp4} use:selectTextOnFocus use:blurOnEscape class=" bg-[#fde2e4] h-[3.25rem] w-[3.25rem] rounded-lg mr-[0.375rem]  text-center font-bold text-lg" />
-				<input name="otp5" required on:input={onOtpDigitEntered} bind:this={otp5} use:selectTextOnFocus use:blurOnEscape class=" bg-[#fde2e4] h-[3.25rem] w-[3.25rem] rounded-lg mr-[0.375rem]  text-center font-bold text-lg" />
-				<input name="otp6" required on:input={onOtpDigitEntered} bind:this={otp6} use:selectTextOnFocus use:blurOnEscape class=" bg-[#fde2e4] h-[3.25rem] w-[3.25rem] rounded-lg mr-[0.375rem]  text-center font-bold text-lg" />
+				<input name="otp1" required on:input={onOtpDigitEntered} bind:this={otp1} use:selectTextOnFocus use:blurOnEscape class=" bg-[#fde2e4] h-[3.25rem] w-[3.25rem] max-[320px]:w-[2.75rem] rounded-lg mr-[0.375rem]  text-center font-bold text-lg"/>
+				<input name="otp2" required on:input={onOtpDigitEntered} bind:this={otp2} use:selectTextOnFocus use:blurOnEscape class=" bg-[#fde2e4] h-[3.25rem] w-[3.25rem] max-[320px]:w-[2.75rem] rounded-lg mr-[0.375rem]  text-center font-bold text-lg" />
+				<input name="otp3" required on:input={onOtpDigitEntered} bind:this={otp3} use:selectTextOnFocus use:blurOnEscape class=" bg-[#fde2e4] h-[3.25rem] w-[3.25rem] max-[320px]:w-[2.75rem] rounded-lg mr-[0.375rem]  text-center font-bold text-lg" />
+				<input name="otp4" required on:input={onOtpDigitEntered} bind:this={otp4} use:selectTextOnFocus use:blurOnEscape class=" bg-[#fde2e4] h-[3.25rem] w-[3.25rem] max-[320px]:w-[2.75rem] rounded-lg mr-[0.375rem]  text-center font-bold text-lg" />
+				<input name="otp5" required on:input={onOtpDigitEntered} bind:this={otp5} use:selectTextOnFocus use:blurOnEscape class=" bg-[#fde2e4] h-[3.25rem] w-[3.25rem] max-[320px]:w-[2.75rem] rounded-lg mr-[0.375rem]  text-center font-bold text-lg" />
+				<input name="otp6" required on:input={onOtpDigitEntered} bind:this={otp6} use:selectTextOnFocus use:blurOnEscape class=" bg-[#fde2e4] h-[3.25rem] w-[3.25rem] max-[320px]:w-[2.75rem] rounded-lg mr-[0.375rem]  text-center font-bold text-lg" />
 			</div>
 			<!-- <a href="/choose-profile"> -->
 				<button
 					disabled={!shouldEnableSignIn}
 					bind:this={loginButton}
-					class="disabled:bg-[#b39fa9] h-[52px] w-[340px]  mt-8 mb-[180px] text-[#fff] text-xl font-bold rounded-lg bg-[#d05591] "
+					class="disabled:bg-[#b39fa9] h-[52px] w-[340px] max-[375px]:w-full mt-8 mb-[180px] text-[#fff] text-xl font-bold rounded-lg bg-[#d05591] "
 					>SIGN IN</button
 				>
+				
 			</form>
 			<!-- </a> -->
 			<div class="flex justify-center">

@@ -15,7 +15,7 @@
 			Newsfeed
 		</h2>
 			<h4 class="text-right  text-[13px] font-semibold mb-1">{timeAgo(pubdate, new Date())}</h4>
-			<div class="w-[340px] h-full overflow-auto scrollbar-medium rounded-lg bg-[#f2e2da]">
+			<div class="w-[340px] max-[425px]:w-full h-full overflow-auto scrollbar-medium rounded-lg bg-[#f2e2da]">
 				<div class="flex p-1 mt-4">
 					<div class="w-[50px] mt-2 ml-2 h-[45px] rounded-lg bg-[#fff] flex-none">
 						<img
@@ -37,14 +37,14 @@
 				<img
 					src={feedItem.Image}
 					alt=""
-					class="w-[310px] item-center mt-3 h-[200px] rounded-lg mb-3"
+					class="w-[310px] max-[425px]:mx-4 max-[425px]:w-full item-center my-3 h-[200px] rounded-lg "
 				/>
 			</div>
 			</div>
 	</div>
-	<div class="h-[90px] w-[375px] bg-white">
+	<div class="h-[90px] w-[375px] max-[425px]:w-full bg-white">
 		<a href="/users/{userId}/newsfeed">
-		<div class="h-20 w-[375px] mt-3 flex justify-center ">
+		<div class="h-20 w-[375px] max-[425px]:w-full mt-3 flex justify-center ">
 			<!-- <textarea
 				type="text"
 				class="h-[52px] p-3 ml-3 mt-3  w-[277px] rounded-lg bg-white"

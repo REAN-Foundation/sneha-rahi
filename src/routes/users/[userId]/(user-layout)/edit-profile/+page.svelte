@@ -43,7 +43,7 @@
 		<h2 class=" text-[#5b7aa3] flex  justify-center tracking-widest font-bold text-base ">
 			EDIT PROFILE
 		</h2>
-        <form method="post" action="?/updateProfile">
+        <form class="max-[425px]:w-full" method="post" action="?/updateProfile">
             <!-- <div name="userId"  value={userId} class='hidden'></div> -->
             <div class="text-[#5B7AA3] mx-2 mt-3 font-semibold">
                 <span>First Name</span>
@@ -53,7 +53,7 @@
                 name="firstName"
                 required
                 type="text"
-                class=" h-[52px] w-[340px] py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
+                class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
                 bind:value={firstName}
             />
             <div class="text-[#5B7AA3] mx-2 mt-3 font-semibold">
@@ -65,7 +65,7 @@
                 name="lastName"
                 required
                 bind:value={lastName}
-                class=" h-[52px] w-[340px] py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
+                class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
             />
             <div class="text-[#5B7AA3] mx-2 mt-3 font-semibold">
                 <span>Date of Birth</span>
@@ -75,7 +75,7 @@
                 type=""
                 name="birthDate"
                 value={birthDate}
-                class=" h-[52px] w-[340px] py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
+                class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
             />
             <div class="text-[#5B7AA3] mx-2 mt-3 font-semibold">
                 <span>Phone</span>
@@ -86,7 +86,7 @@
                 name="phone"
                 required
                 bind:value={phone}
-                class=" h-[52px] w-[340px] py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
+                class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
 
             />
             <div class="text-[#5B7AA3] mx-2 mt-3 font-semibold">
@@ -96,10 +96,10 @@
                 placeholder="Location"
                 name="address"
                 bind:value={location}
-                class=" h-[52px] w-[340px] py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
+                class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
             />
 
-        <div class="w-[340px] h-[52px] mt-[16px] mr-[17px] mb-4 pt-[15px] text-center pb-15px  rounded-[10px] bg-[#5B7AA3]">
+        <div class="w-[340px] max-[425px]:w-full h-[52px] mt-[16px] mr-[17px] mb-4 pt-[15px] text-center pb-15px  rounded-[10px] bg-[#5B7AA3]">
             <button type="submit"
                 class="w-[170px] h-[25px] text-[16px] not-italic text-center text-[#fff] tracking-[3px] font-bold"
             >SUBMIT</button>

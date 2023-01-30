@@ -166,7 +166,7 @@
 		<div class="  grid grid-flow-row items-center justify-center">
 			<a class="mt-5 " href="/users/{userId}/edit-profile">
 				<button
-					class="leading-none w-[300px] h-[52px] rounded-[10px]  bg-[#5B7AA3] tracking-[1px] text-base text-white font-normal pl-3 pr-1 "
+					class="leading-none w-[300px] max-[375px]:w-64 h-[52px] rounded-[10px]  bg-[#5B7AA3] tracking-[1px] text-base text-white font-normal pl-3 pr-1 "
 					>Edit Profile</button
 				></a
 			>
@@ -177,7 +177,7 @@
 					}}>
 					<button
 						on:click={() => confirmThis()}
-						class="leading-none w-[300px] h-[52px] rounded-[10px] justify-center bg-[#5B7AA3] tracking-[1px] text-base text-white font-normal pl-3 mt-4"
+						class="leading-none w-[300px] max-[375px]:w-64 h-[52px] rounded-[10px] justify-center bg-[#5B7AA3] tracking-[1px] text-base text-white font-normal pl-3 mt-4"
 						>Delete Chat</button
 					>
 
@@ -188,7 +188,7 @@
 				<Confirm confirmTitle="Delete" cancelTitle="Cancel" let:confirm={confirmThis}>
 					<button
 						on:click={(e) => confirmThis()}
-						class="leading-none w-[300px] h-[52px] rounded-[10px] justify-center bg-[#5B7AA3] tracking-[1px] text-base text-white font-normal pl-3 mt-4"
+						class="leading-none w-[300px] max-[375px]:w-64 h-[52px] rounded-[10px] justify-center bg-[#5B7AA3] tracking-[1px] text-base text-white font-normal pl-3 mt-4"
 						>Delete Chat</button
 					>
 
@@ -199,7 +199,7 @@
 
 			<button
 				on:click={onLogout}
-				class="leading-none w-[300px] h-[52px] rounded-[10px]  bg-[#5B7AA3] tracking-[1px] text-base text-white font-normal  mt-5 "
+				class="leading-none w-[300px] max-[375px]:w-64 h-[52px] rounded-[10px]  bg-[#5B7AA3] tracking-[1px] text-base text-white font-normal  mt-5 "
 				>Logout</button
 			>
 
@@ -208,7 +208,7 @@
 				}} >
 				<button
 					on:click={() => confirmThis()}
-					class="leading-none w-[300px] h-[52px] rounded-[10px]  bg-[#5B7AA3] tracking-[1px] text-base text-white font-normal mt-5 "
+					class="leading-none w-[300px] max-[375px]:w-64 h-[52px] rounded-[10px]  bg-[#5B7AA3] tracking-[1px] text-base text-white font-normal mt-5 "
 					>Delete Account</button
 				>
 				<span slot="title"> Delete </span>

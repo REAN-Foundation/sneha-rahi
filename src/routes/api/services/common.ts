@@ -7,7 +7,7 @@ import chalk from 'chalk';
 
 export const get_ = async (sessionId: string, url: string) => {
     const session = await SessionManager.getSession(sessionId);
-    const accessToken = session.accessToken;
+    const accessToken = session?.accessToken;
     //console.log(`accessToken = ${accessToken}`);
     const headers = {};
     headers['Content-Type'] = 'application/json';

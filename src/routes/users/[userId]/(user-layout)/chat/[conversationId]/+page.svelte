@@ -135,7 +135,7 @@
 </script>
 
 <!-- <div class="card card-compact card-bordered w-[375px] h-[590px]  bg-base-100 border-slate-200 rounded-none rounded-t-[44px] shadow-sm"> -->
-	<div class="card-body ">
+	<div class="card-body max-[375px]:w-full w-[375px">
 		<!-- <button class=" h-[5px] w-[73px] bg-[#e3e3e3] flex ml-36 mt-2 rounded" /> -->
 		<div class="gap-2 flex items-center justify-center mb-2">
 			{#if conversation.profileImage != srcUrl}
@@ -204,20 +204,27 @@
 
 	</div>
 <!-- </div> -->
-
-<div class="h-[90px] w-[375px] bg-white">
-	<div class="h-20 w-[375px] mt-3 bg-[#dfe7fd] flex ">
+<div class="h-[90px] max-[425px]:w-full w-[375px] bg-white">
+	<div class="h-20 max-[425px]:w-full w-[375px] mt-3 bg-[#dfe7fd] flex ">
 		<textarea
 			id="messageText"
 			name="messageText"
 			bind:this={messageInput}
-			class="h-[52px] p-3 ml-3 mt-3  w-[277px] rounded-lg bg-white"
+			class="h-[52px] p-3 ml-3 mt-3 w-[277px] max-[425px]:w-full rounded-lg bg-white"
 			placeholder="Start typing here…"
 		/>
-			<div class="relative h-[50px] w-[50px] bg-[#5b7aa3] rounded-lg ml-3 mt-3"
-				on:click={onSendMessageClick}
-				on:keypress={async (e) => onSendMessageKeyPressed(e)}>
-				<img class="m-3" src="/assets/images/ask-sneha/png/send.png" alt="" />
-			</div>
+		<div
+			class="relative h-[50px] w-[50px] max-[425px]:w-[60px] max-[425px]:mr-3 bg-[#5b7aa3] rounded-lg ml-3 mt-3"
+			on:click={onSendMessageClick}
+			on:keypress={async (e) => onSendMessageKeyPressed(e)}
+		>
+			<img
+				class="m-3"
+				src="/assets/images/ask
+			-sneha/png/send.png"
+				alt=""
+			/>
+		</div>
 	</div>
 </div>
+
