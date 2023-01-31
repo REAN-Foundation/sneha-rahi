@@ -106,21 +106,25 @@
 <!-- <div
 	class="card card-compact w-[375px] h-[280px] card-bordered border-slate-200 bg-[#ffdbb2]  rounded-none rounded-t-[44px] shadow-sm"
 > -->
-	<div class="card h-[280px] w-[375px] border-x border-slate-200 ">
-		<!-- <div class="flex flex-col text-center justify-center"> -->
-			<!-- <button class="h-[5px] w-[73px] bg-[#e3e3e3] flex ml-36 rounded" /> -->
-			<!-- <img
+<div
+	class="card h-[280px] w-[375px] max-[425px]:w-full max-[425px]:border-none border-x border-slate-200 "
+>
+	<!-- <div class="flex flex-col text-center justify-center"> -->
+	<!-- <button class="h-[5px] w-[73px] bg-[#e3e3e3] flex ml-36 rounded" /> -->
+	<!-- <img
 				class="h-[310px] w-[308px]"
 				src="/assets/learning-course/svg/growing-up-affect.svg"
 				alt=""
 			/> -->
-			<div class=" flex justify-center mt-2">
-				<Image cls="" source={learningJourney?.ImageUrl} w="200" h="180" />
-			</div>
-		<!-- </div> -->
+	<div class=" flex justify-center mt-2">
+		<Image cls="" source={learningJourney?.ImageUrl} w="200" h="180" />
 	</div>
+	<!-- </div> -->
+</div>
 <!-- </div> -->
-<div class=" card-body h-[421px] bg-base-100  border-slate-200 border-x border-b">
+<div
+	class=" card-body h-[421px] bg-base-100  border-slate-200 border-x border-b max-[425px]:border-none"
+>
 	<h2 class="leading-4 text-lg mb-2">{learningJourney.Name}</h2>
 	<p class="h-auto">
 		{learningJourney.Description ? learningJourney.Description : ''}
@@ -162,15 +166,15 @@
 					}}
 					id={content.id}
 					name={content.id}
-					class="leading-4 tracking-normal font-bold"
+					class="leading-4 tracking-normal font-bold w-[375px] max-[425px]:w-full"
 				>
-					<div class="grid grid-flow-col mb-4">
+					<div class="flex flex-grow-col mb-4">
 						{#if content.ContentType == 'Video'}
 							{#if content.showVedio}
 								<!-- <div class="h-16 w-16 bg-[#e3e3e3] rounded-lg ">
 							<img class=" m-5 " src="/assets/images/learning-course/svg/video.svg" alt="" />
 						</div> -->
-						<!-- <div class="" in:fly="{{ x: 100, duration: 3000 }}" out:fly = {{ x: 100, duration: 1000 }}> -->
+								<!-- <div class="" in:fly="{{ x: 100, duration: 3000 }}" out:fly = {{ x: 100, duration: 1000 }}> -->
 								<div class="" transition:slide={{ duration: 1000 }}>
 									<div class="mx-4 grid grid-flow-row">
 										<h3 class="text-center mb-3">{content.Title}</h3>
@@ -183,17 +187,18 @@
 											<!-- <button /> -->
 										</Youtube>
 										<!-- </div>	 -->
-									
 									</div>
 								</div>
 							{:else}
-								<div class="h-16 w-16 bg-[#e3e3e3] rounded-lg ">
-									<img class=" m-5 " src="/assets/images/learning-course/svg/video.svg" alt="" />
+							<div class="flex items-center h-16 w-16">
+								<div class="h-16 w-16 bg-[#e3e3e3] rounded-lg">
+									<img class="m-5" src="/assets/images/learning-course/svg/video.svg" alt="" />
 								</div>
-								<div class="mx-4">
+							</div>
+								<div class="mx-4 w-[211px] max-[425px]:w-full">
 									<h3 class="text-left mb-3">{content.Title}</h3>
 
-									<div class="bg-[#e3e3e3] mt-3 rounded-full h-[10px] w-[211px]">
+									<div class="bg-[#e3e3e3] mt-3 rounded-full h-[10px] w-[211px] max-[425px]:w-full">
 										<div
 											class="bg-[#70ae6e] rounded-full h-[10px]"
 											style={'width:' +
@@ -208,13 +213,14 @@
 								</div>
 							{/if}
 						{:else if content.ContentType === 'Assessment'}
-							<!-- <div class=""> -->
+						<div class="flex items-center h-16 w-16">
 							<div class="h-16 w-16 bg-[#e3e3e3] rounded-lg ">
-								<img class=" m-4 " src="/assets/images/learning-course/svg/quiz.svg" alt="" />
+								<img class="m-4" src="/assets/images/learning-course/svg/quiz.svg" alt="" />
 							</div>
-							<div class="mx-4">
+						</div>
+							<div class="mx-4 w-[211px] max-[425px]:w-full">
 								<h3 class="text-left mb-5">{content.Title}</h3>
-								<div class="bg-[#e3e3e3]  rounded-full h-[10px] w-[211px]">
+								<div class="bg-[#e3e3e3]  rounded-full h-[10px] w-[211px] max-[425px]:w-full">
 									<div
 										class="bg-[#70ae6e] rounded-full h-[10px]"
 										style={'width:' +
@@ -229,12 +235,14 @@
 							</div>
 							<!-- </div> -->
 						{:else}
+						<div class="flex items-center h-16 w-16">
 							<div class="h-16 w-16 bg-[#e3e3e3] rounded-lg ">
-								<img class=" m-4 " src="/assets/images/learning-course/svg/slides.svg" alt="" />
+								<img class="m-4" src="/assets/images/learning-course/svg/slides.svg" alt="" />
 							</div>
-							<div class="mx-4">
+						</div>
+							<div class="mx-4 w-[211px] max-[425px]:w-full">
 								<h3 class="text-left mb-5">{content.Title}</h3>
-								<div class="bg-[#e3e3e3]  rounded-full h-[10px] w-[211px]">
+								<div class="bg-[#e3e3e3] rounded-full h-[10px] w-[211px] max-[425px]:w-full">
 									<div
 										class="bg-[#70ae6e] rounded-full h-[10px]"
 										style={'width:' +

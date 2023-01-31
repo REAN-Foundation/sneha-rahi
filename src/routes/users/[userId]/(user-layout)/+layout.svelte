@@ -26,7 +26,7 @@
 </svelte:head>
 
 <div class="grid gird-cols justify-center items-center">
-	<div class=" w-[375px] h-[812px] ">
+	<div class="max-[425px]:w-full max-[425px]:h-full w-[375px] h-[812px] ">
 		<div class="flex items-center justify-center ">
 			{#if $navbarDisplay}
 				<Navbar

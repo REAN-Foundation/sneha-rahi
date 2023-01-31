@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { PageServerData } from './$types';
-	import { timeAgo } from 'short-time-ago';
+	// import { timeAgo } from 'short-time-ago';
 	import { Helper } from '$lib/utils/helper';
 	import { slide } from 'svelte/transition';
-
+	import date from 'date-and-time';
 	export let data: PageServerData;
 
 	let records = data.allNotifications.NotificationRecords.Items;
@@ -71,7 +71,7 @@
 									<p class="font-normal text-normal pr-1">{Helper.truncateText(notification.Body, 85)}</p>
 								</div>
 							{/if}
-							<div class="text-right font-medium text-sm px-2 pr-4" >{timeAgo(new Date(notification.SentOn))}</div>
+							<div class="text-right font-medium text-sm px-2 pr-4" >{date.format(new Date(notification.SentOn), 'DD MMM YYYY')}</div>
 						</div>
 					</div>
 				</button>

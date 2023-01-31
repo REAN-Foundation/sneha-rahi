@@ -1,9 +1,17 @@
 <script>
   import { fly, fade } from 'svelte/transition'
+  import { createEventDispatcher, onMount } from 'svelte';
   export let themeColor = 200
   export let confirmTitle = 'Confirm'
   export let cancelTitle = 'Cancel'
   let showDialog = false
+
+const dispatch = createEventDispatcher();
+
+const handlelDeleteClick = () => {
+  dispatch('delete');
+}
+  
   let functionToCall = {
     func: null,
     args: null
@@ -72,7 +80,10 @@
           --confirm-btn-bg: hsl({themeColor}, 40%, 50%);
           --confirm-btn-bg-hover: hsl({themeColor}, 40%, 55%);
         "
-        on:click="{callFunction}"
+        on:click="{() => {
+						 handlelDeleteClick();
+            callFunction ()
+					}}"
       >
         <slot name="confirm">
           {confirmTitle}

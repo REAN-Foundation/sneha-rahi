@@ -5,8 +5,8 @@
 	export let options;
 	export let correctSequence;
 	export let answerSubmitted = false;
-	const unselected = "h-[65px] w-[340px] bg-[#e3e3e3] hover:bg-[#fcaf58] mt-3 first:mt-0 text-lg text-left font-normal pl-3 border tracking-normal rounded-lg";
-	const selected = "h-[65px] w-[340px] bg-[#fcaf58] mt-3 first:mt-0 text-lg text-left font-normal pl-3 border tracking-normal rounded-lg";
+	const unselected = "h-[65px] w-[340px] max-[425px]:w-full bg-[#e3e3e3] hover:bg-[#fcaf58] mt-3 first:mt-0 text-lg text-left font-normal pl-3 border tracking-normal rounded-lg";
+	const selected = "h-[65px] w-[340px] max-[425px]:w-full bg-[#fcaf58] mt-3 first:mt-0 text-lg text-left font-normal pl-3 border tracking-normal rounded-lg";
 
 	const handleSingleChoiceClick = async (e, sequence: number) => {
 		answerSubmitted = true;

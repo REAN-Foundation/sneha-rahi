@@ -56,7 +56,7 @@
 </script>
 
 <div class="grid gird-cols justify-center items-center ">
-	<div class="w-[375px] h-[812px] ">
+	<div class="max-[425px]:w-full w-[375px] h-[812px] ">
 		<div class="flex  items-center justify-center">
 			{#if $navbarDisplay}
 			<Navbar
@@ -67,9 +67,9 @@
 			/>
 			{:else}
 			<div
-				class="card rounded-none w-[375px] h-[812px] bg-[#5b7aa3] shadow-none lg:mt-10 md:mt-10 sm:mt-10 mt-0"
+				class="card rounded-none max-[425px]:w-full w-[375px] h-[812px] bg-[#5b7aa3] shadow-none lg:mt-10 md:mt-10 sm:mt-10 mt-0"
 			>
-				<div class="card w-[375px] h-[406px] shadow-none rounded-none border-none">
+				<div class="card max-[425px]:w-full w-[375px] h-[406px] shadow-none rounded-none border-none">
 					<div class="card-body ">
 						<div class=" flex flex-row h-16 w-16">
 							<button on:click={toggleSidebar}>
@@ -89,7 +89,7 @@
 							adulthood.
 						</p>
 					</div>
-					<div class="flex flex-row justify-center relative">
+					<div class="flex flex-row gap-3 justify-center relative">
 						<a href={askSnehaLink}>
 							<img
 								class="mr-2"
@@ -112,38 +112,38 @@
 						disabled: false,
 						applyUserSelectHack: true,
 					}}
-						class="card card-compact bg-base-100 card-bordered border-slate-200 rounded-none rounded-t-[44px] shadow-none "
+						class="card card-compact bg-base-100 card-bordered max-[425px]:border-none border-slate-200 rounded-none rounded-t-[44px] shadow-none"
 					>
 					<div class="flex justify-center">
 						<button class=" h-[5px] w-[73px] bg-[#e3e3e3] mt-4 rounded handle" />
 					</div>
-						<div class="card-body h-[450px] place-content-around ">
-							<div class="overflow-auto h-[550px] scrollbar  scrollbar-medium">
+						<div class="card-body h-[450px] max-[425px]:h-[550px] place-content-around ">
+							<div class="overflow-auto h-[550px] scrollbar scrollbar-medium">
 								<h2
-									class="card-title text-[#5b7aa3] flex tracking-widest justify-center text-base "
+									class="card-title text-[#5b7aa3]  max-[320px]:tracking-wider flex tracking-widest justify-center text-base "
 								>
 									GET STARTED ON YOUR JOURNEY
 								</h2>
 								<a href={learningHomeLink}>
 									<img
-										class=" h-[172px] w-[340px]"
+										class=" h-[172px] w-[340px] max-[425px]:w-full"
 										src="/assets/images/home/png/my-learning.png"
 										alt=""
 									/>
 								</a>
 								<div class="columns-2 mt-2 ">
 									<a href={newsFeedLink}>
-										<img class=" mb-4 " src="/assets/images/home/png/newsfeed.png" alt="" /></a
+										<img class=" mb-4 max-[425px]:w-full" src="/assets/images/home/png/newsfeed.png" alt="" /></a
 									>
 									<a href={linkagesLink}>
-										<img src="/assets/images/home/png/linkages.png" alt="" /></a
+										<img class="max-[425px]:w-full" src="/assets/images/home/png/linkages.png" alt="" /></a
 									>
 									<div>
 										<a href={chatLink}>
-											<img class=" mb-4 " src="/assets/images/home/png/chat.png" alt="" /></a
+											<img class=" mb-4 max-[425px]:w-full" src="/assets/images/home/png/chat.png" alt="" /></a
 										>
 										<a href={myProfileLink}>
-											<img src="/assets/images/home/png/my-profile.png" alt="" /></a
+											<img class="max-[425px]:w-full" src="/assets/images/home/png/my-profile.png" alt="" /></a
 										>
 									</div>
 								</div>

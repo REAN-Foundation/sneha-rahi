@@ -62,9 +62,9 @@
 						h="40"
 					/>
 					<!-- <img class="mb-2 " src="/assets/learning-home/svg/about-anaemia.svg" alt="" /> -->
-					<div class="mx-2">
+					<div class="mx-2 w-[250px] max-[425px]:w-full">
 						<h3 class="mb-4 mt-1">{journey.Name}</h3>
-						<div class=" bg-[#c5e8c5] rounded-full h-[10px] w-[230px]">
+						<div class=" bg-[#c5e8c5] rounded-full h-[10px]">
 							<div
 								class="bg-[#70ae6e] rounded-full h-[10px]"
 								style={'width:' + (journey.PercentageCompletion * 100).toString() + '%'}
@@ -95,7 +95,7 @@
 				<button class="text-[#d05591] text-base absolute right-0 pr-3">VIEW ALL</button>
 			</a>
 		</div>
-		<div class="overflow-x-scroll w-[340px]">
+		<div class="overflow-x-scroll w-[340px] max-[425px]:w-full">
 			<div class="grid grid-flow-col auto-cols-max">
 				<!-- <div class=" flex-col justify-center  mb-4 ">
 						<img class="mb-3 mr-4" src="/assets/learning-home/svg/substance-abuse.svg" alt="" />
@@ -129,15 +129,15 @@
 			</div>
 		</div>
 	</div>
-	<div class="mt-1">
+	<div class="mt-1 w-[340px] max-[425px]:w-full">
 		<div class="flex mb-4 relative">
 			<h2 class="text-xl ">Courses</h2>
 			<!-- <a href={`/users/${data.userId}/learning-journeys`}>
 					<button class=" text-[#d05591] text-base absolute right-0 pr-3">VIEW ALL</button>
 				</a> -->
 		</div>
-		<div class="overflow-auto scrollbar-medium h-[200px]">
-			<div class="columns-2 flex-wrap ">
+		<div class="overflow-auto scrollbar-medium h-[200px] w-[340px] max-[425px]:w-full">
+			<div class="columns-2">
 				{#each allCourses as course}
 					<button
 						on:click|capture={(e) => handleCourseClick(e, course.ResourceLink)}

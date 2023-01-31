@@ -1,11 +1,14 @@
 import type { PageServerLoad } from "./$types";
 import { getMyFavouriteConversations, getMyRecentConversations } from "../../../../api/services/chat";
 import hrt from 'human-readable-time';
+import { BACKEND_API_URL, ASK_SNEHA_USER_ID } from "$env/static/private";
 
 ////////////////////////////////////////////////////////////////////////
 
 const getConversationDetails = (userId, x) => {
-    const profileImage = userId === x.OtherUser.id ? x.InitiatingUser.ProfileImage : x.OtherUser.ProfileImage;
+
+    const profileImage = userId === x.OtherUser.id ? (BACKEND_API_URL + `/file-resources/${x.InitiatingUser.ImageResourceId}/download?disposition=inline`): (BACKEND_API_URL + `/file-resources/${x.OtherUser.ImageResourceId}/download?disposition=inline`);
+    // const profileImage = userId === x.OtherUser.id ? x.InitiatingUser.ProfileImage : x.OtherUser.ProfileImage;
     return {
         id: x.id,
         favourite: x.Marked,
@@ -19,14 +22,18 @@ const getConversationDetails = (userId, x) => {
     }
 }
 
+
 export const load: PageServerLoad = async (event) => {
     try {
         const sessionId = event.cookies.get('sessionId');
         const userId = event.params.userId;
+        const askSnehaUserId = ASK_SNEHA_USER_ID;
         const favouriteConversations_ = await getMyFavouriteConversations(sessionId, userId);
         const recentConversations_ = await getMyRecentConversations(sessionId, userId);
+        console.log("recentConversations_",recentConversations_);
+        const recentConversationsWithoutSnahaUser = recentConversations_.Conversations.filter((Conversations) => Conversations.OtherUserId != askSnehaUserId );
         const favouriteConversations = favouriteConversations_.Conversations.map(x => getConversationDetails(userId, x));
-        const recentConversations = recentConversations_.Conversations.map(x => getConversationDetails(userId, x));
+        const recentConversations = recentConversationsWithoutSnahaUser.map(x => getConversationDetails(userId, x));
         return {
             sessionId,
             userId,

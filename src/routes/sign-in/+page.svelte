@@ -16,7 +16,7 @@
 
 <div class="flex items-center justify-center lg:mt-16 md:mt-16 sm:mt-16 mt-0">
 	<div
-		class="card card-compact rounded-none card-bordered border-slate-400 w-[375px]
+		class="card card-compact rounded-none card-bordered max-[425px]:border-none border-slate-400 max-[425px]:w-full w-[375px]
 	h-[812px] bg-base-100  shadow-none "
 	>
 		<div class="flex items-center justify-center">
@@ -34,13 +34,13 @@
 				placeholder="Phone Number"
 				type="tel"
 				name="phone"
-				class=" h-[52px] w-[340px] py-2 px-3 border rounded-lg bg-[#fde2e4] mt-5 text-lg "
+				class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#fde2e4] mt-5 text-lg "
 			/>
 			<input name="loginRoleId" class="hidden" value="{loginRoleId}">
 
 			<!-- <a href="/sign-in-otp"> -->
 				<button
-					class=" h-[52px] w-[340px]  mt-8 mb-[180px] text-[#fff] text-xl font-bold rounded-lg bg-[#d05591] "
+					class=" h-[52px] w-[340px] max-[425px]:w-full mt-8 mb-[180px] text-[#fff] text-xl font-bold rounded-lg bg-[#d05591] "
 					>SEND OTP</button
 				>
 			<!-- </a> -->

@@ -12,10 +12,11 @@ export const startConversation = async (sessionId: string, userId: string, other
     return await post_(sessionId, url, body);
 };
 
-export const sendMessage = async (sessionId: string, conversationId: string, message: string) => {
+export const sendMessage = async (sessionId: string, conversationId: string, message: string, senderId: string) => {
     const url = BACKEND_API_URL + `/chats/conversations/${conversationId}/messages`;
     const body = {
         Message: message,
+        SenderId: senderId,
     };
     return await post_(sessionId, url, body);
 };

@@ -1,3 +1,4 @@
+import { BACKEND_API_URL } from "$env/static/private";
 import type { RequestEvent } from "@sveltejs/kit";
 import { searchUsersByName } from "../../../services/user";
 
@@ -13,7 +14,7 @@ export const GET = async (event: RequestEvent) => {
             text
 		);
         const results = response?.Patients?.Items;
-        //console.log(`text = ${JSON.stringify(results, null, 2)}`);
+        console.log(`text = ${JSON.stringify(results, null, 2)}`);
         let users = [];
         if (results.length > 0) {
             users = results.map(x => {
@@ -22,7 +23,7 @@ export const GET = async (event: RequestEvent) => {
                     displayName: x.DisplayName,
                     firstName: x.FirstName,
                     lastName: x.LastName,
-                    profileImage: x.profileImage,
+                    profileImage: (BACKEND_API_URL + `/file-resources/${x.ImageResourceId}/download?disposition=inline`) ?? null,
                 }
             });
         }

@@ -30,9 +30,9 @@
 </script>
 
 <div
-	class="card rounded-none  bg-[#5b7aa3] w-[375px] h-[812px] shadow-none lg:mt-10 md:mt-10 sm:mt-10 mt-0"
+	class="card rounded-none  bg-[#5b7aa3] max-[425px]:w-screen w-[375px] h-[812px] shadow-none lg:mt-10 md:mt-10 sm:mt-10 mt-0"
 >
-	<div class="card w-[375px] h-[130px] bg-[#5b7aa3] shadow-none rounded-none border-none">
+	<div class="card max-[375px]:w-full w-[375px] h-[130px] bg-[#5b7aa3] shadow-none rounded-none border-none">
 		<Toasts />
 		<div class="card-body">
 			<div class=" flex flex-row h-16 w-16">
@@ -51,7 +51,7 @@
 				/>
 				<!-- </a> -->
 			</div>
-			<div class="flex flex-row  justify-center relative">
+			<div class="flex flex-row justify-center relative">
 				<a href={askSnehaLink}>
 					<img
 						class="mr-2"
@@ -60,10 +60,10 @@
 					/></a
 				>
 				<a href={chatLink}>
-					<img class="h-[94px] w-[94px]" src="/assets/images/home/svg/message.svg" alt="" /></a
+					<img class="" src="/assets/images/home/svg/message.svg" alt="" /></a
 				>
 				<a href={notificationsLink}>
-					<img class="h-[94px] w-[94px]" src="/assets/images/home/png/notification.png" alt="" /></a
+					<img class="" src="/assets/images/home/png/notification.png" alt="" /></a
 				>
 			</div>
 		</div>
@@ -85,7 +85,7 @@
 			// 	},
 			}}
 		
-		class="card card-compact card-bordered w-[375px] h-[690px]  bg-base-100  rounded-none rounded-t-[44px] shadow-sm"
+		class="card card-compact card-bordered max-[425px]:border-none max-[425px]:w-full w-[375px] h-[690px] bg-base-100  rounded-none rounded-t-[44px] shadow-sm max-[425px]:shadow-none"
 	>
 		<div class="flex justify-center">
 			<button class=" h-[5px] w-[73px] bg-[#e3e3e3] mt-4 rounded handle" />

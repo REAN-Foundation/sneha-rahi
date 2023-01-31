@@ -7,8 +7,9 @@
 	export let data: PageServerData;
 	let favourites = data.favouriteConversations;
 	let recentUsers = data.recentConversations;
-	console.log(`${JSON.stringify(favourites, null, 2)}`);
-	console.log(`${JSON.stringify(recentUsers, null, 2)}`);
+	let srcUrl = 'http://localhost:7272/api/v1/file-resources/null/download?disposition=inline';
+	console.log('Favourites users',`${JSON.stringify(favourites, null, 2)}`);
+	console.log('Recent users',`${JSON.stringify(recentUsers, null, 2)}`);
 
 	const ENTER_KEY_CODE = 13;
 	const userId = $page.params.userId;
@@ -55,7 +56,6 @@
 		const users = await response.json();
 		console.log(JSON.stringify(users));
 		searchResults = users.filter(x => x.userId != userId);
-
 		//Take only top 5 results
 		searchResults = searchResults.slice(0, 5);
 		console.log(JSON.stringify(searchResults));
@@ -112,7 +112,6 @@
 		});
 	};
 
-
 	async function deleteConversation(model) {
 		console.log("model",model);
 		const response = await fetch(`/api/server/chat/delete-conversation`, {
@@ -155,18 +154,18 @@
 			/>
 		</div>
 		{#if searchPeformed}
-			<div class="overflow-auto scrollbar-medium w-[365px]">
-				<div class="grid grid-flow-col mt-2 auto-cols-max gap-3">
+			<div class="overflow-auto scrollbar-medium w-[365px] max-[425px]:w-full">
+				<div class="grid grid-flow-col auto-cols-max gap-3">
 					{#if searchedUsers.length === 0}
 						<h3 class="text-center font-medium mt-2">No results found!</h3>
 					{:else}
 						{#each searchedUsers as searchedUser}
 							<button on:click={async (e) => onSearchedCoversationClick(e, searchedUser.userId)} class="tracking-normal font-sm">
 								<div class="grid grid-rows-2 ">
-									{#if searchedUser.profileImage != null}
-										<Image cls="rounded" h="58" w="58" source={searchedUser.profileImage} ></Image>
+									{#if searchedUser.profileImage != srcUrl}
+										<Image cls="rounded-full" h="58" w="58" source={searchedUser.profileImage} ></Image>
 									{:else}
-										<img src="/assets/images/chat/png/account-img-3.png" alt="" />
+										<img src="/assets/images/chat/png/account-img-1.png" alt="" />
 									{/if}
 									<h3 class=" mt-3 text-sm ">{searchedUser.firstName} <br />{searchedUser.lastName}</h3>
 								</div>
@@ -177,7 +176,7 @@
 			</div>
 		{/if}
 		<h2 class="flex justify-left text-normal">Favourites</h2>
-		<div class="overflow-auto scrollbar-medium w-[365px]">
+		<div class="overflow-auto scrollbar-medium w-[365px] max-[425px]:w-full">
 			<div class="grid grid-flow-col mt-2 auto-cols-max gap-3">
 				{#if favourites.length === 0}
 					<h3 class="text-center font-normal mb-2">No favourites so far!</h3>
@@ -185,10 +184,10 @@
 					{#each favourites as favourite}
 						<a href={`/users/${userId}/chat/${favourite.id}`}>
 							<div class="grid grid-rows-2 ">
-								{#if favourite.profileImage != null}
-									<Image cls="rounded" h="58" w="58" source={favourite.profileImage} ></Image>
+								{#if favourite.profileImage != srcUrl}
+									<Image cls="rounded-full" h="58" w="58" source={favourite.profileImage} ></Image>
 								{:else}
-									<img src="/assets/images/chat/png/account-img-4.png" alt="" />
+									<img src="/assets/images/chat/png/account-img-1.png" alt="" />
 								{/if}
 								<h3 class="mt-3 text-sm">{favourite.firstName} <br />{favourite.lastName}</h3>
 							</div>
@@ -238,12 +237,11 @@
 							<div class="grid grid-flow-col ">
 								<a href={`/users/${userId}/chat/${conversation.id}`}>
 								<!-- <img src="/assets/chat/png/account-img-1.png" alt="" /> -->
-								{#if conversation.profileImage != null}
-									<Image cls="rounded col-span-2" h="58" w="58" source={conversation.profileImage} ></Image>
+								{#if conversation.profileImage != srcUrl}
+									<Image cls="rounded-full col-span-2" h="58" w="58" source={conversation.profileImage} ></Image>
 								{:else}
 									<img src="/assets/images/chat/png/account-img-1.png" alt="" />
 								{/if}
-
 								</a>
 								<div class="grid grid-flow-rows-2 col-span-3 ml-2 mt-4">
 									<div class="flex relative">

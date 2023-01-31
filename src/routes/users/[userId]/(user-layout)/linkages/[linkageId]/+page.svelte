@@ -1,7 +1,8 @@
 <script lang="ts" >
 	import type { PageServerData } from './$types';
 	// import hrt from 'human-readable-time';
-	import { timeAgo } from 'short-time-ago';
+	// import { timeAgo } from 'short-time-ago';
+	import date from 'date-and-time';
 	import { goto } from '$app/navigation';
 	import { showMessage } from '$lib/utils/message.utils';
 	export let data: PageServerData;
@@ -59,7 +60,7 @@
 			<div class="ml-3 ">
 				<div id={data.notice.id} class="flex mb-4">
 					<h3 class="text-left leading-5" >{data.notice.Title}</h3>
-					<div class="text-base font-normal ml-4 leading-5 ">{timeAgo(postDate)}</div>
+					<div class="text-base font-normal ml-4 leading-5 max-[320px]:leading-1">{date.format(postDate, 'DD MMM YYYY')}</div>
 				</div>
 				<p>
 					{data.notice.Description}
@@ -72,7 +73,7 @@
 					on:click|preventDefault = {(e)=>takeActionButtonClick(e)}
 					id={notice.id}
 					name={notice.id}
-					class=" h-[52px] w-[340px] mt-2 text-[#fff] rounded-lg bg-[#5b7aa3]">
+					class=" h-[52px] w-[340px] max-[425px]:w-full mt-2 text-[#fff] rounded-lg bg-[#5b7aa3]">
 					APPLY FOR JOB
 				</button>
 				<button on:click|preventDefault = {backToLinkages} class="text-center mt-3">

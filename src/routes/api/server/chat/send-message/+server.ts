@@ -9,7 +9,8 @@ export const POST = async ({ request }) => {
 		const sessionId = data.sessionId;
 		const conversationId = data.conversationId;
 		const message = data.message;
-		const response = await sendMessage(sessionId, conversationId, message);
+		const senderId = data.senderId;
+		const response = await sendMessage(sessionId, conversationId, message, senderId);
         return new Response(JSON.stringify(response));
 	} catch (err) {
 		console.error(`Error answering question: ${err.message}`);
