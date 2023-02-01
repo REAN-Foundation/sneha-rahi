@@ -14,6 +14,7 @@
 		return a.Sequence - b.Sequence;
 	});
 	const userId = data.userId;
+	const learningJourneyId = $page.params.learningJourneyId;
 	console.log(`${JSON.stringify(courseContents, null, 2)}`);
 
 	courseContents = courseContents.map((x) => {
@@ -101,6 +102,11 @@
 			console.log(errmsg);
 		}
 	};
+
+	const handleCourseCloseClick = async () => {
+		await courseContents
+		window.location.href = `/users/${userId}/learning-journeys/${learningJourneyId}`
+	};
 </script>
 
 <!-- <div
@@ -177,12 +183,12 @@
 								<!-- <div class="" in:fly="{{ x: 100, duration: 3000 }}" out:fly = {{ x: 100, duration: 1000 }}> -->
 								<div class="" transition:slide={{ duration: 1000 }}>
 									<div class="mx-4 grid grid-flow-row">
-										<h3 class="text-center mb-3">{content.Title}</h3>
+										<h3 class="text-center mb-3 w-full">{content.Title}</h3>
 										<!-- svelte-ignore a11y-media-has-caption -->
 										<!-- <div>  -->
 										<Youtube
 											id={getYouTubeId(content.ResourceLink)}
-											on:closeVideo={async (e) => (content.showVedio = false)}
+											on:closeVideo={handleCourseCloseClick}
 										>
 											<!-- <button /> -->
 										</Youtube>

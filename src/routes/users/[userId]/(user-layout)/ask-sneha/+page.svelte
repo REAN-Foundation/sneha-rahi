@@ -17,7 +17,6 @@
 	// let conversation = data.conversation;
 	// console.log("conversation", conversation)
 	$: conversation = conversation;
-	let srcUrl = 'http://localhost:7272/api/v1/file-resources/null/download?disposition=inline';
 	let message_ = '';
 	let queryResponseMsg = '';
 	let messageInput; //Message input text area
@@ -190,15 +189,15 @@
 								</p>
 								<!-- <p class="text-right text-slate-600 text-xs">{(new Date(message.UpdatedAt)).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</p> -->
 							</div>
-							{#if profileImage != srcUrl}
+							{#if profileImage.includes(null)}
+								<img class="absolute right-2 " src="/assets/images/ask-sneha/png/mask.png" alt="" />
+							{:else}
 								<Image
 									cls="rounded-full absolute right-2"
 									h="40"
 									w="40"
 									source={profileImage}
 								/>
-							{:else}
-								<img class="absolute right-2 " src="/assets/images/ask-sneha/png/mask.png" alt="" />
 							{/if}
 						</div>
 					{:else}

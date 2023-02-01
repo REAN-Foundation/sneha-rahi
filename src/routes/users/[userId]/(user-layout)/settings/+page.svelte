@@ -4,6 +4,7 @@
 	import Confirm from '$lib/components/modal/confirm.svelte';
 	import Image from '$lib/components/image.svelte';
 	import { showMessage } from '$lib/utils/message.utils';
+	import { goto } from '$app/navigation';
 
 	export let data: PageServerData;
 	let sessionId = data.sessionId;
@@ -60,6 +61,7 @@
         });
 		const response = await res.json();
 		console.log(JSON.stringify(response, null, 2));
+		window.location.href = `/users/${userId}/settings`;
 	};
 
     const onFileSelected = async (e) => {
@@ -99,9 +101,13 @@
 			}
 		});
 		console.log('response', response);
-		const resp = await response.text();
-		console.log(`resp: ${JSON.stringify(resp, null, 2)}`);
-		window.location.href = '/';
+		if (response.status === 200) {
+			showMessage(`Acount deteted successfully!`, 'success');
+			goto(`/`);
+		}
+		else {
+			showMessage(`Unable to delete account!`, 'error');
+		}
 	};
 
 	const handleDeleteChat = async () => {
@@ -111,6 +117,8 @@
 				conversationId: conversation.id
 			});
 		}
+		showMessage(`Chats deteted successfully!`, 'success');
+		goto(`/users/${userId}/chat`);
 	};
 
 	async function deleteConversation(model) {
@@ -123,7 +131,7 @@
 			}
 		});
 		console.log('response', response);
-	}
+	};
 
 </script>
 
