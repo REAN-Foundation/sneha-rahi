@@ -1,18 +1,23 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { PageServerData } from './$types';
+	//import type { PageServerData } from './$types';
 	import { LocalStorageUtils } from '$lib/utils/local.storage.utils';
 	import {
-		personRolesStore,
-		genderTypesStore,
+		// personRolesStore,
+		// genderTypesStore,
 		splashCarouselImage
 	} from '$lib/store/general.store';
 	import Carousel from '$lib/components/carousel/carousel.svelte'
-	export let data: PageServerData;
-	personRolesStore.set(data.roles);
-	genderTypesStore.set(data.genderTypes);
-	LocalStorageUtils.setItem('personRoles', JSON.stringify(data.roles));
-	LocalStorageUtils.setItem('genderTypes', JSON.stringify(data.genderTypes));
+
+	/////////////////////////////////////////////////////////////////
+
+	//export let data: PageServerData;
+
+	// personRolesStore.set(data.roles);
+	// genderTypesStore.set(data.genderTypes);
+	// LocalStorageUtils.setItem('personRoles', JSON.stringify(data.roles));
+	// LocalStorageUtils.setItem('genderTypes', JSON.stringify(data.genderTypes));
+
 	let showSplash = true;
 	const show = LocalStorageUtils.getItem('showSplash');
 	if (!show) {
@@ -56,7 +61,7 @@
 						class="w-[110px] h-[50px] mt-[10px] object-contain  "
 					/>
 				</div>
-				
+
 				<Carousel autoplay = {3000} >
 					{#each Object.values($splashCarouselImage) as item}
 						<div>
@@ -72,7 +77,7 @@
 						</div>
 					{/each}
 				</Carousel>
-				
+
 				<div class="flex flex-col text-center- justify-center mt-4">
 					<a href="/join-raahi">
 						<button

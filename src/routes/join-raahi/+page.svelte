@@ -3,8 +3,20 @@
 	import { onMount } from 'svelte';
 	import { show } from '$lib/utils/message.utils';
 	import { LocalStorageUtils } from '$lib/utils/local.storage.utils';
+	import {
+		personRolesStore,
+		genderTypesStore,
+		splashCarouselImage
+	} from '$lib/store/general.store';
+
+	///////////////////////////////////////////////////////////////////
 
 	export let data: PageServerData;
+
+	personRolesStore.set(data.roles);
+	genderTypesStore.set(data.genderTypes);
+	LocalStorageUtils.setItem('personRoles', JSON.stringify(data.roles));
+	LocalStorageUtils.setItem('genderTypes', JSON.stringify(data.genderTypes));
 
 	onMount(() => {
 		show(data);

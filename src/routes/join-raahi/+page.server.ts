@@ -3,12 +3,21 @@ import { error, type RequestEvent } from '@sveltejs/kit';
 import { registerUser } from '../api/services/user';
 import { errorMessage, successMessage } from '$lib/utils/message.utils';
 import { redirect } from 'sveltekit-flash-message/server';
+import { getGenderTypes, getPersonRoles } from "../api/services/types";
+import type { PersonRole } from '$lib/types/domain.models';
 
 ///////////////////////////////////////////////////////////////////////////////////
 
 export const load: PageServerLoad = async (event: RequestEvent) => {
 	try {
-		console.log('Page ...' + JSON.stringify(event, null, 2));
+		console.log('Join Raahi ...' + JSON.stringify(event, null, 2));
+		const roles: PersonRole[] = await getPersonRoles();
+		const genderTypes: string[] = await getGenderTypes();
+		return {
+			message: 'Common data successfully retrieved!',
+			roles,
+			genderTypes
+		};
 	}
 	catch (error) {
 		console.error(`Error logging in: ${error.message}`);
