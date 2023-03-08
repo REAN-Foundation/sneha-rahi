@@ -19,7 +19,7 @@ export const POST = (async (event: RequestEvent) => {
 		console.log(filename);
 
 		const fileBuffer = data_['image'];
-		const filePath = `static/temp/${filename}`;
+		const filePath = filename;
 		fs.writeFileSync(filePath, fileBuffer, 'base64');
 
 		if (fs.existsSync(filePath)) {

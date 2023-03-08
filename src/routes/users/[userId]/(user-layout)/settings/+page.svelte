@@ -180,8 +180,8 @@
 			>
 
 			{#if conversations.length > 0}
-				<Confirm confirmTitle="Delete" cancelTitle="Cancel" let:confirm={confirmThis} on:delete = { ()=> {
-					handleDeleteChat();
+				<Confirm confirmTitle="Delete" cancelTitle="Cancel" let:confirm={confirmThis} on:delete = {async ()=> {
+					await handleDeleteChat();
 					}}>
 					<button
 						on:click={() => confirmThis()}

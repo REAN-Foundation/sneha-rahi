@@ -7,7 +7,7 @@
 		genderTypesStore,
 		splashCarouselImage
 	} from '$lib/store/general.store';
-	import Carousel from 'svelte-carousel';
+	import Carousel from '$lib/components/carousel/carousel.svelte'
 	export let data: PageServerData;
 	personRolesStore.set(data.roles);
 	genderTypesStore.set(data.genderTypes);
@@ -24,7 +24,7 @@
 	onMount(() => {
 		setTimeout(() => {
 			showSplash = false;
-			LocalStorageUtils.setItem('showSplash', 'false');
+			LocalStorageUtils.setItem('showSplash', 'true');
 		}, 3000);
 	});
 </script>
@@ -57,7 +57,7 @@
 					/>
 				</div>
 				
-				<Carousel autoplay autoplayDuration={3000} arrows={false} dots={false} pauseOnFocus>
+				<Carousel autoplay = {3000} >
 					{#each Object.values($splashCarouselImage) as item}
 						<div>
 							<div class="flex flex-col text-center items-center justify-center">

@@ -15,7 +15,6 @@
 	let searchInput;
 	let searchResults = [];
 	let searchPeformed = false;
-
 	//Make it reactive
 	$: searchedUsers = searchResults;
 
@@ -122,7 +121,7 @@
 		});
 		console.log('response', response);
 		window.location.href = `/users/${userId}/chat`;
-	}
+	};
 
 </script>
 

@@ -140,7 +140,7 @@
 			{#if conversation.profileImage.includes(null)}
 				<img src="/assets/images/chat/png/account-img-1.png" width="54" height="54" class="justify-center col-span-1 align-middle" alt="" />
 			{:else}
-				<Image cls="rounded-full justify-center align-middle" h="58" w="58" source={conversation.profileImage} ></Image>
+				<Image cls="rounded-full justify-center align-middle" h="58" w="58" source={conversation.profileImage} ></Image>		
 			{/if}
 			<span class="items-center py-4 ">
 				<h2 class=" text-[#5b7aa3] font-bold text-base align-middle">

@@ -39,7 +39,6 @@
 	console.log(`\nMy learning journeys = ${JSON.stringify(myLearningJourneys)}`);
 
 	$: avatarSource = profileImageUrl;
-
 	onMount(() => {
 		const prevUrl = LocalStorageUtils.getItem('prevUrl');
 		console.log(`prevUrl = ${JSON.stringify(LocalStorageUtils.getItem('prevUrl'))}`);
