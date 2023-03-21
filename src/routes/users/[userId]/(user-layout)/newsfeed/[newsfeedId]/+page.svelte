@@ -24,8 +24,8 @@
 							class="mt-2 p-1"
 						/>
 					</div>
-					<div>
-						<h2 class="ml-4 text-left text-[14px] leading-5 mt-2 mb-3">
+					<div class="ml-4">
+						<h2 class="text-left text-[14px] leading-5 mt-2 mb-3">
 							{feedItem.Title}
 						</h2>
 						<p class="pr-1 text-[14px] ">

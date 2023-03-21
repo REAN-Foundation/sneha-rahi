@@ -85,7 +85,7 @@
 			// 	},
 			}}
 		
-		class="card card-compact card-bordered max-[425px]:border-none max-[425px]:w-full w-[375px] h-[690px] bg-base-100  rounded-none rounded-t-[44px] shadow-sm max-[425px]:shadow-none"
+		class="card card-compact card-bordered max-[425px]:border-none max-[425px]:w-full w-[375px] h-[690px] bg-white rounded-none rounded-t-[44px] shadow-sm max-[425px]:shadow-none"
 	>
 		<div class="flex justify-center">
 			<button class=" h-[5px] w-[73px] bg-[#e3e3e3] mt-4 rounded handle" />

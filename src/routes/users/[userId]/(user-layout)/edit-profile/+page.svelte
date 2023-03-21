@@ -43,7 +43,7 @@
 		<h2 class=" text-[#5b7aa3] flex  justify-center tracking-widest font-bold text-base ">
 			EDIT PROFILE
 		</h2>
-        <form class="max-[425px]:w-full" method="post" action="?/updateProfile">
+        <form class="max-[425px]:w-full overflow-auto scrollbar-medium" method="post" action="?/updateProfile">
             <!-- <div name="userId"  value={userId} class='hidden'></div> -->
             <div class="text-[#5B7AA3] mx-2 mt-3 font-semibold">
                 <span>First Name</span>
