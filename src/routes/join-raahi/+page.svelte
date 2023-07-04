@@ -22,14 +22,15 @@
 		show(data);
 		LocalStorageUtils.removeItem('prevUrl');
 	});
+
 </script>
 
 <body>
 	<div class=" flex items-center justify-center lg:mt-16 md:mt-16 sm:mt-16 mt-0 ">
 		<div
-			class="card max-[425px]:w-full w-[375px] max-[425px]:border-none h-[812px] bg-[#fff] rounded-none border-solid border-2"
+			class="card max-[425px]:w-full w-[375px] max-[425px]:border-none h-[812px] max-[812px]:h-screen bg-[#fff] rounded-none border-solid border-2"
 		>
-			<div class="card-body items-center text-center justify-center">
+			<div class="card-body items-center bg-white text-center justify-center">
 				<img
 					src="/assets/images/join-raahi/png/logo.png"
 					alt=""
@@ -37,12 +38,12 @@
 				/>
 				<div class="grid items-center w-[335px] max-[425px]:w-full justify-center">
 					<p
-						class="w-[335px] h-[44px] mx-[20px] mb-[6px] text-[19px] tracking-wide leading-5 font-bold text-center text-[#5B7AA3]"
+						class="mx-[20px] mb-[6px] text-[19px] tracking-wide leading-5 font-bold text-center text-[#5B7AA3]"
 					>
 						Enter a phone number
 					</p>
 					<p
-						class="w-[335px] max-[425px]:w-80 h-[64px] mt-[6px] mx-[20px] mb-[19px] text-[16px] font-normal not-italic leading-5 text-center text-[#000] tracking-wide"
+						class=" mt-[6px] mx-[20px] mb-[19px] text-[16px] font-normal not-italic leading-5 text-center text-[#000] tracking-wide"
 					>
 						The number you enter will be linked to your Raahi App account. Make sure you are able to
 						access the OTP sent on this number.
@@ -67,10 +68,11 @@
 						class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg "
 					/>
 					<input
-						placeholder="Date of Birth in MM/DD/YYYY"
-						type="text"
+					  placeholder="Date of Birth"
+						type="date"
 						name="birthDate"
-						class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg "
+						required
+						class="h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg "
 					/>
 					<input
 						placeholder="Phone Number"
@@ -84,10 +86,10 @@
 						name="address"
 						class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg "
 					/>
-					<div class="w-[340px] max-[425px]:w-full h-[52px] mt-[16px] mr-[17px] mb-4 pt-[15px] text-center pb-15px  rounded-[10px] bg-[#5B7AA3]">
+					<div class="w-[340px] max-[425px]:w-full h-[52px] mt-[16px] mb-4 pt-[15px] text-center pb-15px  rounded-[10px] bg-[#5B7AA3]">
 						<button type="submit"
 							class="w-[170px] h-[25px] text-[16px] not-italic text-center text-[#fff] tracking-[3px] font-bold"
-						>JOIN RAAHI</button>
+						>SIGN UP</button>
 					</div>
 				</form>
 				<div class="flex justify-center">

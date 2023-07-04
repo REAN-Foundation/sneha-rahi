@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { showMessage } from '$lib/utils/message.utils';
 	import { onMount } from 'svelte';
 	import type { PageServerData } from './$types';
 	import { page } from '$app/stores';
@@ -7,7 +6,6 @@
 	import { navbarDisplay } from '$lib/components/navbar/navbar.display.store';
 	import { LocalStorageUtils } from '$lib/utils/local.storage.utils';
 	import { draggable } from '@neodrag/svelte';
-	let show = true;
 
 	let userId = $page.params.userId;
 	export let data: PageServerData;
@@ -47,16 +45,11 @@
 		linkagesLink = `/users/${userId}/linkages`;
 		notificationsLink = `/users/${userId}/notifications`;
 
-		const prevUrl = LocalStorageUtils.getItem('prevUrl');
-		console.log(`prevUrl = ${JSON.stringify(LocalStorageUtils.getItem('prevUrl'))}`);
-		if (prevUrl.includes('sign-in-otp')) {
-			showMessage('Login successful!', 'success');
-		}
 	});
 </script>
 
 <div class="grid gird-cols justify-center items-center ">
-	<div class="max-[425px]:w-full max-[425px]:h-full w-[375px] h-[812px]">
+	<div class="max-[425px]:w-full max-[812px]:h-screen w-[375px] h-[812px]">
 		<div class="flex  items-center justify-center">
 			{#if $navbarDisplay}
 			<Navbar
@@ -67,7 +60,7 @@
 			/>
 			{:else}
 			<div
-				class="card rounded-none max-[425px]:w-full w-[375px] h-[812px] bg-[#5b7aa3] shadow-none lg:mt-10 md:mt-10 sm:mt-10 mt-0"
+				class="card rounded-none max-[425px]:w-full w-[375px] max-[812px]:h-screen h-[812px] bg-[#5b7aa3] shadow-none lg:mt-10 md:mt-10 sm:mt-10 mt-0"
 			>
 				<div class="card max-[425px]:w-full w-[375px] h-[406px] shadow-none rounded-none border-none">
 					<div class="card-body ">
@@ -78,8 +71,8 @@
 							<!-- svelte-ignore a11y-click-events-have-key-events -->
 							<img
 								on:click={onLogout}
-								class="absolute right-0 h-[74px] w-[74px]"
-								src="/assets/images/home/png/ask.png"
+								class="absolute right-0  h-[60px] w-[60px]"
+								src="/assets/images/home/svg/shutdown-icon.svg"
 								alt=""
 							/>
 						</div>

@@ -50,7 +50,7 @@ export const actions = {
     throw redirect(
       303,
       `/users/${id}/my-profile`,
-      successMessage(`Profile updated successful!`),
+      successMessage(`Profile updated successfully!`),
       event
     );
   }

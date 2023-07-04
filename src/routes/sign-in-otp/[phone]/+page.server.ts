@@ -57,6 +57,8 @@ export const actions = {
         const sessionId = response.Data.SessionId;
         const userId: string = response.Data.User.id;
 
+        console.log("response",response)
+
         if (user.Role.RoleName !== 'Patient') {
             throw redirect(303, `/sign-in`, errorMessage(`Unsupported user role!`), event);
         }
