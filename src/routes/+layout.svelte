@@ -1,26 +1,36 @@
 <script lang="ts">
-  import '../app.postcss';
- 
-  import Toasts from '$lib/components/toast/toasts.svelte';
-  import { page } from '$app/stores';
-	import { LocalStorageUtils } from '$lib/utils/local.storage.utils';
+	import '../app.postcss';
+	import { initFlash } from 'sveltekit-flash-message/client';
+	import { page } from '$app/stores';
 	import { beforeNavigate } from '$app/navigation';
+	import toast, { Toaster } from 'svelte-french-toast';
+	const flash = initFlash(page);
+	beforeNavigate((nav) => {
+		if ($flash && nav.from?.url.toString() != nav.to?.url.toString()) {
+			$flash = undefined;
+		}
+	});
 
+	flash.subscribe(($flash) => {
+		if (!$flash) return;
 
-  beforeNavigate(()=>{
-    console.log(`previous URL: ` + $page.url.href)
-    LocalStorageUtils.setItem('prevUrl', $page.url.href);
-  });
+		toast($flash.message, {
+			icon: $flash.type == 'success' ? '✅' : '❌'
+		});
 
+		flash.set(undefined);
+	});
+  
 </script>
 
+<Toaster />
+
 <!-- {#if browser } -->
-  <Toasts/>
+<!-- <Toasts/> -->
 <!-- {/if} -->
 
 <!-- <Modal show={$modal}> -->
 <slot>
-    <main>
-    </main>
+	<main />
 </slot>
 <!-- </Modal> -->

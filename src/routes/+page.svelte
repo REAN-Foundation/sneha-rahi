@@ -38,11 +38,11 @@
 	<div class="flex items-center justify-center lg:mt-16 md:mt-16 sm:mt-16 mt-0">
 		<div
 			class="card card-compact rounded-none card-bordered max-[425px]:border-none border-slate-400 max-[425px]:w-full w-[375px]
-        h-[812px] bg-white shadow-none "
+        h-[812px] max-[812px]:h-screen bg-white shadow-none"
 		>
-			<div class="card-body ">
+			<div class="card-body justify-center">
 				<img
-					class="mt-[17.6rem] mx-4 w-[300px] max-[425px]:w-full h-[170px]"
+					class="mx-4 w-[300px] max-[425px]:w-full h-[170px]"
 					src="/assets/images/splash-screen/svg/logo.svg"
 					alt=""
 				/>
@@ -52,13 +52,13 @@
 	</div>
 {:else}
 	<div class="flex items-center justify-center lg:mt-16 md:mt-16 sm:mt-16 mt-0">
-		<div class="card card-compact max-[425px]:w-full w-[375px] h-[812px] bg-white border-2 max-[425px]:border-none rounded-none">
+		<div class="card card-compact max-[425px]:w-full w-[375px] h-[812px] max-[812px]:h-screen bg-white border-2 max-[425px]:border-none rounded-none">
 			<div class="card-body">
-				<div class="flex flex-col items-center justify-center h">
+				<div class="flex flex-col items-center justify-center">
 					<img
 						src="/assets/images/about-raahi/png/logo.png"
 						alt=""
-						class="w-[110px] h-[50px] mt-[10px] object-contain  "
+						class="w-[110px] h-[50px] mt-[10px] object-contain"
 					/>
 				</div>
 
@@ -66,8 +66,8 @@
 					{#each Object.values($splashCarouselImage) as item}
 						<div>
 							<div class="flex flex-col text-center items-center justify-center">
-								<img src={item.Image} alt="" class="mt-[50px]  h-[250px] " />
-								<h2 class=" text-[#5b7aa3] font-bold w-[335px] h-[44px] mt-4 leading-[23px]">
+								<img src={item.Image} alt="" class="mt-[50px] max-[812px]:h-auto  h-[250px] " />
+								<h2 class=" text-[#5b7aa3] font-bold w-[335px] max-[425px]:w-auto h-[44px] mt-4 leading-[23px]">
 									{item.Title}
 								</h2>
 								<p class=" font-normal overflow-auto h-[60px] text-[#000]">
@@ -83,14 +83,14 @@
 						<button
 							class="max-[425px]:w-full w-[340px] h-[52px] rounded-[10px] bg-[#5b7aa3] uppercase text-[#fff] tracking-[3px] text-[17px]"
 						>
-							join raahi
+						SIGN UP
 						</button></a
 					>
 					<a href="/sign-in">
 						<button
 							class="max-[425px]:w-full w-[340px] h-[52px] rounded-[10px] mt-[40px] bg-[#d05591] uppercase text-[#fff] tracking-[3px] text-[17px]"
 						>
-							sign to raahi
+							LOGIN
 						</button>
 					</a>
 				</div>

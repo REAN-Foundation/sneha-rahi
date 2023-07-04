@@ -1,8 +1,5 @@
 <script lang="ts">
 	import Image from '$lib/components/image.svelte';
-	import { LocalStorageUtils } from '$lib/utils/local.storage.utils';
-	import { showMessage } from '$lib/utils/message.utils';
-	import { onMount } from 'svelte';
 	import type { PageServerData } from './$types';
 
 	export let data: PageServerData;
@@ -39,14 +36,7 @@
 	console.log(`\nMy learning journeys = ${JSON.stringify(myLearningJourneys)}`);
 
 	$: avatarSource = profileImageUrl;
-	onMount(() => {
-		const prevUrl = LocalStorageUtils.getItem('prevUrl');
-		console.log(`prevUrl = ${JSON.stringify(LocalStorageUtils.getItem('prevUrl'))}`);
-		if (prevUrl.includes('edit-profile')) {
-			showMessage('User profile updated successfully!', 'success');
-		}
-	});
-	
+
 </script>
 
 <!-- <div class="card card-compact card-bordered border-slate-200 w-[375px] h-[701px]  bg-base-100  rounded-none rounded-t-[44px] shadow-sm"> -->
@@ -74,7 +64,6 @@
 			</div>
 		</div>
 	</div>
-
 	<h2 class="flex  justify-left font-bold mt-2">My Progress</h2>
 	{#if myLearningJourneys.length == 0}
 		<h3 class="mb-3 mt-3 font-semibold text-center">You have not yet started learning journey!</h3>

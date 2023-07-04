@@ -1,17 +1,13 @@
 <script lang="ts" >
 	import type { PageServerData } from './$types';
-	// import hrt from 'human-readable-time';
-	// import { timeAgo } from 'short-time-ago';
 	import date from 'date-and-time';
 	import { goto } from '$app/navigation';
-	import { showMessage } from '$lib/utils/message.utils';
+	import toast from 'svelte-french-toast';
 	export let data: PageServerData;
-    let notice = data.notice;
+  let notice = data.notice;
 	let noticeAction = data.noticeAction;
 
 	const postDate = new Date(data.notice.PostDate);
-	// let date = hrt(new Date(data.notice.PostDate),'%relative% ago');
-	// console.log(`${JSON.stringify(notice)}`);
 
 	const takeActionButtonClick = async (e) => {
 		console.log(e.currentTarget);
@@ -43,7 +39,7 @@
 		const resp = await response.text();
 		const noticeAction = JSON.parse(resp);
 		if (noticeAction) {
-			showMessage(`Action taken successfully!`, 'success');
+			toast.success(`Action taken successfully!`);
 		}
   }
 
@@ -55,18 +51,21 @@
 		<h2 class=" text-[#5b7aa3] flex  justify-center tracking-widest font-bold text-base ">
 			LINKAGE - JOB
 		</h2>
-		<div class="flex justify-center mt-5 mb-6">
-			<img class="w-[3.625rem] h-[3.625rem] bg-[#fde2e4] rounded-lg" src={data.notice.ImageUrl} alt=""/>
-			<div class="ml-3 ">
+		<div class="flex justify-center mt-5 w-full">
+			<img class="w-1/4 h-[3.625rem] bg-[#fde2e4] rounded-lg" src={data.notice.ImageUrl} alt=""/>
+			<div class="ml-3 w-3/4 ">
 				<div id={data.notice.id} class="flex mb-4">
 					<h3 class="text-left leading-5" >{data.notice.Title}</h3>
 					<div class="text-base font-normal ml-4 leading-5 max-[320px]:leading-1">{date.format(postDate, 'DD MMM YYYY')}</div>
 				</div>
-				<p>
-					{data.notice.Description}
-				</p>
 			</div>
 		</div>
+		<div class="h-auto mb-4">
+			<p>
+				{data.notice.Description}
+			</p>
+		</div>
+		
 		<!-- <a href={`/users/${data.userId}/linkages`}> -->
 			{#if noticeAction == null}
 				<button
@@ -85,7 +84,7 @@
 				</div>
 				<button
 					on:click|preventDefault = {backToLinkages}
-					class=" h-[52px] w-[340px] mt-2 rounded-lg  ">
+					class="mt-4 rounded-lg">
 					BACK TO LINKAGES 
 				</button>
 			{/if}

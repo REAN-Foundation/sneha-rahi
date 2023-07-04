@@ -1,3 +1,4 @@
+import { BOT_API_URL, BOT_API_AUTHENTICATION} from "$env/static/private";
 
 export const askQuery = async ( message: string, phone: string, type: string) => {
     const model = {
@@ -7,9 +8,9 @@ export const askQuery = async ( message: string, phone: string, type: string) =>
     }
     const headers = {};
     headers['Content-Type'] = 'application/json';
-    headers['authentication'] = 'zxcv';
+    headers['authentication'] = BOT_API_AUTHENTICATION ;
     const body = JSON.stringify(model);
-	const url = 'https://reancare-api-dev.services.reanfoundation.org:443/v1/SNEHA/SNEHA_SUPPORT/zxcv/receive';
+	const url = BOT_API_URL;
     const res = await fetch(url, {
         method: 'POST',
         body,

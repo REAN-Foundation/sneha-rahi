@@ -2,7 +2,7 @@
 import type { RequestEvent } from '@sveltejs/kit';
 import { sendOtp } from '../api/services/user';
 import { redirect } from 'sveltekit-flash-message/server';
-import { errorMessage } from '$lib/utils/message.utils';
+import { errorMessage, successMessage } from '$lib/utils/message.utils';
 
 //////////////////////////////////////////////////////////////
 
@@ -36,6 +36,6 @@ export const actions = {
 			//Most probably the user is not yet registered, so redirect to the sign-up page
 			throw redirect(303, '/join-raahi/', errorMessage(response.Message), event);
 		}
-		throw redirect(303, `/sign-in-otp/${phone}`);
+		throw redirect(303, `/sign-in-otp/${phone}`, successMessage(response.Message), event);
 	},
 };

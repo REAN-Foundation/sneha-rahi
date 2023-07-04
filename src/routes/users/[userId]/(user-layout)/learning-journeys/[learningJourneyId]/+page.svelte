@@ -129,7 +129,7 @@
 </div>
 <!-- </div> -->
 <div
-	class=" card-body h-[421px] bg-base-100  border-slate-200 border-x border-b max-[425px]:border-none"
+	class=" card-body h-[421px] bg-white border-slate-200 border-x border-b max-[425px]:border-none"
 >
 	<h2 class="leading-4 text-lg mb-2">{learningJourney.Name}</h2>
 	<p class="h-auto">
