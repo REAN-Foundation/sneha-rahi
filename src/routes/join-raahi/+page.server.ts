@@ -57,7 +57,7 @@ export const actions = {
 		console.log("Response................", response)
 
 		if (response.Status === 'failure' && response.HttpCode === 409) {
-			throw redirect(303, '/join-raahi', errorMessage(response.Message), event);
+			throw redirect(303, '/join-raahi', errorMessage( "User already exists, login to your account"), event);
 		}
 		if (response.Status === 'failure' || response.HttpCode !== 201) {
 			throw redirect(303, '/join-raahi', errorMessage(response.Message), event);

@@ -2,7 +2,7 @@
 	import type { PageServerData } from './$types';
 	import Image from '$lib/components/image.svelte';
 	import { page } from '$app/stores';
-	import { errorMessage, showMessage, successMessage } from '$lib/utils/message.utils';
+	import toast from 'svelte-french-toast';
 
 	export let data: PageServerData;
 	let favourites = data.favouriteConversations;
@@ -97,7 +97,7 @@
 				window.location.href = redirectPath;
 			}
 			else {
-				showMessage(`Unable to start conversation!`, 'error', true, 3500);
+				toast.error('Unable to start conversation!')
 			}
 		}
 	}
@@ -120,6 +120,12 @@
 			}
 		});
 		console.log('response', response);
+		if (response.status === 200) {
+			toast.success(`Chat deteted successfully!`)
+		}
+		else {
+			toast.error('Unable to delete chat');
+		}
 		window.location.href = `/users/${userId}/chat`;
 	};
 

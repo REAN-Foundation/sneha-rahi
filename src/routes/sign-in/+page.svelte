@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { LocalStorageUtils } from '$lib/utils/local.storage.utils';
+	import { enhance } from "$app/forms";
+
 	let personRoles = [], loginRoleId = 2;
 
 	if (browser) {
@@ -17,22 +19,22 @@
 <div class="flex items-center justify-center lg:mt-16 md:mt-16 sm:mt-16 mt-0">
 	<div
 		class="card card-compact rounded-none card-bordered max-[425px]:border-none border-slate-400 max-[425px]:w-full w-[375px]
-	h-[812px] bg-white shadow-none "
+	h-[812px] max-[812px]:h-screen bg-white shadow-none "
 	>
 		<div class="flex items-center justify-center">
 			<img class="mt-12" src="/assets/images/sign-in/svg/logo.svg" alt="" />
 		</div>
-		<div class="card-body ">
-			<h2 class="mt-40 text-center text-[#d05591] text-xl font-bold">
+		<div class="card-body bg-white">
+			<h2 class="max-[425px]:mt-10 mt-30 text-center text-[#d05591] text-xl font-bold">
 				Enter a phone number
 			</h2>
 			<p class=" leading-tight text-base text-center">
 				The number you enter will be linked to your Raahi App account. Make sure you are able to access the OTP sent on this number.
 			</p>
-			<form method="post">
+			<form method="post"  use:enhance>
 			<input
 				placeholder="Phone Number"
-				type="tel"
+				type="number"
 				name="phone"
 				class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#fde2e4] mt-5 text-lg "
 			/>
@@ -40,13 +42,13 @@
 
 			<!-- <a href="/sign-in-otp"> -->
 				<button
-					class=" h-[52px] w-[340px] max-[425px]:w-full mt-8 mb-[180px] text-[#fff] text-xl font-bold rounded-lg bg-[#d05591] "
+					class=" h-[52px] w-[340px] max-[425px]:w-full py-2 mt-8 max-h-[425px]:mb-auto mb-[180px] text-[#fff] text-xl font-bold rounded-lg bg-[#d05591] "
 					>SEND OTP</button
 				>
 			<!-- </a> -->
 		</form>
 			<div class="flex justify-center">
-				<a href="/"> <span class=" text-xl tracking-widest  font-bold"> BACK TO HOME </span></a>
+				<a href="/"> <span class=" text-xl tracking-widest font-bold"> BACK TO HOME </span></a>
 			</div>
 		</div>
 		<img src="/assets/images/sign-in/svg/color-strip.svg" alt="" />

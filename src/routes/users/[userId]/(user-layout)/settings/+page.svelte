@@ -5,6 +5,7 @@
 	import Image from '$lib/components/image.svelte';
 	import { showMessage } from '$lib/utils/message.utils';
 	import { goto } from '$app/navigation';
+	import toast from 'svelte-french-toast';
 
 	export let data: PageServerData;
 	let sessionId = data.sessionId;
@@ -102,11 +103,12 @@
 		});
 		console.log('response', response);
 		if (response.status === 200) {
-			showMessage(`Acount deteted successfully!`, 'success');
+			toast.success('Account deteted successfully!');
 			goto(`/`);
 		}
 		else {
-			showMessage(`Unable to delete account!`, 'error');
+			toast.error('Unable to delete account!');
+
 		}
 	};
 
@@ -117,7 +119,7 @@
 				conversationId: conversation.id
 			});
 		}
-		showMessage(`Chats deteted successfully!`, 'success');
+		toast.success('Chats deteted successfully!');
 		goto(`/users/${userId}/chat`);
 	};
 
