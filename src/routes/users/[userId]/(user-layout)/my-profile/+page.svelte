@@ -21,6 +21,7 @@
 			? data.user.User.Person.FirstName + ' ' + data.user.User.Person.LastName
 			: null;
 	let Age = data.user.User.Person.Age;
+
     let location = '';
 	const otherInformationString = data.user.HealthProfile?.OtherInformation;
 
