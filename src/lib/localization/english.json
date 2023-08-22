@@ -1,0 +1,38 @@
+{
+  "EnterPhoneNumber": "Enter a phone number",
+  "SignUpDescription":
+    "The number you enter will be linked to your Raahi App account. Make sure you are able to access the OTP sent on this number.",
+  "LogInDescription":
+    "The number you enter will be linked to your Raahi App account. Make sure you are able to access the OTP sent on this number. ",
+  "OtpDescription":
+    "An OTP has been sent to your registered mobile number, It will expire in 3 minutes.",
+  "HomePageDescription":
+    "Welcome to Raahi, your friend, companion and guide as you navigate your journey into adulthood.",
+  "LearningJourneyDescription": "Choose your pathway of learning",
+  "spalshImages": [
+    {
+      "id": 1,
+      "Title":"Your Learning Journey",
+      "Description": "Learn about your physical, mental, sexual and reproductive health.",
+      "Image": "/assets/images/about-raahi/svg/my-learning-white-bg.svg"
+    },
+    {
+    "id": 2,
+		"Title" : "Linkages",
+		"Description" :"Explore career and job opportunities",
+		"Image" : "/assets/images/about-raahi/svg/linkages-white-bg.svg"
+    },
+    {
+    "id": 3,
+		"Title" : "Newsfeed",
+		"Description" : "Stay connected with SNEHA and your peers",
+		"Image" : "/assets/images/about-raahi/svg/newsfeed-without-bg.svg"
+    },
+    {
+    "id": 4,
+		"Title" : "Ask SNEHA",
+		"Description" : "Talk to a SNEHA representative",
+		"Image" : "/assets/images/about-raahi/png/splashscreen-raahi.png"
+    }
+  ]
+}

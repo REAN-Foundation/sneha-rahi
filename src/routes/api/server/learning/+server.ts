@@ -9,7 +9,8 @@ export const POST = async ({ request }) => {
 		const response = await updateUserLearning(
 			data.sessionId,
             data.userId,
-            data.contentId
+            data.contentId,
+						data.learningJourneyId
 		);
 		return new Response(response.message);
 	} catch (err) {

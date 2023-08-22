@@ -1,6 +1,6 @@
 import { BACKEND_API_URL } from "$env/static/private";
 import { get_, post_} from "./common";
-import { getCourseContentsForLearningPath } from "./learning";
+import { getCourseContentsForLearningPath, getLearningPath } from "./learning";
 
 ////////////////////////////////////////////////////////////////
 
@@ -36,8 +36,18 @@ export const getQuizById = async (sessionId: string,  assessmentId: string) => {
 };
 
 export const getCourseContentIdForQuiz = async (sessionId: string,  assessmentId: string, learningJourneyId: string) => {
-    const _courseContents = await getCourseContentsForLearningPath(sessionId, learningJourneyId);
-    const courseContents = _courseContents.CourseContents;
+    // const _courseContents = await getCourseContentsForLearningPath(sessionId, learningJourneyId);
+    const _learningPath = await getLearningPath(sessionId, learningJourneyId);
+    const learningPath = _learningPath.LearningPath;
+    const courseContents =[];
+    for ( const course of learningPath.Courses){
+            for (const module of course.Modules){
+                for (const content of module.Contents){
+                    courseContents.push(content)
+                }
+            }
+    }
+    // const courseContents = _courseContents.CourseContents;
     const _quiz = await getQuizById(sessionId, assessmentId);
     const assessmentTemplateId = _quiz.Assessment.AssessmentTemplateId;
 

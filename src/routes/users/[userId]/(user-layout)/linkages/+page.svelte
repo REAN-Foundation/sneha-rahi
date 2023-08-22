@@ -1,7 +1,10 @@
 <script lang="ts">
 	import type { PageServerData } from './$types';
-	// import { timeAgo } from 'short-time-ago';
 	import date from 'date-and-time';
+	import Image from "$lib/components/image.svelte";
+
+	///////////////////////////////////////////////////////
+
 	export let data: PageServerData;
 	let allLinkages = data.allLinkages.NoticeRecords.Items;
 	console.log(`\n AllLinkages = ${JSON.stringify(allLinkages)}`);
@@ -22,7 +25,8 @@
 					<div class="first:mt-2 mb-3" id= {notice.id} >
 						<a href={`/users/${data.userId}/linkages/${notice.id}`}>
 							<div class="grid grid-flow-col ">
-								<img class="w-[3.625rem] h-[3.625rem] bg-[#fde2e4] rounded-lg" src={notice.ImageUrl} alt=""/>
+								<!-- <img class="w-[3.625rem] h-[3.625rem] bg-[#fde2e4] rounded-lg" src={notice.ImageUrl} alt=""/> -->
+								<Image cls="rounded w-[3.625rem] h-[3.625rem]" source={notice.ImageUrl + "?disposition=inline"} w=162 h=162 />
 								<div class="ml-3 ">
 									<div class="flex relative mb-1">
 										<h3 class="text-left max-[375px]:w-[150px]">{notice.Title.length > 20 ? notice.Title.substring(0, 16) + '...': notice.Title}</h3>

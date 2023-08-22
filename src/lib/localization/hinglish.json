@@ -1,0 +1,38 @@
+{
+  "EnterPhoneNumber": "Mobail nambar darj karen",
+  "SignUpDescription":
+    "Aapake dvaara darj kiya gaya number aapake Raahi App khaate se link ho jaega aur uspe OTP bheja jaega.",
+  "LogInDescription":
+    "Apane Raahi App se juda mobile number darj karen.",
+  "OtpDescription":
+    "An OTP has been sent to your registered mobile number, It will expire in 3 minutes.",
+  "HomePageDescription":
+    "Raahi mein aapka swagat hai, jo aapke praudhvastha ki yatra mein aapka dost, saathi, aur margdarshak hai.",
+  "LearningJourneyDescription": "Chuniye woh vishay jise aapko jaankari chahiye. Kuch vishayon ke liye aapko ek kram me jaana hoga.",
+  "spalshImages": [
+    {
+      "id": 1,
+      "Title":"Learning Journey",
+      "Description": "Apane shaareerik, maanasik, yaun aur prajanan svaasthy ke baare mein jaanen.",
+      "Image": "/assets/images/about-raahi/svg/my-learning-white-bg.svg"
+    },
+    {
+    "id": 2,
+		"Title" : "Linkages",
+		"Description" :"Career evan sarakaaree yojanaon se sambandhit jaanakaaree.",
+		"Image" : "/assets/images/about-raahi/svg/linkages-white-bg.svg"
+    },
+    {
+    "id": 3,
+		"Title" : "Newsfeed",
+		"Description" : "Apane jaiseyuva on se prerana len.",
+		"Image" : "/assets/images/about-raahi/svg/newsfeed-without-bg.svg"
+    },
+    {
+    "id": 4,
+		"Title" : "Ask SNEHA",
+		"Description" : "SNEHA se apane prashnon ka uttar paen.",
+		"Image" : "/assets/images/about-raahi/png/splashscreen-raahi.png"
+    }
+  ]
+}

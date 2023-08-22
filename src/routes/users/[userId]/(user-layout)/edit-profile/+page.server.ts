@@ -3,6 +3,7 @@ import type {  RequestEvent } from '@sveltejs/kit';
 import { redirect } from 'sveltekit-flash-message/server';
 import { successMessage } from '$lib/utils/message.utils';
 import { getUserById, updateProfile } from '../../../../../routes/api/services/user';
+import { Helper } from '$lib/utils/helper';
 
 /////////////////////////////////////////////////////////////////////////
 
@@ -27,12 +28,14 @@ export const actions = {
     const lastName = data.has('lastName') ? data.get('lastName') : null;
     const birthDate = data.has('birthDate') ? data.get('birthDate') : null;
     const phone = data.has('phone') ? data.get('phone') : null;
-    const address = data.has('address') ? data.get('address') : null;
-
+    const organization_ = data.has('organization') ? data.get('organization') : null;
+		const location_ = data.has('location') ? data.get('location') : null;
+    // const address = data.has('address') ? data.get('address') : null;
+    
     const sessionId = event.cookies.get('sessionId');
-    //console.log('sessionId', sessionId);
     const userId = event.params.userId;
-    //console.log('user id', userId);
+    const organization = Helper.truncateText(organization_.valueOf() as string, 200);
+		const location = Helper.truncateText(location_.valueOf() as string, 200);
 
     const response = await updateProfile(
       sessionId,
@@ -41,7 +44,8 @@ export const actions = {
       lastName.valueOf() as string,
       birthDate.valueOf() as Date,
       phone.valueOf() as string,
-      address.valueOf() as string
+      organization,
+      location
     );
     //console.log(response);
     const id = response.Patient.User.id;
