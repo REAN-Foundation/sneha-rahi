@@ -12,16 +12,15 @@
 	// let addresses = data.user.User.Person.Addresses;
 	let location = '';
 	let organization = '';
-    
 	// if (addresses.length > 0) {
 	// 	let address = addresses[0];
 	// 	location = address.AddressLine ?? address.City;
 	// }
-	
+
 	const otherInformationString = data.user.HealthProfile.OtherInformation;
 
-	if (otherInformationString !== ''){
-	const otherInformationObject = JSON.parse(otherInformationString);
+	if (otherInformationString !== '' && otherInformationString != null){
+	 const otherInformationObject = JSON.parse(otherInformationString);
 	 organization = otherInformationObject.Org;
 	 location = otherInformationObject.Location;
 	}
