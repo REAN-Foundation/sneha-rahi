@@ -21,11 +21,11 @@
 			? data.user.User.Person.FirstName + ' ' + data.user.User.Person.LastName
 			: null;
 	let Age = data.user.User.Person.Age;
-  let location = '';
+    let location = '';
 	const otherInformationString = data.user.HealthProfile?.OtherInformation;
-	
-	if (otherInformationString !== ''){
-	const otherInformationObject = JSON.parse(otherInformationString);
+
+	if (otherInformationString !== '' && otherInformationString != null){
+	 const otherInformationObject = JSON.parse(otherInformationString);
 	 location = otherInformationObject.Location;
 	}
 
@@ -84,7 +84,7 @@
 			</div>
 			<div class=" ml-4 ">{(overallProgress * 100).toFixed().toString()}%</div>
 		</div>
-		
+
 	{/if}
 	<div class="overflow-auto scrollbar-medium w-[350px] max-[425px]:w-full">
 		<div class="grid grid-flow-col auto-cols-max gap-3 mt-4">
