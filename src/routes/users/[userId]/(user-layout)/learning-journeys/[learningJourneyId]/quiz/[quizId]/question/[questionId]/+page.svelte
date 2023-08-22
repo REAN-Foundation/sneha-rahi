@@ -1,10 +1,9 @@
 <script lang="ts">
-  	import QuizSingleChoice from './quiz.single.choice.svelte';
-  	import QuizMultiChoice from './quiz.multi.choice.svelte';
+  import QuizSingleChoice from './quiz.single.choice.svelte';
+  import QuizMultiChoice from './quiz.multi.choice.svelte';
 	import { page } from '$app/stores';
 	import type { PageServerData } from './$types';
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
 
 	export let data: PageServerData;
 	let options = data.nextQuestion.Options;

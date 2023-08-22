@@ -6,8 +6,13 @@
 	import { show } from '$lib/utils/message.utils';
 	import { browser } from '$app/environment';
 	import { LocalStorageUtils } from '$lib/utils/local.storage.utils';
+	import { selectedLanguage } from '$lib/store/general.store';
+	import english from '$lib/localization/english.json';
+  import hinglish from '$lib/localization/hinglish.json'
 
+	/////////////////////////////////////////////////////////////////
 	export let data: PageServerData;
+	let localizedContent = $selectedLanguage === 'hinglish' ? hinglish : english;
 	let otp1,
 		otp2,
 		otp3,
@@ -181,7 +186,7 @@
 				Enter the 6-digit OTP
 			</h2>
 			<p class="text-center leading-tight text-base ">
-				An OTP has been sent to your registered mobile number. It will expire in 3 minutes.
+				{localizedContent.OtpDescription}
 			</p>
 			{#if !isTimerExpired}
 				<div class="text-blue-500">OTP will expire in {timer}</div>

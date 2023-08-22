@@ -16,18 +16,26 @@ export const load: PageServerLoad = async ({ request, params }) => {
         const userId = params.userId;
         const learningPathId = params.learningJourneyId;
         const _learningPath = await getLearningPath(sessionId, learningPathId);
-        const _courseContentsForLearningPath = await getCourseContentsForLearningPath(sessionId, learningPathId);
+        // const _courseContentsForLearningPath = await getCourseContentsForLearningPath(sessionId, learningPathId);
         const _userLearningPaths = await getUserLearningPaths(sessionId, userId);
         const _userLearnings = await getUserCourseContents(sessionId, params.userId, params.learningJourneyId);
 
         const allQuizTempletes = await getAllQuizTemplates(sessionId);
 
-        //console.log(_learningPath);
         const learningPath = _learningPath.LearningPath;
-        const courseContentsForLearningPath = _courseContentsForLearningPath.CourseContents;
+        // const courseContentsForLearningPath = _courseContentsForLearningPath.CourseContents;
         const userLearningPaths = _userLearningPaths.UserLearningPaths;
         const userCourseContents = _userLearnings.UserCourseContents;
-
+        console.log("userCourseContents",userCourseContents)
+        const courseContentsForLearningPath =[];
+        for ( const course of learningPath.Courses){
+                for (const module of course.Modules){
+                    for (const content of module.Contents){
+                        courseContentsForLearningPath.push(content)
+                    }
+                }
+        }
+        console.log("courseContentsForLearningPath",courseContentsForLearningPath);
         for (const cc of courseContentsForLearningPath) {
             const userContent = userCourseContents.find(x => x.ContentId === cc.id);
             if (userContent) {

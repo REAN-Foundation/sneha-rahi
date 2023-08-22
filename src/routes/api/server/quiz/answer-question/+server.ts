@@ -36,6 +36,7 @@ export const POST = async ({ request }) => {
 					sessionId,
 					userId,
 					contentId,
+					learningJourneyId,
 					ProgressStatus.InProgress,
 					percentageProgress,
 				);
@@ -51,6 +52,7 @@ export const POST = async ({ request }) => {
 					sessionId,
 					userId,
 					contentId,
+					learningJourneyId
 				);
 			}
 			return new Response(redirectPath);

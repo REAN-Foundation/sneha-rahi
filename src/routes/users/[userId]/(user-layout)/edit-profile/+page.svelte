@@ -1,18 +1,29 @@
 <script lang="ts">
 	import type { PageServerData } from './$types';
 
+	//////////////////////////////////////////////////////
+
 	export let data: PageServerData;
 	let birthDate = new Date(data.user.User.Person.BirthDate).toISOString().split('T')[0];
 	let firstName = data.user.User.Person.FirstName;
 	let lastName = data.user.User.Person.LastName;
 	let phone = data.user.User.Person.Phone;
 	phone = phone.startsWith('+91') ? phone.replace('+91-', '') : phone;
-	let addresses = data.user.User.Person.Addresses;
-	let location = 'Mumbai';
+	// let addresses = data.user.User.Person.Addresses;
+	let location = '';
+	let organization = '';
     
-	if (addresses.length > 0) {
-		let address = addresses[0];
-		location = address.AddressLine ?? address.City;
+	// if (addresses.length > 0) {
+	// 	let address = addresses[0];
+	// 	location = address.AddressLine ?? address.City;
+	// }
+	
+	const otherInformationString = data.user.HealthProfile.OtherInformation;
+
+	if (otherInformationString !== ''){
+	const otherInformationObject = JSON.parse(otherInformationString);
+	 organization = otherInformationObject.Org;
+	 location = otherInformationObject.Location;
 	}
 
 	console.log('user', JSON.stringify(data.user.User, null, 2));
@@ -71,15 +82,23 @@
 			class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
 		/>
 		<div class="text-[#5B7AA3] mx-2 mt-3 font-semibold">
+			<span>Organization</span>
+		</div>
+		<input
+			placeholder="Enter Organization"
+			name="organization"
+			value={organization}
+			class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
+		/>
+		<div class="text-[#5B7AA3] mx-2 mt-3 font-semibold">
 			<span>Location</span>
 		</div>
 		<input
 			placeholder="Location"
-			name="address"
-			bind:value={location}
+			name="location"
+			value={location}
 			class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
 		/>
-
 		<div
 			class="w-[340px] max-[425px]:w-full h-[52px] mt-[16px] mr-[17px] mb-4 pt-[15px] text-center pb-15px  rounded-[10px] bg-[#5B7AA3]"
 		>

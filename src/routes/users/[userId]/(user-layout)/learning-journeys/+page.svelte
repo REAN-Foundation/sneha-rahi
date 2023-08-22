@@ -1,8 +1,13 @@
 <script lang="ts">
-
 	import Image from "$lib/components/image.svelte";
 	import type { PageServerData } from "./$types";
+	import { selectedLanguage } from '$lib/store/general.store';
+	import english from '$lib/localization/english.json';
+  import hinglish from '$lib/localization/hinglish.json'
 
+	/////////////////////////////////////////////////////////////////////////
+
+	let localizedContent = $selectedLanguage === 'hinglish' ? hinglish : english;
 	export let data: PageServerData;
 	let allLearningJourneys = data.allLearningPaths.LearningPaths.Items;
 	allLearningJourneys = allLearningJourneys.sort((a, b) => { return b.PreferenceWeight - a.PreferenceWeight; });
@@ -15,7 +20,7 @@
 		<h2 class=" text-[#5b7aa3] flex  justify-center font-bold text-base tracking-widest ">
 			LEARNING JOURNEYS
 		</h2>
-		<h2 class="text-xl font-semibold text-center mb-2">Choose your pathway of learning</h2>
+		<h2 class="text-xl font-semibold text-center mb-2">{localizedContent.LearningJourneyDescription}</h2>
 		<div class="overflow-auto scrollbar-medium h-[560px]">
 			<div class="columns-2 flex-wrap space-around justify-center mb-6">
 				{#each allLearningJourneys as learningJourney}

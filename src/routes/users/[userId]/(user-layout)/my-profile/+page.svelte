@@ -9,19 +9,26 @@
 	let overallProgress;
 	let userId = data.user.User.id;
 	let profileImageUrl = data.user.ProfileImageUrl ?? undefined;
-	let addresses = data.user.User.Person.Addresses;
-	let location = 'Mumbai';
+	// let addresses = data.user.User.Person.Addresses;
+	// let location = 'Mumbai';
 
-	if (addresses.length > 0) {
-		let address = addresses[0];
-		location = address.AddressLine ?? address.City;
-	}
+	// if (addresses.length > 0) {
+	// 	let address = addresses[0];
+	// 	location = address.AddressLine ?? address.City;
+	// }
 	let FullName =
 		data.user.User.Person.FirstName && data.user.User.Person.LastName
 			? data.user.User.Person.FirstName + ' ' + data.user.User.Person.LastName
 			: null;
 	let Age = data.user.User.Person.Age;
-	console.log('Age', Age);
+  let location = '';
+	const otherInformationString = data.user.HealthProfile?.OtherInformation;
+	
+	if (otherInformationString !== ''){
+	const otherInformationObject = JSON.parse(otherInformationString);
+	 location = otherInformationObject.Location;
+	}
+
 	for (let item of myLearningJourneys) {
 		if (item.PercentageCompletion != 0 && item.PercentageCompletion != undefined) {
 			sum = sum + item.PercentageCompletion;

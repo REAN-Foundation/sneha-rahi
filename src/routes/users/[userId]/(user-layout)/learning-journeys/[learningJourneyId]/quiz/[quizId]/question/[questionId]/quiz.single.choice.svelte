@@ -5,8 +5,8 @@
 	export let options;
 	export let correctSequence;
 	export let answerSubmitted = false;
-	const unselected = "h-[65px] w-[340px] max-[425px]:w-full bg-[#e3e3e3] hover:bg-[#fcaf58] mt-3 first:mt-0 text-lg text-left font-normal pl-3 border tracking-normal rounded-lg";
-	const selected = "h-[65px] w-[340px] max-[425px]:w-full bg-[#fcaf58] mt-3 first:mt-0 text-lg text-left font-normal pl-3 border tracking-normal rounded-lg";
+	const unselected = "h-auto w-[340px] max-[425px]:w-full bg-[#e3e3e3] hover:bg-[#fcaf58] mt-3 first:mt-0 text-lg text-left font-normal pl-3 border tracking-normal rounded-lg p-3";
+	const selected = "h-auto w-[340px] max-[425px]:w-full bg-[#fcaf58] mt-3 first:mt-0 text-lg text-left font-normal pl-3 border tracking-normal rounded-lg p-3";
 
 	const handleSingleChoiceClick = async (e, sequence: number) => {
 		answerSubmitted = true;
@@ -38,18 +38,21 @@
 			</div>
 				{#if answerSubmitted}
 					{#if option.Sequence == correctSequence}
+					<div class = "pl-4">
 						<img 
-							class=" absolute right-0 pt-1 pr-3"
-							src="/assets/images/quiz-wrong/svg/correct.svg"
-							alt=""
-						/>
+						class=" absolute right-0 pt-1 pr-2"
+						src="/assets/images/quiz-wrong/svg/correct.svg"
+						alt=""
+					/>
+					</div>
 					{:else}
+					<div class = "pl-4">
 						<img
-							class="absolute right-0 pt-1 pr-3 "
+							class="absolute right-0 pt-1 pr-2 "
 							src="/assets/images/quiz-wrong/svg/wrong.svg"
 							alt=""
 						/>
-
+					</div>
 					{/if}
 				{/if}
 			</div>

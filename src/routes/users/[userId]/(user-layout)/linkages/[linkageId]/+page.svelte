@@ -3,6 +3,8 @@
 	import date from 'date-and-time';
 	import { goto } from '$app/navigation';
 	import toast from 'svelte-french-toast';
+	import Image from "$lib/components/image.svelte";
+
 	export let data: PageServerData;
   let notice = data.notice;
 	let noticeAction = data.noticeAction;
@@ -26,6 +28,10 @@
 
 	const backToLinkages = () => {
 		goto(`/users/${data.userId}/linkages`);
+	}
+
+	const onApplyButtonClick = () => {
+		goto(`${data.notice.Link}`);
 	}
 
 	async function takeAction(model) {
@@ -52,7 +58,8 @@
 			LINKAGE - JOB
 		</h2>
 		<div class="flex justify-center mt-5 w-full">
-			<img class="w-1/4 h-[3.625rem] bg-[#fde2e4] rounded-lg" src={data.notice.ImageUrl} alt=""/>
+			<!-- <img class="w-1/4 h-[3.625rem] bg-[#fde2e4] rounded-lg" src={data.notice.ImageUrl} alt=""/> -->
+			<Image cls="rounded w-1/4 h-[3.625rem]" source={notice.ImageUrl + "?disposition=inline"} w=162 h=162 />
 			<div class="ml-3 w-3/4 ">
 				<div id={data.notice.id} class="flex mb-4">
 					<h3 class="text-left leading-5" >{data.notice.Title}</h3>
@@ -68,13 +75,20 @@
 		
 		<!-- <a href={`/users/${data.userId}/linkages`}> -->
 			{#if noticeAction == null}
-				<button
-					on:click|preventDefault = {(e)=>takeActionButtonClick(e)}
+			<button
+					on:click|preventDefault = {onApplyButtonClick}
 					id={notice.id}
 					name={notice.id}
 					class=" h-[52px] w-[340px] max-[425px]:w-full mt-2 text-[#fff] rounded-lg bg-[#5b7aa3]">
 					APPLY FOR JOB
 				</button>
+				<!-- <button
+					on:click|preventDefault = {(e)=>takeActionButtonClick(e)}
+					id={notice.id}
+					name={notice.id}
+					class=" h-[52px] w-[340px] max-[425px]:w-full mt-2 text-[#fff] rounded-lg bg-[#5b7aa3]">
+					APPLY FOR JOB
+				</button> -->
 				<button on:click|preventDefault = {backToLinkages} class="text-center mt-3">
 					 BACK TO LINKAGES 
 				</button>

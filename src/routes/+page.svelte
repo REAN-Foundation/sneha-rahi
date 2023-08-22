@@ -2,22 +2,16 @@
 	import { onMount } from 'svelte';
 	//import type { PageServerData } from './$types';
 	import { LocalStorageUtils } from '$lib/utils/local.storage.utils';
-	import {
-		// personRolesStore,
-		// genderTypesStore,
-		splashCarouselImage
-	} from '$lib/store/general.store';
 	import Carousel from '$lib/components/carousel/carousel.svelte'
+	import { selectedLanguage } from '$lib/store/general.store';
+	import english from '$lib/localization/english.json';
+  import hinglish from '$lib/localization/hinglish.json'
 
 	/////////////////////////////////////////////////////////////////
 
-	//export let data: PageServerData;
-
-	// personRolesStore.set(data.roles);
-	// genderTypesStore.set(data.genderTypes);
-	// LocalStorageUtils.setItem('personRoles', JSON.stringify(data.roles));
-	// LocalStorageUtils.setItem('genderTypes', JSON.stringify(data.genderTypes));
-
+  let localizedContent = $selectedLanguage === 'hinglish' ? hinglish : english;
+  let spalshImages = localizedContent.spalshImages;
+	
 	let showSplash = true;
 	const show = LocalStorageUtils.getItem('showSplash');
 	if (!show) {
@@ -46,6 +40,7 @@
 					src="/assets/images/splash-screen/svg/logo.svg"
 					alt=""
 				/>
+				<div class="text-center leading-tight text-xs font-semibold">Built on REAN Foundation's HealthGuru Platform</div>
 			</div>
 			<img src="/assets/images/sign-in/svg/color-strip.svg" alt="" />
 		</div>
@@ -63,7 +58,7 @@
 				</div>
 
 				<Carousel autoplay = {3000} >
-					{#each Object.values($splashCarouselImage) as item}
+					{#each spalshImages as item}
 						<div>
 							<div class="flex flex-col text-center items-center justify-center">
 								<img src={item.Image} alt="" class="mt-[50px] max-[812px]:h-auto  h-[250px] " />

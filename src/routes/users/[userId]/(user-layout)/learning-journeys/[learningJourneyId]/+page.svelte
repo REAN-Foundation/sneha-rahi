@@ -6,8 +6,10 @@
 	import { showMessage } from '$lib/utils/message.utils';
 	import { slide } from 'svelte/transition';
 	import Youtube from '$lib/components/youtube-embed/youtube.svelte';
+
+	/////////////////////////////////////////////////////////////////
+
 	export let data: PageServerData;
-	import { fade, fly } from 'svelte/transition';
 	let learningJourney = data.learningPath;
 	let courseContents = data.courseContentsForLearningPath;
 	courseContents = courseContents.sort((a, b) => {
@@ -15,8 +17,10 @@
 	});
 	const userId = data.userId;
 	const learningJourneyId = $page.params.learningJourneyId;
-	console.log(`${JSON.stringify(courseContents, null, 2)}`);
 
+	courseContents = courseContents.sort((a, b) => {
+		return a.Sequence - b.Sequence;
+	});
 	courseContents = courseContents.map((x) => {
 		return {
 			...x,
@@ -70,7 +74,8 @@
 			const videoModel = {
 				sessionId: data.sessionId,
 				userId: data.userId,
-				contentId
+				contentId,
+				learningJourneyId: $page.params.learningJourneyId,
 			};
 			await updateVideoProgress(videoModel);
 			//TODO: Please use video embedding rather than switching to different page
@@ -154,12 +159,15 @@
 	</div> -->
 
 	<div class="overflow-auto scrollbar-medium h-[350px]">
-		{#if courseContents.length == 0}
+		{#if learningJourney.length == 0}
 			<h3 class="mb-3 mt-1 font-semibold text-start">
 				Course is not available yet. Please stay tuned.
 			</h3>
 		{:else}
 			{#each courseContents as content}
+			<!-- {#each learningJourney.Courses.sort((a, b) => a.Sequence - b.Sequence) as course}
+			{#each course.Modules.sort((a, b) => a.Sequence - b.Sequence) as module}
+			{#each module.Contents as content} -->
 				<button
 					on:click|capture={async (e) => {
 						content.showVedio = true;
@@ -272,6 +280,8 @@
 					</div>
 				</button>
 			{/each}
+			<!-- {/each} -->
+			<!-- {/each} -->
 		{/if}
 	</div>
 
