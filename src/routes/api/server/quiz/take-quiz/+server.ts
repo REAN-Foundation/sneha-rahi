@@ -34,7 +34,8 @@ export const POST = async (event) => {
 			const response = await updateUserLearning(
 				sessionId,
 				userId,
-				courseContentId
+				courseContentId,
+				learningJourneyId
 			);
 			console.log(`isCompleted: ${JSON.stringify(response, null, 2)}`);
 			// const redirectPath = `/users/${data.userId}/learning-journeys/${learningJourneyId}`;
@@ -50,6 +51,7 @@ export const POST = async (event) => {
 				sessionId,
 				userId,
 				courseContentId,
+				learningJourneyId,
 				ProgressStatus.InProgress,
 				percentageProgress,
 			);

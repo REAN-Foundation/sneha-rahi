@@ -9,12 +9,12 @@ export const load: PageServerLoad = async (event) => {
         const userId = event.params.userId;
         const allLearningPaths = await getAllLearningPaths(sessionId);
         const userLearningPaths = await getUserLearningPaths(sessionId, userId);
-        const allCourseContents = await getAllCourseContents(sessionId);
+        // const allCourseContents = await getAllCourseContents(sessionId);
         return {
             sessionId,
             userId,
             allLearningPaths,
-            allCourseContents,
+            // allCourseContents,
             userLearningPaths
         };
     }

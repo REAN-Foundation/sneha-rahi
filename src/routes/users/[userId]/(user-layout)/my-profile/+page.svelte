@@ -9,19 +9,27 @@
 	let overallProgress;
 	let userId = data.user.User.id;
 	let profileImageUrl = data.user.ProfileImageUrl ?? undefined;
-	let addresses = data.user.User.Person.Addresses;
-	let location = 'Mumbai';
+	// let addresses = data.user.User.Person.Addresses;
+	// let location = 'Mumbai';
 
-	if (addresses.length > 0) {
-		let address = addresses[0];
-		location = address.AddressLine ?? address.City;
-	}
+	// if (addresses.length > 0) {
+	// 	let address = addresses[0];
+	// 	location = address.AddressLine ?? address.City;
+	// }
 	let FullName =
 		data.user.User.Person.FirstName && data.user.User.Person.LastName
 			? data.user.User.Person.FirstName + ' ' + data.user.User.Person.LastName
 			: null;
 	let Age = data.user.User.Person.Age;
-	console.log('Age', Age);
+
+    let location = '';
+	const otherInformationString = data.user.HealthProfile?.OtherInformation;
+
+	if (otherInformationString !== '' && otherInformationString != null){
+	 const otherInformationObject = JSON.parse(otherInformationString);
+	 location = otherInformationObject.Location;
+	}
+
 	for (let item of myLearningJourneys) {
 		if (item.PercentageCompletion != 0 && item.PercentageCompletion != undefined) {
 			sum = sum + item.PercentageCompletion;
@@ -77,7 +85,7 @@
 			</div>
 			<div class=" ml-4 ">{(overallProgress * 100).toFixed().toString()}%</div>
 		</div>
-		
+
 	{/if}
 	<div class="overflow-auto scrollbar-medium w-[350px] max-[425px]:w-full">
 		<div class="grid grid-flow-col auto-cols-max gap-3 mt-4">

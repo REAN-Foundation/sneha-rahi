@@ -50,10 +50,11 @@ export const getAllCourseContents = async (sessionId: string) => {
     return await get_(sessionId, url);
 };
 
-export const updateUserLearning = async (sessionId: string, userId: string, contentId: string, status = ProgressStatus.Completed, percentageCompletion = 100) => {
+export const updateUserLearning = async (sessionId: string, userId: string, contentId: string, learningJourneyId:string, status = ProgressStatus.Completed, percentageCompletion = 100) => {
     const updates = {
         ProgressStatus: status,
-        PercentageCompletion: percentageCompletion
+        PercentageCompletion: percentageCompletion,
+        LearningPathId:learningJourneyId
     };
     const url = BACKEND_API_URL + `/educational/user-learnings/${userId}/contents/${contentId}`;
     return await put_(sessionId, url, updates);

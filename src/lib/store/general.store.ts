@@ -34,3 +34,4 @@ export const genderTypesStore = writable([]);
 export const communityNewsFeeds = writable(communityFeeds);
 export const raahiNewsFeeds = writable(raahiFeeds);
 export const splashCarouselImage = writable(spalshImages);
+export const selectedLanguage = writable('hinglish');

@@ -6,6 +6,7 @@
 	import { showMessage } from '$lib/utils/message.utils';
 	import { goto } from '$app/navigation';
 	import toast from 'svelte-french-toast';
+	import { selectedLanguage } from '$lib/store/general.store';
 
 	export let data: PageServerData;
 	let sessionId = data.sessionId;
@@ -173,7 +174,7 @@
 
 		</div>
 
-		<div class="  grid grid-flow-row items-center justify-center">
+		<div class="grid grid-flow-row items-center justify-center">
 			<a class="mt-5 " href="/users/{userId}/edit-profile">
 				<button
 					class="leading-none w-[300px] max-[375px]:w-64 h-[52px] rounded-[10px]  bg-[#5B7AA3] tracking-[1px] text-base text-white font-normal pl-3 pr-1 "
@@ -201,7 +202,6 @@
 						class="leading-none w-[300px] max-[375px]:w-64 h-[52px] rounded-[10px] justify-center bg-[#5B7AA3] tracking-[1px] text-base text-white font-normal pl-3 mt-4"
 						>Delete Chat</button
 					>
-
 					<span slot="title"> Delete </span>
 					<span slot="description"> There is no any chat to delete ? </span>
 				</Confirm>
@@ -224,6 +224,12 @@
 				<span slot="title"> Delete </span>
 				<span slot="description"> Are you sure you want to delete Account ? </span>
 			</Confirm>
+
+			<select class="select leading-none w-[300px] max-[375px]:w-64 h-[52px] rounded-[10px] bg-[#5B7AA3] tracking-[1px] text-base text-white font-normal mt-5" bind:value={$selectedLanguage} style="display: flex; justify-content: center;">
+				<option value="english">English</option>
+				<option value="hinglish">Hinglish</option>
+			</select>
 		</div>
+		
 	</div>
 <!-- </div> -->
