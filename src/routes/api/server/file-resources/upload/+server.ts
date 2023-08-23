@@ -1,6 +1,7 @@
 import { uploadBinary } from '../../../services/file.resource'
 import type { RequestEvent, RequestHandler } from './$types';
 import * as fs from 'fs';
+import * as path from 'path';
 
 //////////////////////////////////////////////////////////////
 
@@ -19,7 +20,9 @@ export const POST = (async (event: RequestEvent) => {
 		console.log(filename);
 
 		const fileBuffer = data_['image'];
-		const filePath = filename;
+		const filePath = path.join(process.cwd(), `static/temp/${filename}`);
+		//console.log(fileBuffer);
+		console.log(filePath);
 		fs.writeFileSync(filePath, fileBuffer, 'base64');
 
 		if (fs.existsSync(filePath)) {
