@@ -12,7 +12,6 @@
 	// let addresses = data.user.User.Person.Addresses;
 	let location = '';
 	let organization = '';
-
 	// if (addresses.length > 0) {
 	// 	let address = addresses[0];
 	// 	location = address.AddressLine ?? address.City;
