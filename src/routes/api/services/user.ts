@@ -196,6 +196,9 @@ export const updateProfile = async (
         Phone: phone,
         OtherInformation:otherInformation
     };
+    if (Helper.isPhone(phone)) {
+        body.Phone = Helper.sanitizePhone(phone);
+    }
     console.log(JSON.stringify(body, null, 2));
     const url = BACKEND_API_URL + `/patients/${userId}`;
     return await put_(sessionId, url, body);
