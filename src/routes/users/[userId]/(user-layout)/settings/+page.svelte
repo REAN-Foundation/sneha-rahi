@@ -225,11 +225,11 @@
 				<span slot="description"> Are you sure you want to delete Account ? </span>
 			</Confirm>
 
-			<select class="select leading-none w-[300px] max-[375px]:w-64 h-[52px] rounded-[10px] bg-[#5B7AA3] tracking-[1px] text-base text-white font-normal mt-5" bind:value={$selectedLanguage} style="display: flex; justify-content: center;">
+			<select class="select leading-none w-[300px] text-center max-[375px]:w-64 h-[52px] rounded-[10px] bg-[#5B7AA3] tracking-[1px] text-base text-white font-normal mt-5" bind:value={$selectedLanguage} style="display: flex; justify-content: center;">
 				<option value="english">English</option>
 				<option value="hinglish">Hinglish</option>
 			</select>
 		</div>
-		
+
 	</div>
 <!-- </div> -->
