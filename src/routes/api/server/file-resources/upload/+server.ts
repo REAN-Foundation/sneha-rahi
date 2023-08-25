@@ -1,4 +1,4 @@
-import { upload, uploadBinary } from '../../../services/file.resource'
+import { upload } from '../../../services/file.resource'
 import type { RequestEvent, RequestHandler } from './$types';
 import * as fs from 'fs';
 import * as path from 'path';
