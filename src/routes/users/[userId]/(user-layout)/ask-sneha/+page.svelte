@@ -193,7 +193,7 @@
 								<img class="absolute right-2 " src="/assets/images/ask-sneha/png/mask.png" alt="" />
 							{:else}
 								<Image
-									cls="rounded-full absolute right-2"
+									cls="rounded-full absolute right-2 h-9 w-9"
 									h="40"
 									w="40"
 									source={profileImage}
