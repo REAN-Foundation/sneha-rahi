@@ -56,7 +56,7 @@
 	<div class="flex flex-row ">
 		<div class="grid grid-flow-col">
 			{#if avatarSource}
-				<Image cls="flex rounded-full" source={avatarSource} w="72" h="72" />
+				<Image cls="flex rounded-full h-16 w-16" source={avatarSource} w="72" h="72" />
 				<!-- <img class="flex h-24 w-24 rounded-full" src={avatarSource} alt="d" /> -->
 			{:else}
 				<img src="/assets/images/my-profile/png/my-profile-pic.png" alt="" />

@@ -14,6 +14,7 @@
 	let profileImageUrl = data.user.ProfileImageUrl ?? undefined;
 	let conversations = data.allConversations;
 	let fileinput;
+	let errorMessage = '';
 
 	$: avatarSource = profileImageUrl;
 
@@ -67,15 +68,25 @@
 	};
 
     const onFileSelected = async (e) => {
-        let f = e.target.files[0];
-        const filename = f.name;
-        let reader = new FileReader();
-        reader.readAsDataURL(f);
-        reader.onload = async (e) => {
-            avatarSource = e.target.result;
-			await upload(e.target.result, filename);
-        };
-    }
+		let file = e.target.files[0];
+		errorMessage = '';
+
+		if (file) {
+			const fileSizeKB = file.size / 1024; // Convert bytes to KB
+
+			if (fileSizeKB < 150) {
+				const filename = file.name;
+				let reader = new FileReader();
+				reader.readAsDataURL(file);
+				reader.onload = async (e) => {
+					avatarSource = e.target.result;
+					await upload(e.target.result, filename);
+				};
+			} else {
+				errorMessage = 'Image size should be less than 150 KB.';
+			}
+		}
+	};
 
 	const onLogout = async () => {
 		const response = await fetch(`/api/server/logout`, {
@@ -171,6 +182,9 @@
 				on:change={async (e)=> await onFileSelected(e)}
 				bind:this={fileinput}
 			/>
+			{#if errorMessage}
+				<p class="text-red-500">{errorMessage}</p>
+			{/if}
 
 		</div>
 

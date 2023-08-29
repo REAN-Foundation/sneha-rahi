@@ -168,7 +168,7 @@
 									{#if searchedUser.profileImage.includes(null)}
 										<img src="/assets/images/chat/png/account-img-1.png" alt="" />
 									{:else}
-										<Image cls="rounded-full" h="58" w="58" source={searchedUser.profileImage} ></Image>
+										<Image cls="rounded-full h-[58px] w-[58px]" h="58" w="58" source={searchedUser.profileImage} ></Image>
 									{/if}
 									<h3 class=" mt-3 text-sm ">{searchedUser.firstName} <br />{searchedUser.lastName}</h3>
 								</div>
@@ -190,7 +190,7 @@
 								{#if favourite.profileImage.includes(null)}
 									<img src="/assets/images/chat/png/account-img-1.png" alt="" />
 								{:else}
-									<Image cls="rounded-full" h="58" w="58" source={favourite.profileImage} ></Image>
+									<Image cls="rounded-full h-[58px] w-[58px]" h="58" w="58" source={favourite.profileImage} ></Image>
 								{/if}
 								<h3 class="mt-3 text-sm">{favourite.firstName} <br />{favourite.lastName}</h3>
 							</div>
@@ -243,7 +243,7 @@
 								{#if conversation.profileImage.includes(null)}
 									<img src="/assets/images/chat/png/account-img-1.png" alt="" />
 								{:else}
-									<Image cls="rounded-full col-span-2" h="58" w="58" source={conversation.profileImage} ></Image>	
+									<Image cls="rounded-full col-span-2 h-[58px] w-[58px]" h="58" w="58" source={conversation.profileImage} ></Image>	
 								{/if}
 								</a>
 								<div class="grid grid-flow-rows-2 col-span-3 ml-2 mt-4">
