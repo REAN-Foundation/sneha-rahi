@@ -10,13 +10,10 @@
   - [Main branch Workflow](#Main-branch-Workflow)
 - [Release Workflows](#Release-Workflows)
   - [REAN Foundation Platform Workflows](#REAN-Foundation-Platform-Workflows)
-     - [PR-ci-cd](#PR-CI-CD)
-     - [Dev-ci-cd](#Dev-ci-cd)
-     - [PROD-ci-cd](#PROD-ci-cd)
-
+    
 ## Branching Strategy
 
-We are using GitFlow Branching [here](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).
+We are following the GitFlow branching strategy. Please refer [here](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).
 
 * ```main```: The main branch serves as the stable and production-ready branch, where all the changes from release branches are merged and tested before deployment.
 * ```develop```: The develop branch, where all the changes from feature branches are merged 
