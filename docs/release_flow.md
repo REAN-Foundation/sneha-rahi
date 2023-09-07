@@ -29,12 +29,12 @@ The diagram below explains the end-to-end process and stages for promoting the c
 
 ### Develop Branch Workflow
 
-1. Developer will create a Feature branch, and create a Pull Request to develop the branch which will trigger the PR-ci-cd workflow.
-2. After the Pull request merges into develop branch it will Trigger the DEV-ci-cd workflow.
+1. The developer will create a Feature branch and create a Pull Request to develop the branch which will trigger the PR-ci-cd workflow.
+2. After the Pull request merges into the develop branch it will Trigger the DEV-ci-cd workflow.
 
 ### Main branch Workflow
 
-1. Developer will create a Release branch, and create a Pull Request to the main branch which will trigger the UAT-ci-cd workflow.
+1. The developer will create a Release branch and create a Pull Request to the main branch which will trigger the UAT-ci-cd workflow.
 2. After the Pull request merges into the main branch it will trigger the PROD-ci-cd workflow.
  
 # Release Workflows 
@@ -44,6 +44,6 @@ There are different types of workflows designed for the type of source branch us
 ### REAN Foundation Platform Workflows
 
 * [PR-CI-CD](https://github.com/REAN-Foundation/sneha-raahi/blob/feature/doc/docs/release_docs/REAN_Platform_Deployment_Workflows.md#pr-ci-cd)
-* [Dev-CI-CD](https://github.com/REAN-Foundation/sneha-raahi/blob/develop/docs/release_docs/REAN_Platform_Deployment_Workflows.md#dev-ci-cd).
-* [PROD-CI-CD](https://github.com/REAN-Foundation/sneha-raahi/blob/develop/docs/release_docs/REAN_Platform_Deployment_Workflows.md#prod-ci-cd).
+* [Dev-CI-CD](https://github.com/REAN-Foundation/sneha-raahi/blob/feature/doc/docs/release_docs/REAN_Platform_Deployment_Workflows.md#dev-ci-cd).
+* [PROD-CI-CD](https://github.com/REAN-Foundation/sneha-raahi/blob/feature/doc/docs/release_docs/REAN_Platform_Deployment_Workflows.md#prod-ci-cd).
 
