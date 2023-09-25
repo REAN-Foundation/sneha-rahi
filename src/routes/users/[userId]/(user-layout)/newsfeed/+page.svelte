@@ -1,13 +1,14 @@
 <script lang="ts">
 	import type { PageServerData } from './$types';
 	import { page } from '$app/stores';
+	import Image from "$lib/components/image.svelte";
 	export let data: PageServerData;
 	const userId = $page.params.userId;
 	let raahiFeedItems = data.raahiFeedItems;
-	let communityFeedItems = data.communityFeedItems;
+	// let communityFeedItems = data.communityFeedItems;
 	let showRaahiUpdates = true;
 	console.log(JSON.stringify(raahiFeedItems, null, 2));
-	console.log(JSON.stringify(communityFeedItems, null, 2));
+	// console.log(JSON.stringify(communityFeedItems, null, 2));
 
 </script>
 
@@ -18,18 +19,22 @@
 			Newsfeed
 		</h2>
 		<div class="flex flex-row max-[425px]:w-full w-[340px] h-[34px] justify-center ">
-			<button
+			<!-- <button
 				disabled={showRaahiUpdates}
 				class="disabled:bg-[#5b7aa3] disabled:text-[#dfe7fd] rounded-2xl max-[425px]:w-full w-[170px] text-[#5b7aa3] h-[34px] text-center bg-[#dfe7fd] text-[13px] tracking-wider mr-3"
 				on:click|preventDefault={() => (showRaahiUpdates = true)}>
 				Raahi Updates
-			</button>
+			</button> -->
 			<button
+			class="rounded-2xl max-[425px]:w-full w-[170px] text-[#5b7aa3] h-[34px] text-center bg-[#dfe7fd] text-[13px] tracking-wider mr-3">
+			Raahi Updates
+		</button>
+			<!-- <button
 				disabled={!showRaahiUpdates}
 				class="disabled:bg-[#5b7aa3] disabled:text-[#dfe7fd] rounded-2xl max-[425px]:w-full w-[170px] text-[#5b7aa3] h-[34px] text-center bg-[#dfe7fd] text-[13px] tracking-wider max-[375px]:tracking-wide"
 				on:click|preventDefault={() => (showRaahiUpdates = false)}>
 				Community Updates
-			</button>
+			</button> -->
 		</div>
 		{#if showRaahiUpdates}
 			<div class=" h-[550px] overflow-auto scrollbar-medium ">
@@ -68,11 +73,12 @@
 										</p>
 									</div>
 								</div>
-								<img
+								<!-- <img
 									src={news.image}
 									alt=""
 									class="w-[324px] max-[425px]:w-full max-[320px]:h-[150px] max-[425px]:mx-[0px] mx-2 px-2 mt-4 h-[170px] rounded-lg "
-								/>
+								/> -->
+								<Image cls="w-[324px] max-[425px]:w-full max-[320px]:h-[150px] max-[425px]:mx-[0px] mx-2 px-2 mt-4 h-[170px] rounded-lg" source={news.image + "?disposition=inline"} w=162 h=162 />
 							</div></a
 						>
 						<!-- <div class="flex flex-row gap-40 mt-2">
@@ -99,7 +105,7 @@
 				{/each}
 			</div> -->
 
-			<div class="h-[550px] overflow-auto scrollbar-medium">
+			<!-- <div class="h-[550px] overflow-auto scrollbar-medium">
 				{#each Object.values(communityFeedItems) as news}
 					<div class="mb-6">
 						<a href={`/users/${userId}/newsfeed/${news.id}`}>
@@ -131,7 +137,7 @@
 						</a>
 					</div>
 				{/each}
-			</div>
+			</div> -->
 		{/if}
 	</div>
 <!-- </div> -->

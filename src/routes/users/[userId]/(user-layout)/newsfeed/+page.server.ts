@@ -12,7 +12,9 @@ export const load: PageServerLoad = async (event) => {
       const raahiFeed = await getRaahiFeed(sessionId);
       const communityFeed = await getCommunityFeed(sessionId);
 
-      return await loadRSSFeeds(raahiFeed, communityFeed);
+      return await loadRSSFeeds(raahiFeed, 
+        communityFeed
+        );
         //return await loadStaticFeeds();
     }
     catch (error) {
@@ -58,7 +60,7 @@ async function loadRSSFeeds(raahiFeed, communityFeed) {
   console.log(`${communityFeed}`);
 
   const raahiFeedItems = [];
-  const communityFeedItems = [];
+  // const communityFeedItems = [];
 
   const parser = new Parser();
 
@@ -77,24 +79,24 @@ async function loadRSSFeeds(raahiFeed, communityFeed) {
     });
   });
 
-  const communityFeed_ = await parser.parseString(communityFeed);
-  console.log(communityFeed_.title);
-  communityFeed_.items.forEach(item => {
-    console.log(JSON.stringify(item, null, 2));
-    communityFeedItems.push({
-      id: item.guid,
-      title: item.title,
-      link: item.link,
-      pubDate: hrt(new Date(item.pubDate), '%relative% ago'),
-      content: item.content,
-      image: item.enclosure?.url,
-      author: item.author,
-    });
-  });
+  // const communityFeed_ = await parser.parseString(communityFeed);
+  // console.log(communityFeed_.title);
+  // communityFeed_.items.forEach(item => {
+  //   console.log(JSON.stringify(item, null, 2));
+  //   communityFeedItems.push({
+  //     id: item.guid,
+  //     title: item.title,
+  //     link: item.link,
+  //     pubDate: hrt(new Date(item.pubDate), '%relative% ago'),
+  //     content: item.content,
+  //     image: item.enclosure?.url,
+  //     author: item.author,
+  //   });
+  // });
   console.log("Raahi feed items",raahiFeedItems);
-  console.log("Community feed items",communityFeedItems);
+  // console.log("Community feed items",communityFeedItems);
   return {
     raahiFeedItems: raahiFeedItems,
-    communityFeedItems: communityFeedItems
+    // communityFeedItems: communityFeedItems
   };
 }
