@@ -118,7 +118,7 @@
 	class="card card-compact w-[375px] h-[280px] card-bordered border-slate-200 bg-[#ffdbb2]  rounded-none rounded-t-[44px] shadow-sm"
 > -->
 <div
-	class="card h-[280px] w-[375px] max-[425px]:w-full max-[425px]:border-none border-x border-slate-200 "
+	class="card w-[375px] max-[425px]:w-full max-[425px]:border-none border-x border-slate-200 "
 >
 	<!-- <div class="flex flex-col text-center justify-center"> -->
 	<!-- <button class="h-[5px] w-[73px] bg-[#e3e3e3] flex ml-36 rounded" /> -->
@@ -127,19 +127,32 @@
 				src="/assets/learning-course/svg/growing-up-affect.svg"
 				alt=""
 			/> -->
-	<div class=" flex justify-center mt-2">
+			<div class="flex flex-row ml-4 mt-3">
+				<Image cls="" source={learningJourney?.ImageUrl} w="60" h="60" />
+				<!-- <img class="mb-2 " src="/assets/learning-home/svg/about-anaemia.svg" alt="" /> -->
+				<div class="w-[250px] max-[425px]:w-full">
+					<h3 class="mb-2 mt-1 text-lg">{learningJourney.Name}</h3>
+					<p class="h-auto ml-5">
+						{learningJourney.Description ? learningJourney.Description : ''}
+					</p>
+				</div>
+			</div>
+	<!-- <div class=" w-[70px] mt-2 ml-4 h-[40px] rounded-lg bg-[#fff]">
 		<Image cls="" source={learningJourney?.ImageUrl} w="200" h="180" />
 	</div>
+	<div class="mx-4 w-[211px] max-[425px]:w-full">
+		<h3 class="text-left mb-3">{learningJourney.Name}</h3>
+	</div> -->
 	<!-- </div> -->
 </div>
 <!-- </div> -->
 <div
 	class=" card-body h-[421px] bg-white border-slate-200 border-x border-b max-[425px]:border-none"
->
-	<h2 class="leading-4 text-lg mb-2">{learningJourney.Name}</h2>
+>	
+	<!-- <h2 class="leading-4 text-lg mb-2">{learningJourney.Name}</h2>
 	<p class="h-auto">
 		{learningJourney.Description ? learningJourney.Description : ''}
-	</p>
+	</p> -->
 	<!-- <div class="overflow-auto scrollbar-medium h-[280px]">
 		{#each couseContents as course}
 			<div class="grid  grid-flow-col mb-3">
@@ -158,7 +171,7 @@
 		{/each}
 	</div> -->
 
-	<div class="overflow-auto scrollbar-medium h-[350px]">
+	<div class="overflow-auto scrollbar-medium ">
 		{#if learningJourney.length == 0}
 			<h3 class="mb-3 mt-1 font-semibold text-start">
 				Course is not available yet. Please stay tuned.
