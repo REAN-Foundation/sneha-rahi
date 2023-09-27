@@ -4,11 +4,11 @@
 	import Image from "$lib/components/image.svelte";
 	export let data: PageServerData;
 	const userId = $page.params.userId;
-	let raahiFeedItems = data.raahiFeedItems;
-	// let communityFeedItems = data.communityFeedItems;
+	// let raahiFeedItems = data.raahiFeedItems;
+	let communityFeedItems = data.communityFeedItems;
 	let showRaahiUpdates = true;
-	console.log(JSON.stringify(raahiFeedItems, null, 2));
-	// console.log(JSON.stringify(communityFeedItems, null, 2));
+	// console.log(JSON.stringify(raahiFeedItems, null, 2));
+	console.log(JSON.stringify(communityFeedItems, null, 2));
 
 </script>
 
@@ -27,7 +27,7 @@
 			</button> -->
 			<button
 			class="rounded-2xl max-[425px]:w-full w-[170px] text-[#5b7aa3] h-[34px] text-center bg-[#dfe7fd] text-[13px] tracking-wider mr-3">
-			Raahi Updates
+			Community Updates
 		</button>
 			<!-- <button
 				disabled={!showRaahiUpdates}
@@ -36,17 +36,8 @@
 				Community Updates
 			</button> -->
 		</div>
-		{#if showRaahiUpdates}
-			<div class=" h-[550px] overflow-auto scrollbar-medium ">
-				<!-- {#each Object.values($newsFeeds) as news}
-					<h4 class="text-right pr-1 mt-3 mb-2 text-[13px] font-semibold">{news.Title}</h4>
-					<div class="w-[340px] h-[125px]  rounded-lg bg-[#f2e2da]">
-						<a class="flex justify-center p-2 mb-5 font-semibold text-left text-[#5b7aa3] hover:underline "
-							>Field trip to Nehru Science Centre</a
-						>
-					</div>
-				{/each} -->
-
+		<!-- {#if showRaahiUpdates} -->
+			<!-- <div class=" h-[550px] overflow-auto scrollbar-medium ">
 				{#each Object.values(raahiFeedItems) as news}
 					<div class="mb-6 ">
 						<a href={`/users/${userId}/newsfeed/${news.id}`}>
@@ -73,25 +64,13 @@
 										</p>
 									</div>
 								</div>
-								<!-- <img
-									src={news.image}
-									alt=""
-									class="w-[324px] max-[425px]:w-full max-[320px]:h-[150px] max-[425px]:mx-[0px] mx-2 px-2 mt-4 h-[170px] rounded-lg "
-								/> -->
 								<Image cls="w-[324px] max-[425px]:w-full max-[320px]:h-[150px] max-[425px]:mx-[0px] mx-2 px-2 mt-4 h-[170px] rounded-lg" source={news.image + "?disposition=inline"} w=162 h=162 />
 							</div></a
 						>
-						<!-- <div class="flex flex-row gap-40 mt-2">
-					<h4>23likes 23comments</h4>
-					<div class="flex flex-row gap-3">
-						<img src="/assets/newsfeed/png/newsfeed-likes.png" alt="" />
-						<img src="/assets/newsfeed/png/newsfeed-comments.png" alt="" />
-					</div>
-				</div> -->
 					</div>
 				{/each}
-			</div>
-		{:else}
+			</div> -->
+		<!-- {:else} -->
 			<!-- <div class=" h-[590px] overflow-auto scrollbar-medium ">
 				{#each newsFeeds as news}
 					<a href="/newsfeed-details">
@@ -105,7 +84,7 @@
 				{/each}
 			</div> -->
 
-			<!-- <div class="h-[550px] overflow-auto scrollbar-medium">
+			<div class="h-[550px] overflow-auto scrollbar-medium">
 				{#each Object.values(communityFeedItems) as news}
 					<div class="mb-6">
 						<a href={`/users/${userId}/newsfeed/${news.id}`}>
@@ -132,12 +111,12 @@
 										</p>
 									</div>
 								</div>
-								<img src={news.image} alt="" class="w-[324px] max-[425px]:w-full max-[320px]:h-[150px] max-[425px]:mx-[0px] mx-2 px-2 mt-4 h-[170px] rounded-lg "/>
+								<Image cls="w-[324px] max-[425px]:w-full max-[320px]:h-[150px] max-[425px]:mx-[0px] mx-2 px-2 mt-4 h-[170px] rounded-lg" source={news.image + "?disposition=inline"} w=162 h=162 />
 							</div>
 						</a>
 					</div>
 				{/each}
-			</div> -->
-		{/if}
+			</div>
+		<!-- {/if} -->
 	</div>
 <!-- </div> -->

@@ -17,7 +17,7 @@
 	</h2>
 	<h4 class="text-right  text-[13px] font-semibold mb-1">{timeAgo(pubdate, new Date())}</h4>
 	<div
-		class="w-[340px] max-[425px]:w-full min-h-0 max-h-[500px] overflow-auto scrollbar-medium rounded-lg bg-[#f2e2da]"
+		class="w-[340px] max-[425px]:w-full min-h-0 max-h-[500px] overflow-auto scrollbar-medium rounded-lg bg-[#d7eaf7]"
 	>
 		<div class="flex p-1 mt-4">
 			<div class="w-[50px] mt-2 ml-2 h-[45px] rounded-lg bg-[#fff] flex-none">
