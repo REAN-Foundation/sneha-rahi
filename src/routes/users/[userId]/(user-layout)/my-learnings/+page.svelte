@@ -143,7 +143,7 @@
 			<div class="grid grid-cols-2 gap-4">
 				{#each allLearningJourneys as learningJourney}
 					<a href={`/users/${data.userId}/learning-journeys/${learningJourney.id}`}>
-							<div class=" flex-col justify-center mb-6 ">
+							<div class=" flex-col justify-center">
 								{#if learningJourney.ImageUrl == null}
 									<img
 										class="mb-4 w-[162px] h-[162px] "
