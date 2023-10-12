@@ -98,8 +98,8 @@
 						type="date"
 						name="birthDate"
 						required
-						class="h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg "
-					/>
+					 	class="h-[52px] w-[340px] max-[425px]:max-w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg"
+						/>
 					<input
 						placeholder="Phone Number"
 						type="number"
@@ -110,12 +110,13 @@
 					<input
 						placeholder="Enter Organization Name"
 						name="organization"
-						class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg "
+						class="h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg "
 					/>
 					<input
 						placeholder="Enter Location Name"
 						name="location"
-						class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg "
+						type="text"
+						class="h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg "
 					/>
 					<!-- <select
 						placeholder="select ngo name"
