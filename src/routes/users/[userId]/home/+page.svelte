@@ -68,7 +68,7 @@
 			<div
 				class="card rounded-none max-[425px]:w-full w-[375px] max-[812px]:h-screen h-[812px] bg-[#5b7aa3] shadow-none lg:mt-10 md:mt-10 sm:mt-10 mt-0"
 			>
-				<div class="card max-[425px]:w-full w-[375px] h-[406px] shadow-none rounded-none border-none">
+				<div class="card max-[425px]:w-full w-[375px] max-[425px]:h-full h-[406px] shadow-none rounded-none border-none">
 					<div class="card-body ">
 						<div class=" flex flex-row h-16 w-16">
 							<button on:click={toggleSidebar}>
@@ -108,12 +108,12 @@
 						handle: '.handle' ,
 						ignoreMultitouch: true,
 						disabled: false,
-						applyUserSelectHack: true,
+						// applyUserSelectHack: true,
 					}}
 						class="card card-compact bg-white card-bordered max-[425px]:border-none border-slate-200 rounded-none rounded-t-[44px] shadow-none"
 					>
 					<div class="flex justify-center">
-						<button class=" h-[5px] w-[73px] bg-[#e3e3e3] mt-4 rounded handle" />
+						<button class="h-[5px] w-[73px] bg-[#e3e3e3] mt-4 rounded handle" />
 					</div>
 						<div class="card-body h-[450px] max-[425px]:h-[550px] place-content-around ">
 							<div class="overflow-auto h-[550px] scrollbar scrollbar-medium">
@@ -124,21 +124,23 @@
 								<!-- </h2> -->
 								<a href={learningHomeLink}>
 									<img
-										class=" h-[172px] w-[340px] max-[425px]:w-full"
+										class="h-[172px] w-[340px] max-[425px]:w-full"
 										src="/assets/images/home/png/my-learning.png"
 										alt=""
 									/>
 								</a>
-								<div class="columns-2 mt-2 ">
+								<div class="flex flex-row gap-3 mt-3">
+									<div class="flex flex-col">
 									<a href={newsFeedLink}>
-										<img class=" mb-4 max-[425px]:w-full" src="/assets/images/home/png/newsfeed.png" alt="" /></a
+										<img class="mb-2 max-[425px]:w-full" src="/assets/images/home/png/newsfeed.png" alt="" /></a
 									>
 									<a href={linkagesLink}>
 										<img class="max-[425px]:w-full" src="/assets/images/home/png/linkages.png" alt="" /></a
 									>
-									<div>
+								</div>
+									<div class="flex flex-col">
 										<a href={chatLink}>
-											<img class=" mb-4 max-[425px]:w-full" src="/assets/images/home/png/chat.png" alt="" /></a
+											<img class="mb-2 max-[425px]:w-full" src="/assets/images/home/png/chat.png" alt="" /></a
 										>
 										<a href={myProfileLink}>
 											<img class="max-[425px]:w-full" src="/assets/images/home/png/my-profile.png" alt="" /></a
