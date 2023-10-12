@@ -152,7 +152,7 @@
 <!-- <div
 	class="card card-compact card-bordered w-[375px] h-[701px] bg-base-100 border-slate-200 rounded-none rounded-t-[44px] shadow-sm"
 > -->
-	<div class="card-body ">
+	<div class="card-body overflow-auto scrollbar-medium">
 		<!-- <button class=" h-[5px] w-[73px] bg-[#e3e3e3] flex ml-36 mt-2 rounded" /> -->
 		<h2 class=" text-[#5b7aa3] flex  justify-center tracking-widest font-bold text-base ">
 			SETTINGS
@@ -239,7 +239,7 @@
 				<span slot="description"> Are you sure you want to delete Account ? </span>
 			</Confirm>
 
-			<select class="select leading-none w-[300px] text-center max-[375px]:w-64 h-[52px] rounded-[10px] bg-[#5B7AA3] tracking-[1px] text-base text-white font-normal mt-5" bind:value={$selectedLanguage} style="display: flex; justify-content: center;">
+			<select class="select w-[300px] text-center max-[375px]:w-64 h-[52px] rounded-[10px] bg-[#5B7AA3] tracking-[1px] text-base text-white font-normal mt-5" bind:value={$selectedLanguage} style="display: flex; justify-content: center;">
 				<option value="english">English</option>
 				<option value="hinglish">Hinglish</option>
 			</select>
