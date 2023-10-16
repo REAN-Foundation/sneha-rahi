@@ -34,14 +34,14 @@
 				</p>
 			</div>
 		</div>
-		<div class="flex justify-center">
+		<div class="flex justify-center m-4">
 			<!-- <img
 					src={feedItem.Image}
 					alt=""
 					class="w-[310px] max-[425px]:mx-4 max-[425px]:w-full item-center my-3 h-[200px] rounded-lg "
 				/> -->
 			<Image
-				cls="w-[310px] max-[425px]:mx-4 max-[425px]:w-full item-center my-3 h-[200px] rounded-lg"
+				cls="w-[310px] max-[425px]:mx-4 max-[425px]:w-full item-center h-[200px] rounded-lg"
 				source={feedItem.Image + '?disposition=inline'}
 				w="162"
 				h="162"
@@ -56,7 +56,7 @@
 </div>
 <!-- <div class="h-[90px] w-[375px] max-[425px]:w-full bg-white">
 	<a href="/users/{userId}/newsfeed">
-		<div class="h-20 w-[375px] max-[425px]:w-full mt-3 flex justify-center ">
+		<div class="h-20 w-[375px] max-[425p x]:w-full mt-3 flex justify-center ">
 			<button class="">BACK TO NEWSFEED</button>
 		</div></a
 	>

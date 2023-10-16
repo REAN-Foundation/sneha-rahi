@@ -89,7 +89,7 @@
 					<div class="mb-6">
 						<a href={`/users/${userId}/newsfeed/${news.id}`}>
 							<h4 class="text-right  text-[13px] font-semibold mb-1">{news.pubDate}</h4>
-							<div class="w-[340px] max-[425px]:w-full h-[280px]  rounded-lg bg-[#d7eaf7]">
+							<div class="flex flex-col items-center justify-center w-[340px] max-[425px]:w-full h-[280px]  rounded-lg bg-[#d7eaf7]">
 								<div class="flex flex-row p-1">
 									<div class="w-[70px] mt-2 ml-2 h-[40px] rounded-lg bg-[#fff]">
 										<img
@@ -111,7 +111,9 @@
 										</p>
 									</div>
 								</div>
-								<Image cls="w-[324px] max-[425px]:w-full max-[320px]:h-[150px] max-[425px]:mx-[0px] mx-2 px-2 mt-4 h-[170px] rounded-lg" source={news.image + "?disposition=inline"} w=162 h=162 />
+								<div class="m-4">
+									<Image cls="w-[324px] h-[170px] rounded-lg" source={news.image + "?disposition=inline"} w=162 h=162 />
+								</div>
 							</div>
 						</a>
 					</div>
