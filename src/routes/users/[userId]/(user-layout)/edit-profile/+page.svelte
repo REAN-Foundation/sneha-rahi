@@ -67,7 +67,7 @@
 			type="date"
 			name="birthDate"
 			value={birthDate}
-			class="h-[52px] w-[340px] max-[425px]:max-w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
+			class="h-[52px] w-[340px] max-[425px]:min-w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg"
 		/>
 		<div class="text-[#5B7AA3] mx-2 mt-3 font-semibold">
 			<span>Phone</span>
