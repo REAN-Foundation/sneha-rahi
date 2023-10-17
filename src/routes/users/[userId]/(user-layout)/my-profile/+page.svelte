@@ -89,10 +89,10 @@
 	{/if}
 	<div class="overflow-auto scrollbar-medium w-[350px] max-[425px]:w-full">
 		<div class="grid grid-flow-col auto-cols-max gap-3 mt-4">
-			<h3 class="text-center mt-2">Ongoing <br /> Courses</h3>
+			<h3 class="text-center mt-2 p-1">Ongoing <br /> Courses</h3>
 			{#if myLearningJourneys.length == 0}
-				<h3 class=" mt-3 font-semibold text-center">
-					No ongoing courses.<br />Please learning journey!
+				<h3 class=" mt-3 font-semibold text-center p-1">
+					No ongoing courses.<br />Please start learning journey!
 				</h3>
 			{:else}
 				{#each myLearningJourneys as journey}
@@ -102,18 +102,12 @@
 						w="52"
 						h="52"
 					/>
-					<!-- <img src="/assets/my-profile/png/virus-1.png" alt="" />
-					<img src="/assets/my-profile/png/virus-2.png" alt="" />
-					<img src="/assets/my-profile/png/rectangle-1.png" alt="" />
-					<img src="/assets/my-profile/png/rectangle-1.png" alt="" />
-					<img src="/assets/my-profile/png/rectangle-1.png" alt="" />
-					<img src="/assets/my-profile/png/rectangle-1.png" alt="" /> -->
 				{/each}
 			{/if}
 		</div>
 	</div>
 
-	<div class="grid grid-flow-col mt-1">
+	<!-- <div class="grid grid-flow-col mt-1">
 		<h2 class="  justify-left  ">My Badges</h2>
 		<button class="uppercase text-base text-[#d05591] mt-[6px] text-right">view all</button>
 	</div>
@@ -188,6 +182,6 @@
 				<h3 class=" text-center mt-1">Dealing with Peer <br />Pressure</h3>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>
 <!-- </div> -->

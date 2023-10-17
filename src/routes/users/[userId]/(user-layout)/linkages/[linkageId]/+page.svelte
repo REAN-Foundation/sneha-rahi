@@ -55,7 +55,7 @@
 	<div class="card-body overflow-auto scrollbar-medium ">
 		<!-- <button class="h-[5px] w-[73px] bg-[#e3e3e3] flex ml-36 mt-2 rounded" /> -->
 		<h2 class=" text-[#5b7aa3] flex  justify-center tracking-widest font-bold text-base ">
-			LINKAGE - JOB
+			LINKAGES
 		</h2>
 		<div class="flex justify-center mt-5 w-full">
 			<!-- <img class="w-1/4 h-[3.625rem] bg-[#fde2e4] rounded-lg" src={data.notice.ImageUrl} alt=""/> -->
@@ -67,8 +67,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="h-auto mb-4">
-			<p>
+		<div class="h-auto mb-4 ">
+			<p class="font-normal leading-6 text-md">
 				{data.notice.Description}
 			</p>
 		</div>
@@ -80,7 +80,7 @@
 					id={notice.id}
 					name={notice.id}
 					class=" h-[52px] w-[340px] max-[425px]:w-full mt-2 text-[#fff] rounded-lg bg-[#5b7aa3]">
-					APPLY FOR JOB
+					APPLY
 				</button>
 				<!-- <button
 					on:click|preventDefault = {(e)=>takeActionButtonClick(e)}
