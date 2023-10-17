@@ -53,7 +53,7 @@
 				You have not yet started learning journey!
 			</h3>
 		{:else}
-		<div class="overflow-auto scrollbar-medium h-[200px] ">
+		<div class="overflow-auto scrollbar-medium min-h-0 max-h-[200px]">
 			{#each myLearningJourneys as journey}
 				<div class="flex flex-row">
 					<Image
@@ -85,11 +85,11 @@
 			<h2 class="text-xl ">Learning Journeys</h2>
 		</div>
 		{#if myLearningJourneys.length > 0}
-		<div class="overflow-auto scrollbar-medium h-[400px] w-[340px] max-[425px]:w-full">
+		<div class="overflow-auto scrollbar-medium min-h-[400px] max-h-[450px] w-[340px] max-[425px]:w-full">
 			<div class="grid grid-cols-2 gap-4">
 				{#each allLearningJourneys as learningJourney}
 					<a href={`/users/${data.userId}/learning-journeys/${learningJourney.id}`}>
-							<div class=" flex-col justify-center mb-6 ">
+							<div class=" flex-col justify-center">
 								{#if learningJourney.ImageUrl == null}
 									<img
 										class="mb-4 w-[162px] h-[162px] "
@@ -143,7 +143,7 @@
 			<div class="grid grid-cols-2 gap-4">
 				{#each allLearningJourneys as learningJourney}
 					<a href={`/users/${data.userId}/learning-journeys/${learningJourney.id}`}>
-							<div class=" flex-col justify-center mb-6 ">
+							<div class=" flex-col justify-center">
 								{#if learningJourney.ImageUrl == null}
 									<img
 										class="mb-4 w-[162px] h-[162px] "
