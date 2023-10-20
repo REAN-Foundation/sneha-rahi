@@ -26,7 +26,8 @@
             console.log(`x = ${JSON.stringify(x)}`);
 
             if (x && !Helper.isEmpty(x)) {
-                objectUrl = URL.createObjectURL(x.blb as Blob);
+                const blob = new Blob([x.blb],{ type: x.contentType});
+                objectUrl = URL.createObjectURL(blob);
                 console.log(`extracting existing image from cache!  ${JSON.stringify(objectUrl)}`);
             } else {
                 const res = await fetch(source)
@@ -34,7 +35,8 @@
                 objectUrl = URL.createObjectURL(blb);
                 await db.imageCache.add({
                     srcUrl: url,
-                    blb: blb
+                    blb: await blb.arrayBuffer(),
+                    contentType:blb.type
                 });
                 console.log(`Added new image to imageCache! ${JSON.stringify(blb)}`);
             }
