@@ -1,37 +1,37 @@
 {
-  "EnterPhoneNumber": "Mobail nambar darj karen",
+  "EnterPhoneNumber": "Mobile number darj karein",
   "SignUpDescription":
-    "Aapake dvaara darj kiya gaya number aapake Raahi App khaate se link ho jaega aur uspe OTP bheja jaega.",
+    "Aap ke dwaara darj kiya gaya number aap ke Raahi App khaate se link ho jayega aur us pe OTP bheja jayega.",
   "LogInDescription":
-    "Apane Raahi App se juda mobile number darj karen.",
+    "Apne Raahi App se juda mobile number darj karein.",
   "OtpDescription":
-    "Aapake mobile number par OTP bheja gaya hai.",
+    "Aap ke mobile number par OTP bheja gaya hai.",
   "HomePageDescription":
-    "Raahi mein aapka swagat hai, jo aapke praudhvastha ki yatra mein aapka dost, saathi, aur margdarshak hai.",
-  "LearningJourneyDescription": "Chuniye woh vishay jise aapko jaankari chahiye. Kuch vishayon ke liye aapko ek kram me jaana hoga.",
+    "Raahi mein aap ka swagat hai, jo badhti umr ke is safar mein aap ka dost, saathi, aur maargdarshak hai.",
+  "LearningJourneyDescription": "Chuniye woh vishay jis ke baare mein aap ko jaankaari chahiye. Kuch vishayon ke liye aap ko ek kram me jaana hoga.",
   "spalshImages": [
     {
       "id": 1,
       "Title":"Learning Journey",
-      "Description": "Apane shaareerik, maanasik, yaun aur prajanan svaasthy ke baare mein jaanen.",
+      "Description": "Apne shaareerik, maansik, yaun aur prajanan swasthya ke baare mein jaanein.",
       "Image": "/assets/images/about-raahi/svg/my-learning-white-bg.svg"
     },
     {
     "id": 2,
 		"Title" : "Linkages",
-		"Description" :"Career evan sarakaaree yojanaon se sambandhit jaanakaaree.",
+		"Description" :"Career aur sarkaari yojanayon se sambandhit jaankaari.",
 		"Image" : "/assets/images/about-raahi/svg/linkages-white-bg.svg"
     },
     {
     "id": 3,
 		"Title" : "Newsfeed",
-		"Description" : "Apane jaiseyuva on se prerana len.",
+		"Description" : "Apne jaise yuvaon se prerna lein.",
 		"Image" : "/assets/images/about-raahi/svg/newsfeed-without-bg.svg"
     },
     {
     "id": 4,
 		"Title" : "Ask SNEHA",
-		"Description" : "SNEHA se apane prashnon ka uttar paen.",
+		"Description" : "SNEHA se apne prashnon ka uttar payein.",
 		"Image" : "/assets/images/about-raahi/png/splashscreen-raahi.png"
     }
   ]
