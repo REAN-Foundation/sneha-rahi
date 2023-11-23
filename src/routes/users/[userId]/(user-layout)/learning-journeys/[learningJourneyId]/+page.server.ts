@@ -1,7 +1,7 @@
 import * as cookie from 'cookie';
 import type { PageServerLoad } from "./$types";
 import {
-    getCourseContentsForLearningPath,
+    // getCourseContentsForLearningPath,
     getLearningPath,
     getUserCourseContents,
     getUserLearningPaths } from "../../../../../api/services/learning";
@@ -26,8 +26,8 @@ export const load: PageServerLoad = async ({ request, params }) => {
         // const courseContentsForLearningPath = _courseContentsForLearningPath.CourseContents;
         const userLearningPaths = _userLearningPaths.UserLearningPaths;
         const userCourseContents = _userLearnings.UserCourseContents;
-        console.log("userCourseContents",userCourseContents)
-        const courseContentsForLearningPath =[];
+
+        let courseContentsForLearningPath =[];
         for ( const course of learningPath.Courses){
                 for (const module of course.Modules){
                     for (const content of module.Contents){
@@ -42,7 +42,38 @@ export const load: PageServerLoad = async ({ request, params }) => {
                 cc['PercentageCompletion'] = userContent.PercentageCompletion;
             }
         }
-        //console.log(`courseContentsForLearningPath = ${JSON.stringify(courseContentsForLearningPath, null, 2)}`);
+
+        courseContentsForLearningPath = courseContentsForLearningPath.sort((a, b) => {
+            return a.Sequence - b.Sequence;
+        });
+        courseContentsForLearningPath = courseContentsForLearningPath.map((x) => {
+            return {
+                ...x,
+                ShowVideo: false,
+                AssociatedVideo: null,
+                AssociatedAssessment: null,
+                Disabled: false
+            };
+        });
+
+        for (let i = 0; i < courseContentsForLearningPath.length; i++) {
+            const courseContent = courseContentsForLearningPath[i];
+            if (courseContent.ContentType === 'Assessment' && i > 0) {
+                const assessment = courseContent;
+                const associatedVideo = courseContentsForLearningPath[i - 1];
+                if (associatedVideo && associatedVideo.ContentType === 'Video') {
+                    assessment['AssociatedVideo'] = associatedVideo.id;
+                    associatedVideo['AssociatedAssessment'] = assessment.id;
+                    if (associatedVideo.PercentageCompletion === 100) {
+                        courseContent['Disabled'] = false;
+                    }
+                    else {
+                        courseContent['Disabled'] = true;
+                    }
+                }
+            }
+        }
+        console.log(`courseContentsForLearningPath = ${JSON.stringify(courseContentsForLearningPath, null, 2)}`);
 
         return {
             sessionId,
