@@ -240,7 +240,7 @@
 								</div>
 							{/if}
 						{:else if content.ContentType === 'Assessment'}
-						<div class="flex items-center h-16 w-16">
+						<div class="flex items-center h-16 w-16 mb-8">
 							<div class="h-16 w-16 bg-[#e3e3e3] rounded-lg ">
 								<img class="m-4" src="/assets/images/learning-course/svg/quiz.svg" alt="" />
 							</div>

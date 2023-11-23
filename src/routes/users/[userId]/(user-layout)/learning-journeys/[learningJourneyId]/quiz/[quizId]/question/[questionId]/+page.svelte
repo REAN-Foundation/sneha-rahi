@@ -124,7 +124,7 @@
 		</div>
 		<div class="flex justify-center">
 			<button
-				on:click={handleSubmit}
+			on:click|once={handleSubmit}
 				id="submit"
 				name="submit"
 				disabled={!answerSubmitted}
