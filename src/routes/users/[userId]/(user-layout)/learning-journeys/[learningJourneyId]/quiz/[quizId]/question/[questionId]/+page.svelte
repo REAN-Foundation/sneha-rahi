@@ -3,29 +3,18 @@
 	import QuizMultiChoice from './quiz.multi.choice.svelte';
 	import { page } from '$app/stores';
 	import type { PageServerData } from './$types';
-	import { onMount } from 'svelte';
+	// import { onMount } from 'svelte';
 
 	export let data: PageServerData;
 
 	const question = data.currentQuestion;
 	let options = data.currentQuestion.Options;
-
 	let alreadyAnswered = data.alreadyAnswered;
-	let answerGiven = data.answerGiven;
+	// let answerGiven = data.answerGiven;
 
-	console.log(`options = ${JSON.stringify(options, null, 2)}`);
-	console.log(`alreadyAnswered = ${data.alreadyAnswered}`);
-	console.log(`isCorrect = ${data.isCorrect}`);
-	// console.log(`answerGiven = ${data.answerGiven}`);
-
-	onMount(()=> {
-		// options = options.map(x => {
-		// 	return {
-		// 		...x,
-		// 		Selected: false
-		// 	}
-		// });
-	});
+	// console.log(`options = ${JSON.stringify(options, null, 2)}`);
+	// console.log(`alreadyAnswered = ${data.alreadyAnswered}`);
+	// console.log(`isCorrect = ${data.isCorrect}`);
 
 	$: multiChoiceSelections = options.filter(x => x.Selected === true); //This is an array
 	$: singleChoiceSelection = options.filter(x => x.Selected === true).find(e => typeof e !== 'undefined'); //This is a single value

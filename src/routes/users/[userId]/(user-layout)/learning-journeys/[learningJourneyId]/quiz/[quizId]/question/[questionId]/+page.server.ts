@@ -35,17 +35,14 @@ export const load: PageServerLoad = async ({ request, params, setHeaders }) => {
 		const existingAnswer  = quiz.UserResponses.find(x => x.NodeId === currentQuestionId);
 		const alreadyAnswered = existingAnswer ? true : false;
 
-		console.log('quiz',quiz);
-		console.log('correctAnswer', currentQuestion.CorrectAnswer);
-		console.log('ExpectedResponseType', currentQuestion.ExpectedResponseType);
-		// console.log('user responses', quiz.UserResponses);
-		console.log('alreadyAnswered', alreadyAnswered);
-		// console.log('existingAnswer', existingAnswer);
+		// console.log('quiz',quiz);
+		// console.log('correctAnswer', currentQuestion.CorrectAnswer);
+		// console.log('ExpectedResponseType', currentQuestion.ExpectedResponseType);
+		// console.log('alreadyAnswered', alreadyAnswered);
 
 		let answerGiven: number | number [] = null;
 
 		if (alreadyAnswered) {
-			// console.log('Handling already answered question');
 			if (currentQuestion.ExpectedResponseType === SINGLE_CHOICE_SELECTION) {
 				const x = existingAnswer.IntegerValue as number;
 				isCorrect = x === correctExpectedAnswer;
@@ -59,7 +56,6 @@ export const load: PageServerLoad = async ({ request, params, setHeaders }) => {
 			}
 			else if (currentQuestion.ExpectedResponseType === MULTI_CHOICE_SELECTION) {
 				const x = existingAnswer.ArrayValue as number[];
-				// console.log('Entering Multiple Choice Selection');
 				if (correctExpectedAnswer && Array.isArray(correctExpectedAnswer)) {
 					isCorrect = (correctExpectedAnswer as number[]).some((val) => x.includes(val));
 					answerGiven = x;
@@ -72,7 +68,6 @@ export const load: PageServerLoad = async ({ request, params, setHeaders }) => {
 					currentQuestion.Options = options;
 				}
 				else {
-					// console.log('correctExpectedAnswer is not an array');
 					isCorrect = false;
 					answerGiven = x;
 					const options = currentQuestion.Options.map((o) => {
@@ -86,7 +81,6 @@ export const load: PageServerLoad = async ({ request, params, setHeaders }) => {
 			}
 		}
 		else {
-			// console.log('Handling unanswered question');
 			currentQuestion.Options = currentQuestion.Options.map((o) => {
 				return {
 					...o,
@@ -94,10 +88,9 @@ export const load: PageServerLoad = async ({ request, params, setHeaders }) => {
 				};
 			});
 		}
-		console.log('currentQuestion', JSON.stringify(currentQuestion, null, 2));
+		// console.log('currentQuestion', JSON.stringify(currentQuestion, null, 2));
 
-		// console.log('next quetion', JSON.stringify(nextQuestion, null, 2));
-
+		// This is important to prevent caching of the page
 		setHeaders({ 'Cache-Control': 'no-store' });
 
 		return {
