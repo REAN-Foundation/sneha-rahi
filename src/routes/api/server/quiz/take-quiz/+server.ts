@@ -39,7 +39,7 @@ export const POST = async (event) => {
 			);
 			console.log(`isCompleted: ${JSON.stringify(response, null, 2)}`);
 			// const redirectPath = `/users/${data.userId}/learning-journeys/${learningJourneyId}`;
-			return Helper.createResponse('message', 'Course is already completed!');
+			return Helper.createResponse('error', 'You have already answered this quiz!');
 		} else {
 			const _nextQuestion = await getNextQuestion(sessionId, assessmentId);
 			const nextQuestion = _nextQuestion.Next;

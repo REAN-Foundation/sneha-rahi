@@ -14,6 +14,9 @@ export const load: PageServerLoad = async ({ request, params, setHeaders }) => {
 		const _quiz = await getQuizById(sessionId, assessmentId);
 		const quiz = _quiz.Assessment;
 
+		const SINGLE_CHOICE_SELECTION = "Single Choice Selection";
+		const MULTI_CHOICE_SELECTION = "Multi Choice Selection";
+
 		const currentQuestionId = params.questionId;
 
 		let isCorrect = null;
@@ -30,20 +33,20 @@ export const load: PageServerLoad = async ({ request, params, setHeaders }) => {
 		const currentQuestion = currentQuestion_.Question;
 		const correctExpectedAnswer: number | number[]  = currentQuestion.CorrectAnswer;
 		const existingAnswer  = quiz.UserResponses.find(x => x.NodeId === currentQuestionId);
-		const answerSubmitted = existingAnswer ? true : false;
+		const alreadyAnswered = existingAnswer ? true : false;
 
 		console.log('quiz',quiz);
-		console.log('currentQuestion', JSON.stringify(currentQuestion, null, 2));
 		console.log('correctAnswer', currentQuestion.CorrectAnswer);
 		console.log('ExpectedResponseType', currentQuestion.ExpectedResponseType);
 		// console.log('user responses', quiz.UserResponses);
-		console.log('answerSubmitted', answerSubmitted);
-		console.log('existingAnswer', existingAnswer);
+		console.log('alreadyAnswered', alreadyAnswered);
+		// console.log('existingAnswer', existingAnswer);
 
 		let answerGiven: number | number [] = null;
 
-		if (answerSubmitted) {
-			if (currentQuestion.ExpectedResponseType === "Single Choice Selection") {
+		if (alreadyAnswered) {
+			// console.log('Handling already answered question');
+			if (currentQuestion.ExpectedResponseType === SINGLE_CHOICE_SELECTION) {
 				const x = existingAnswer.IntegerValue as number;
 				isCorrect = x === correctExpectedAnswer;
 				answerGiven = x;
@@ -54,32 +57,57 @@ export const load: PageServerLoad = async ({ request, params, setHeaders }) => {
 					};
 				});
 			}
-			else if (currentQuestion.ExpectedResponseType === "Multiple Choice Selection") {
+			else if (currentQuestion.ExpectedResponseType === MULTI_CHOICE_SELECTION) {
 				const x = existingAnswer.ArrayValue as number[];
-				isCorrect = (correctExpectedAnswer as number[]).some((val) => x.includes(val));
-				answerGiven = x;
-				currentQuestion.Options = currentQuestion.Options.map((o) => {
-					return {
-						...o,
-						Selected: x.includes(o.Sequence)
-					};
-				});
+				// console.log('Entering Multiple Choice Selection');
+				if (correctExpectedAnswer && Array.isArray(correctExpectedAnswer)) {
+					isCorrect = (correctExpectedAnswer as number[]).some((val) => x.includes(val));
+					answerGiven = x;
+					const options = currentQuestion.Options.map((o) => {
+						return {
+							...o,
+							Selected: x.includes(o.Sequence)
+						};
+					});
+					currentQuestion.Options = options;
+				}
+				else {
+					// console.log('correctExpectedAnswer is not an array');
+					isCorrect = false;
+					answerGiven = x;
+					const options = currentQuestion.Options.map((o) => {
+						return {
+							...o,
+							Selected: x.includes(o.Sequence)
+						};
+					});
+					currentQuestion.Options = options;
+				}
 			}
 		}
+		else {
+			// console.log('Handling unanswered question');
+			currentQuestion.Options = currentQuestion.Options.map((o) => {
+				return {
+					...o,
+					Selected: false
+				};
+			});
+		}
+		console.log('currentQuestion', JSON.stringify(currentQuestion, null, 2));
 
 		// console.log('next quetion', JSON.stringify(nextQuestion, null, 2));
-		console.log('answerGiven', answerGiven);
-		console.log('isCorrect', isCorrect);
 
-		setHeaders({ 'Cache-Control': 'no-cache' });
+		setHeaders({ 'Cache-Control': 'no-store' });
 
 		return {
 			quiz,
 			userId,
 			sessionId,
 			currentQuestion,
-			answerSubmitted,
-			isCorrect
+			alreadyAnswered,
+			isCorrect,
+			answerGiven,
 		};
 
 };

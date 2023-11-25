@@ -10,9 +10,13 @@
 	const question = data.currentQuestion;
 	let options = data.currentQuestion.Options;
 
-	console.log(`options = ${JSON.stringify(options)}`);
-	console.log(`answerSubmitted = ${data.answerSubmitted}`);
+	let alreadyAnswered = data.alreadyAnswered;
+	let answerGiven = data.answerGiven;
+
+	console.log(`options = ${JSON.stringify(options, null, 2)}`);
+	console.log(`alreadyAnswered = ${data.alreadyAnswered}`);
 	console.log(`isCorrect = ${data.isCorrect}`);
+	// console.log(`answerGiven = ${data.answerGiven}`);
 
 	onMount(()=> {
 		// options = options.map(x => {
@@ -25,7 +29,7 @@
 
 	$: multiChoiceSelections = options.filter(x => x.Selected === true); //This is an array
 	$: singleChoiceSelection = options.filter(x => x.Selected === true).find(e => typeof e !== 'undefined'); //This is a single value
-	$: answerSubmitted = data.answerSubmitted;
+	$: answerSubmitted = false;
 
 	const responseType = question.ExpectedResponseType;
 	const isMultichoice = responseType === 'Multi Choice Selection';
@@ -115,6 +119,7 @@
 				<QuizMultiChoice
 					options={options}
 					answerSubmitted={answerSubmitted}
+					alreadyAnswered = {alreadyAnswered}
 					on:answerSelected={onAnswerSelected}>
 				</QuizMultiChoice>
 			{:else}
@@ -122,6 +127,7 @@
 					options={options}
 					correctSequence={correctSequence}
 					answerSubmitted={answerSubmitted}
+					alreadyAnswered = {alreadyAnswered}
 					on:answerSelected={onAnswerSelected}>
 				</QuizSingleChoice>
 			{/if}
@@ -131,7 +137,7 @@
 				on:click|once={handleSubmit}
 				id="submit"
 				name="submit"
-				disabled={!answerSubmitted}
+				disabled={!answerSubmitted || alreadyAnswered}
 				class=" bg-[#5b7aa3] disabled:bg-[#7d7d7d] h-[52px] w-[340px] max-[425px]:w-full mt-4 mb-4 text-[#fff] justify-center rounded-lg"
 			>
 				SUBMIT
