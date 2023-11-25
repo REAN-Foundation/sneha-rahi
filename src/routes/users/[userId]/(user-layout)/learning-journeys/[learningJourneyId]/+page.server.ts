@@ -1,7 +1,6 @@
 import * as cookie from 'cookie';
 import type { PageServerLoad } from "./$types";
 import {
-    // getCourseContentsForLearningPath,
     getLearningPath,
     getUserCourseContents,
     getUserLearningPaths } from "../../../../../api/services/learning";
@@ -16,14 +15,11 @@ export const load: PageServerLoad = async ({ request, params }) => {
         const userId = params.userId;
         const learningPathId = params.learningJourneyId;
         const _learningPath = await getLearningPath(sessionId, learningPathId);
-        // const _courseContentsForLearningPath = await getCourseContentsForLearningPath(sessionId, learningPathId);
         const _userLearningPaths = await getUserLearningPaths(sessionId, userId);
         const _userLearnings = await getUserCourseContents(sessionId, params.userId, params.learningJourneyId);
-
         const allQuizTempletes = await getAllQuizTemplates(sessionId);
 
         const learningPath = _learningPath.LearningPath;
-        // const courseContentsForLearningPath = _courseContentsForLearningPath.CourseContents;
         const userLearningPaths = _userLearningPaths.UserLearningPaths;
         const userCourseContents = _userLearnings.UserCourseContents;
 

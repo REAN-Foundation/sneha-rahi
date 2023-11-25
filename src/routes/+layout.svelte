@@ -8,18 +8,6 @@
 
 	////////////////////////////////////////////////////////////
 
-
-	// export const previousPage = readable(null, (set) => {
-	// 	const unsubscribe = navigating.subscribe(($navigating) => {
-	// 		// Check if `$navigating` has a value
-	// 		// because it's set to `null` after navigation is done
-	// 		if ($navigating) {
-	// 			set($navigating.from.url.pathname);
-	// 		}
-	// 	});
-	// 	return () => unsubscribe();
-	// });
-
 	const flash = initFlash(page);
 	beforeNavigate((nav) => {
 		if ($flash && nav.from?.url.toString() != nav.to?.url.toString()) {
