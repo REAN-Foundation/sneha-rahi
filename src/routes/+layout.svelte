@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../app.postcss';
 	import { initFlash } from 'sveltekit-flash-message/client';
-	import { page, navigating } from '$app/stores';
+	import { page } from '$app/stores';
 	import { beforeNavigate } from '$app/navigation';
 	import toast, { Toaster } from 'svelte-french-toast';
 	import { readable } from 'svelte/store';
