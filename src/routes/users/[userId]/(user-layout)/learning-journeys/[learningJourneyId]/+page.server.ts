@@ -35,7 +35,7 @@ export const load: PageServerLoad = async ({ request, params }) => {
                     }
                 }
         }
-        console.log("courseContentsForLearningPath",courseContentsForLearningPath);
+        // console.log("courseContentsForLearningPath",courseContentsForLearningPath);
         for (const cc of courseContentsForLearningPath) {
             const userContent = userCourseContents.find(x => x.ContentId === cc.id);
             if (userContent) {
@@ -73,7 +73,7 @@ export const load: PageServerLoad = async ({ request, params }) => {
                 }
             }
         }
-        console.log(`courseContentsForLearningPath = ${JSON.stringify(courseContentsForLearningPath, null, 2)}`);
+        // console.log(`courseContentsForLearningPath = ${JSON.stringify(courseContentsForLearningPath, null, 2)}`);
 
         return {
             sessionId,
