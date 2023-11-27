@@ -4,6 +4,10 @@
 	import { page } from '$app/stores';
 	import { beforeNavigate } from '$app/navigation';
 	import toast, { Toaster } from 'svelte-french-toast';
+	import { readable } from 'svelte/store';
+
+	////////////////////////////////////////////////////////////
+
 	const flash = initFlash(page);
 	beforeNavigate((nav) => {
 		if ($flash && nav.from?.url.toString() != nav.to?.url.toString()) {
@@ -20,7 +24,7 @@
 
 		flash.set(undefined);
 	});
-  
+
 </script>
 
 <Toaster />
