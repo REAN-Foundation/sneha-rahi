@@ -144,11 +144,13 @@
 			SUBMIT
 		</button>
 	</div>
-	<div class="flex justify-center">
+	<!-- <div class="flex justify-center"> -->
+	<div class="flex ">	
 		{#if alreadyAnswered}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div class="link" on:click={goForwardInHistory}>
-				<button class=" bg-[#5b7aa3] h-[52px] w-[340px] max-[425px]:w-full mt-1 mb-4 text-[#fff] justify-center rounded-lg">
+			<div class="link w-[100%]" on:click={goForwardInHistory}>
+				<!-- <button class=" bg-[#5b7aa3] h-[52px] w-[340px] max-[425px]:w-full mt-1 mb-4 text-[#fff] justify-center rounded-lg"> -->
+					<button class=" bg-[#5b7aa3] h-[52px] w-[100%] mt-1 mb-4 text-[#fff] justify-center rounded-lg">
 				NEXT
 				</button>
 			</div>
