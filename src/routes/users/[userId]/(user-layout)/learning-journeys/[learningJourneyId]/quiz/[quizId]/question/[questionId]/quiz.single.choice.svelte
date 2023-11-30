@@ -5,6 +5,8 @@
 	export let options;
 	export let correctSequence;
 	export let answerSubmitted = false;
+	export let alreadyAnswered = false;
+
 	const unselected = "h-auto w-[340px] max-[425px]:w-full bg-[#e3e3e3] hover:bg-[#fcaf58] mt-3 first:mt-0 text-lg text-left font-normal pl-3 border tracking-normal rounded-lg p-3";
 	const selected = "h-auto w-[340px] max-[425px]:w-full bg-[#fcaf58] mt-3 first:mt-0 text-lg text-left font-normal pl-3 border tracking-normal rounded-lg p-3";
 
@@ -29,17 +31,17 @@
 			on:click|once={(e) => handleSingleChoiceClick(e, option.Sequence)}
 			id={option.id}
 			name={option.id}
-			disabled ={answerSubmitted}
+			disabled ={answerSubmitted || alreadyAnswered}
 			class={option.Selected ? selected : unselected}
 		>
 			<div class="flex relative font-normal">
 				<div class = "mr-4 space-y-2">
 				{option.Text}
 			</div>
-				{#if answerSubmitted}
+				{#if answerSubmitted || alreadyAnswered}
 					{#if option.Sequence == correctSequence}
 					<div class = "pl-4">
-						<img 
+						<img
 						class=" absolute right-0 pt-1 pr-2"
 						src="/assets/images/quiz-wrong/svg/correct.svg"
 						alt=""

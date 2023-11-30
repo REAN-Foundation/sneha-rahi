@@ -4,6 +4,8 @@
 	const dispatch = createEventDispatcher();
 	export let options;
 	export let answerSubmitted = false;
+	export let alreadyAnswered = false;
+
 	const unselected = "h-auto w-[340px] max-[425px]:w-full bg-[#e3e3e3] hover:bg-[#fcaf58] mt-3 first:mt-0 text-lg text-left font-normal pl-3 border tracking-normal rounded-lg p-3";
 	const selected = "h-auto w-[340px] max-[425px]:w-full bg-[#fcaf58] mt-3 first:mt-0 text-lg text-left font-normal pl-3 border tracking-normal rounded-lg p-3";
 
@@ -28,6 +30,7 @@
 			on:click|preventDefault={(e) => handleMultiChoiceClick(e, option.Sequence)}
 			id={option.id}
 			name={option.id}
+			disabled={alreadyAnswered}
 			class={option.Selected ? selected : unselected}
 		>
 			<div class="flex relative font-normal">

@@ -18,16 +18,6 @@
 	const userId = data.userId;
 	const learningJourneyId = $page.params.learningJourneyId;
 
-	courseContents = courseContents.sort((a, b) => {
-		return a.Sequence - b.Sequence;
-	});
-	courseContents = courseContents.map((x) => {
-		return {
-			...x,
-			showVedio: false
-		};
-	});
-
 	function getYouTubeId(url) {
 		let id = '';
 		url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
@@ -148,7 +138,7 @@
 <!-- </div> -->
 <div
 	class=" card-body h-[421px] bg-white border-slate-200 border-x border-b max-[425px]:border-none"
->	
+>
 	<!-- <h2 class="leading-4 text-lg mb-2">{learningJourney.Name}</h2>
 	<p class="h-auto">
 		{learningJourney.Description ? learningJourney.Description : ''}
@@ -178,12 +168,16 @@
 			</h3>
 		{:else}
 			{#each courseContents as content}
+			{#if content.ContentType == 'Video' && content.Sequence !== 1}
+			<div class="h-1 mt-2 mb-4 bg-[#e3e3e3] w-11/12"></div>
+
+			{/if}
 			<!-- {#each learningJourney.Courses.sort((a, b) => a.Sequence - b.Sequence) as course}
 			{#each course.Modules.sort((a, b) => a.Sequence - b.Sequence) as module}
 			{#each module.Contents as content} -->
 				<button
 					on:click|capture={async (e) => {
-						content.showVedio = true;
+						content.ShowVideo = true;
 						await handleCourseContentClick(
 							e,
 							content.ResourceLink,
@@ -193,11 +187,12 @@
 					}}
 					id={content.id}
 					name={content.id}
+					disabled={content.Disabled}
 					class="leading-4 tracking-normal font-bold w-[375px] max-[425px]:w-full"
 				>
 					<div class="flex flex-grow-col mb-4">
 						{#if content.ContentType == 'Video'}
-							{#if content.showVedio}
+							{#if content.ShowVideo}
 								<!-- <div class="h-16 w-16 bg-[#e3e3e3] rounded-lg ">
 							<img class=" m-5 " src="/assets/images/learning-course/svg/video.svg" alt="" />
 						</div> -->
