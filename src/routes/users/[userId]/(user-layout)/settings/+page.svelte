@@ -148,7 +148,9 @@
 	};
 
 </script>
-
+<svelte:head>
+    <title>Sneha Raahi-Settings</title> 
+</svelte:head>
 <!-- <div
 	class="card card-compact card-bordered w-[375px] h-[701px] bg-base-100 border-slate-200 rounded-none rounded-t-[44px] shadow-sm"
 > -->

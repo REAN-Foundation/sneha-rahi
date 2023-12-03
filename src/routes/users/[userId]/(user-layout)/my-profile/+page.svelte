@@ -46,7 +46,9 @@
 	$: avatarSource = profileImageUrl;
 
 </script>
-
+<svelte:head>
+    <title>Sneha Raahi-My Profile</title> 
+</svelte:head>
 <!-- <div class="card card-compact card-bordered border-slate-200 w-[375px] h-[701px]  bg-base-100  rounded-none rounded-t-[44px] shadow-sm"> -->
 <div class="card-body ">
 	<!-- <button class="h-[5px] w-[73px] bg-[#e3e3e3] ml-[8.5rem] mt-2 rounded" /> -->

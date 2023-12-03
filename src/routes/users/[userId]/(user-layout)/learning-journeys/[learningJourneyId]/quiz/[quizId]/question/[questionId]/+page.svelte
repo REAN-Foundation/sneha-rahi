@@ -94,6 +94,9 @@
 	};
 
 </script>
+<svelte:head>
+    <title>Sneha Raahi-Quiz</title> 
+</svelte:head>
 <div class="card-body ">
 	<!-- <button class="h-[5px] w-[73px] bg-[#e3e3e3] flex ml-36 mt-2 rounded" /> -->
 	<h3 class=" text-[#5b7aa3] flex tracking-widest justify-center font-bold text-base ">

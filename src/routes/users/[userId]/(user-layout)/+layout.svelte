@@ -21,9 +21,9 @@
 	};
 </script>
 
-<svelte:head>
+<!-- <svelte:head>
 	<title>{$page.data.title ? $page.data.title : 'Sneha-Raahi'}</title>
-</svelte:head>
+</svelte:head> -->
 
 <div class="grid gird-cols justify-center items-center">
 	<div class="max-[425px]:w-full max-[425px]:h-full w-[375px] h-[812px]">

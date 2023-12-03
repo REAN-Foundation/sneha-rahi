@@ -40,7 +40,9 @@
 		});
 	}
 </script>
-
+<svelte:head>
+    <title>Sneha Raahi-My Learning</title> 
+</svelte:head>
 <!-- <div class="card card-compact w-[375px] h-[701px] card-bordered border-slate-200  bg-base-100  rounded-none rounded-t-[44px] shadow-sm "> -->
 <div class="card-body h-[500px]">
 	<!-- <button class="h-[5px] w-[73px] bg-[#e3e3e3] flex ml-36 rounded" /> -->

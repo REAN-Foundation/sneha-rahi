@@ -27,7 +27,9 @@
 		}, 3000);
 	});
 </script>
-
+<svelte:head>
+    <title>Sneha Raahi-Sign-in</title> 
+</svelte:head>
 {#if showSplash}
 	<div class="flex items-center justify-center lg:mt-16 md:mt-16 sm:mt-16 mt-0">
 		<div

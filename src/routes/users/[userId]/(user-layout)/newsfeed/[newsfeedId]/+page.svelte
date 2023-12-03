@@ -10,7 +10,9 @@
 	console.log('pubdate', pubdate);
 	console.log('feedItem', feedItem);
 </script>
-
+<svelte:head>
+    <title>Sneha Raahi-Newsfeed Item</title> 
+</svelte:head>
 <div class="card-body ">
 	<h2 class=" text-[#5B7AA3] flex  justify-center uppercase tracking-widest font-bold text-base">
 		Newsfeed

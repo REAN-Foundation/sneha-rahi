@@ -11,7 +11,9 @@
 	console.log(JSON.stringify(communityFeedItems, null, 2));
 
 </script>
-
+<svelte:head>
+    <title>Sneha Raahi-Newsfeed</title> 
+</svelte:head>
 <!-- <div class="card card-compact card-bordered w-[375px] h-[701px] bg-base-100 border-slate-200 rounded-none rounded-t-[44px] shadow-sm"> -->
 	<div class="card-body ">
 		<!-- <button class="h-[5px] w-[73px] bg-[#e3e3e3] ml-[8.5rem] mt-2 rounded" /> -->

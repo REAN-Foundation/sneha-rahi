@@ -103,7 +103,9 @@
 		window.location.href = `/users/${userId}/learning-journeys/${learningJourneyId}`
 	};
 </script>
-
+<svelte:head>
+    <title>Sneha Raahi-Learning Journey</title> 
+</svelte:head>
 <!-- <div
 	class="card card-compact w-[375px] h-[280px] card-bordered border-slate-200 bg-[#ffdbb2]  rounded-none rounded-t-[44px] shadow-sm"
 > -->

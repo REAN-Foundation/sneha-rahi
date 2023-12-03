@@ -21,7 +21,9 @@
 		LocalStorageUtils.removeItem('prevUrl');
 	}
 </script>
-
+<svelte:head>
+    <title>Sneha Raahi-Sign-in</title> 
+</svelte:head>
 <div class="flex items-center justify-center lg:mt-16 md:mt-16 sm:mt-16 mt-0">
 	<div
 		class="card card-compact rounded-none card-bordered max-[425px]:border-none border-slate-400 max-[425px]:w-full w-[375px]
