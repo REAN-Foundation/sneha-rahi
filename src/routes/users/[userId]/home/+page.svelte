@@ -9,6 +9,8 @@
 	import { selectedLanguage } from '$lib/store/general.store';
 	import english from '$lib/localization/english.json';
   import hinglish from '$lib/localization/hinglish.json'
+	import { pushUserIdToDataLayer } from '$lib/utils/analytics';
+	import { browser } from '$app/environment';
 
 	/////////////////////////////////////////////////////////////////
 
@@ -23,7 +25,10 @@
 	let chatLink;
 	let linkagesLink;
 	let notificationsLink;
-
+	if (browser){
+		pushUserIdToDataLayer($page.data.userId);
+	}
+	
 	const toggleSidebar = () => {
 		console.log(`Sidebar toggled: ${$navbarDisplay}`);
 		$navbarDisplay = !$navbarDisplay;
@@ -52,7 +57,9 @@
 		notificationsLink = `/users/${userId}/notifications`;
 
 	});
+	
 </script>
+
 <svelte:head>
     <title>Sneha Raahi-home</title> 
 </svelte:head>

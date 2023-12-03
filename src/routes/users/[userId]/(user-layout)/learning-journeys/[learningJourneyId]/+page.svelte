@@ -6,6 +6,7 @@
 	import { showMessage } from '$lib/utils/message.utils';
 	import { slide } from 'svelte/transition';
 	import Youtube from '$lib/components/youtube-embed/youtube.svelte';
+	import { browser } from '$app/environment';
 
 	/////////////////////////////////////////////////////////////////
 
@@ -54,7 +55,8 @@
 		e,
 		resourceLink: string,
 		contentType: string,
-		actionTemplateId?: string
+		actionTemplateId?: string,
+		
 	) => {
 		console.log(e.currentTarget);
 		const contentId = e.currentTarget.id;
@@ -102,6 +104,14 @@
 		await courseContents
 		window.location.href = `/users/${userId}/learning-journeys/${learningJourneyId}`
 	};
+	
+	function addCustomEvent(title:string){
+		if (browser){
+			addEvent('Video',{
+				video_title:title
+			})
+		}
+	}
 </script>
 <svelte:head>
     <title>Sneha Raahi-Learning Journey</title> 
@@ -184,8 +194,11 @@
 							e,
 							content.ResourceLink,
 							content.ContentType,
-							content.ActionTemplateId
+							content.ActionTemplateId,
 						);
+					if(content.ContentType === 'Video'){
+						addCustomEvent(content.Title);
+					}
 					}}
 					id={content.id}
 					name={content.id}

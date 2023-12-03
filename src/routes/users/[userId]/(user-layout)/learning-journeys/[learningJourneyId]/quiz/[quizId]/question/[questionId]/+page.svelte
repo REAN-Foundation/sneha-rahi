@@ -92,7 +92,11 @@
 			}
 		}
 	};
-
+	if(browser){
+		addEvent("quiz",{
+			question:question.Title
+		})
+	}
 </script>
 <svelte:head>
     <title>Sneha Raahi-Quiz</title> 

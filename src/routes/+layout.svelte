@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Analytics from '$lib/components/analytics.svelte'
 	import '../app.postcss';
 	import { initFlash } from 'sveltekit-flash-message/client';
 	import { page } from '$app/stores';
@@ -26,7 +27,7 @@
 	});
 
 </script>
-
+<Analytics/>
 <Toaster />
 
 <!-- {#if browser } -->

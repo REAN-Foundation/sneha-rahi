@@ -1,12 +1,17 @@
 <script lang="ts">
+	import Analytics from '$lib/components/analytics.svelte'
 	import UserSessionLayout from '$lib/components/common/user.session.svelte';
 	import Navbar from '$lib/components/navbar/nav.svelte';
 	import { navbarDisplay } from '$lib/components/navbar/navbar.display.store';
 	import { page } from '$app/stores';
 	import { LocalStorageUtils } from '$lib/utils/local.storage.utils';
+	import { browser } from '$app/environment';
+	import { pushUserIdToDataLayer } from '$lib/utils/analytics';
 
 	const userId = $page.params.userId;
-
+	if (browser){
+		pushUserIdToDataLayer($page.data.userId);
+	}
 	const onLogout = async () => {
 		const response = await fetch(`/api/server/logout`, {
 			method: 'POST',
@@ -20,7 +25,7 @@
 		window.location.href = '/sign-in';
 	};
 </script>
-
+<Analytics/>
 <!-- <svelte:head>
 	<title>{$page.data.title ? $page.data.title : 'Sneha-Raahi'}</title>
 </svelte:head> -->

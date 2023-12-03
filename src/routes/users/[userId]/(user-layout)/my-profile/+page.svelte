@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import Image from '$lib/components/image.svelte';
 	import type { PageServerData } from './$types';
 
@@ -44,7 +45,6 @@
 	console.log(`\nMy learning journeys = ${JSON.stringify(myLearningJourneys)}`);
 
 	$: avatarSource = profileImageUrl;
-
 </script>
 <svelte:head>
     <title>Sneha Raahi-My Profile</title> 
