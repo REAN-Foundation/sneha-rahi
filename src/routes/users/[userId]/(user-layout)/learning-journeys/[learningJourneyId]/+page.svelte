@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts" >
 	import type { PageServerData } from './$types';
 	import Image from '$lib/components/image.svelte';
 	import { page } from '$app/stores';

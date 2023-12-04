@@ -1,9 +1,7 @@
-<script lang="ts">
-
+<script context="module" lang="ts" >
+import title from '../+layout.svelte'
+console.log('####',title)
 </script>
-<svelte:head>
-    <title>Sneha Raahi-About Sneha</title> 
-</svelte:head>
 <!-- <div
 	class="card card-compact card-bordered w-[375px] h-[690px]  bg-base-100  rounded-none rounded-t-[44px] shadow-sm"
 > -->

@@ -8,6 +8,7 @@
 	import { browser } from '$app/environment';
 	import { pushUserIdToDataLayer } from '$lib/utils/analytics';
 
+	export let title ='Sneha Raahi-'
 	const userId = $page.params.userId;
 	if (browser){
 		pushUserIdToDataLayer($page.data.userId);
@@ -26,9 +27,10 @@
 	};
 </script>
 <Analytics/>
-<!-- <svelte:head>
-	<title>{$page.data.title ? $page.data.title : 'Sneha-Raahi'}</title>
-</svelte:head> -->
+
+<svelte:head>
+	<title>{title ? title : 'Sneha Raahi-'}</title>
+</svelte:head>
 
 <div class="grid gird-cols justify-center items-center">
 	<div class="max-[425px]:w-full max-[425px]:h-full w-[375px] h-[812px]">

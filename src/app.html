@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-BZBWK8FXCN"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-BZBWK8FXCN');
+		</script>
+
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width" />
@@ -8,6 +17,16 @@
 		%sveltekit.head%
 	</head>
 	<body>
+		<script>
+			function addEvent(eventName, attributes){
+				console.log('gtag custom event.')
+				console.log('Event Name',eventName);
+				console.log('Event Attributes',attributes)
+				gtag('event', eventName, 
+				...attributes
+				);
+			}
+		</script>
 		<div class="bg-white">%sveltekit.body%</div>
 	</body>
 </html>
