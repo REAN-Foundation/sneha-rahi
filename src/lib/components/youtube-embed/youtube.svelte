@@ -19,7 +19,7 @@
 	<div class="relative hover:[#00000030]-" style="--aspect-ratio:{width / height || '16/9'}" {title}>
     <button on:click={() => onClose()} class="absolute right-2 text-white top-6">X</button>
 		<iframe
-			src="https://www.youtube.com/embed/{id}?autoplay=1&rel=0"
+			src="https://www.youtube.com/embed/{id}?autoplay=1&rel=0&enablejsapi=1"
 			{title}
 			frameborder="0"
 			allow="autoplay; picture-in-picture; clipboard-write"
