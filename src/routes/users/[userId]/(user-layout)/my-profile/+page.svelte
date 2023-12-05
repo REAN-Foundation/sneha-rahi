@@ -2,8 +2,9 @@
 	import { browser } from '$app/environment';
 	import Image from '$lib/components/image.svelte';
 	import type { PageServerData } from './$types';
-
-	export let data: PageServerData;
+    import {addEventUsingStore} from '$lib/store/gtagevent.store'
+	
+    export let data: PageServerData;
 	let myLearningJourneys = data.userLearningPaths?.UserLearningPaths;
 	let sum = 0;
 	let count = 0;
@@ -45,6 +46,14 @@
 	console.log(`\nMy learning journeys = ${JSON.stringify(myLearningJourneys)}`);
 
 	$: avatarSource = profileImageUrl;
+	$addEventUsingStore('MyCustomeEvent',{
+		Name: 'My-Profile',
+		Other:'No'
+	})
+	addEvent('MyCustomeEvent',{
+		Name: 'My-Profile',
+		Other:'No'
+	})
 </script>
 <svelte:head>
     <title>Sneha Raahi-My Profile</title> 

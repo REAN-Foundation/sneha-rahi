@@ -22,9 +22,11 @@
 				console.log('gtag custom event.')
 				console.log('Event Name',eventName);
 				console.log('Event Attributes',attributes)
-				gtag('event', eventName, 
-				...attributes
-				);
+				try{
+					gtag('event', eventName,attributes);
+				}catch(error){
+					console.log('Error setting custom event for GA4',error);
+				}
 			}
 		</script>
 		<div class="bg-white">%sveltekit.body%</div>
