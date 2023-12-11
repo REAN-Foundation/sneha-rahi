@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { timeAgo } from 'short-time-ago';
+	import { formatDistanceToNow } from 'date-fns';
 	import type { PageServerData } from './$types';
 	import { page } from '$app/stores';
 	import Image from '$lib/components/image.svelte';
@@ -7,7 +7,10 @@
 	const userId = $page.params.userId;
 	let feedItem = data.feedItem;
 	const pubdate = new Date(data.feedItem.PublishingDate);
+	const creationDate = new Date(pubdate);
+	const timeAgo = formatDistanceToNow(creationDate);
 	console.log('pubdate', pubdate);
+	console.log('pubdate', creationDate);
 	console.log('feedItem', feedItem);
 </script>
 
@@ -15,7 +18,7 @@
 	<h2 class=" text-[#5B7AA3] flex  justify-center uppercase tracking-widest font-bold text-base">
 		Newsfeed
 	</h2>
-	<h4 class="text-right  text-[13px] font-semibold mb-1">{timeAgo(pubdate, new Date())}</h4>
+	<h4 class="text-right  text-[13px] font-semibold mb-1">{timeAgo} ago</h4>
 	<div
 		class="w-[340px] max-[425px]:w-full min-h-0 max-h-[500px] overflow-auto scrollbar-medium rounded-lg bg-[#d7eaf7]"
 	>
