@@ -24,13 +24,15 @@ export const load: PageServerLoad = async ({ request, params }) => {
         const userCourseContents = _userLearnings.UserCourseContents;
 
         let courseContentsForLearningPath =[];
+   
+        
         for ( const course of learningPath.Courses){
-                for (const module of course.Modules){
+            for (const module of course.Modules){
                     for (const content of module.Contents){
                         courseContentsForLearningPath.push(content)
                     }
-                }
-        }
+                 }
+            }
         // console.log("courseContentsForLearningPath",courseContentsForLearningPath);
         for (const cc of courseContentsForLearningPath) {
             const userContent = userCourseContents.find(x => x.ContentId === cc.id);
@@ -69,6 +71,31 @@ export const load: PageServerLoad = async ({ request, params }) => {
                 }
             }
         }
+
+        // if previous video is not completed next video will not play
+        console.log("this is list of courese", courseContentsForLearningPath)
+        for (let i = 0; i < courseContentsForLearningPath.length; i++) {
+            const courseContent = courseContentsForLearningPath[i];
+            if (courseContent.ContentType === 'Video' && i > 0) {
+                const courseCont = courseContent;
+                const previousVideo = courseContentsForLearningPath[i - 2];
+                if (previousVideo && previousVideo.ContentType === 'Video') {
+                    courseCont['AssociatedVideo'] =previousVideo.id;
+                    // previousVideo['AssociatedAssessment'] =  selectedvideo.id;
+                    if (previousVideo.PercentageCompletion === 100) {
+                        courseContent['Disabled'] = false;
+                    }
+                    else {
+                        courseContent['Disabled'] = true;
+                    }
+                }
+            }
+        }
+        
+
+              
+   
+            
 
         // console.log(`courseContentsForLearningPath = ${JSON.stringify(courseContentsForLearningPath, null, 2)}`);
 
