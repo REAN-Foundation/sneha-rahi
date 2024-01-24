@@ -68,8 +68,22 @@ export const load: PageServerLoad = async ({ request, params }) => {
                     }
                 }
             }
+            else if (courseContent.ContentType === 'Video' &&  i > 0) {
+                const previousVideoIndex = i - 2;
+                if (previousVideoIndex < 0) {
+                    continue;
+                }
+                const previousVideo = courseContentsForLearningPath[previousVideoIndex];
+                if (previousVideo && previousVideo.ContentType === 'Video') {
+                    if (previousVideo.PercentageCompletion === 100) {
+                        courseContent['Disabled'] = false;
+                    }
+                    else {
+                        courseContent['Disabled'] = true;
+                    }
+                }
+            }
         }
-
         // console.log(`courseContentsForLearningPath = ${JSON.stringify(courseContentsForLearningPath, null, 2)}`);
 
         return {
