@@ -7,8 +7,6 @@
 	let allLearningJourneys = data.allLearningPaths?.LearningPaths.Items;
 
     
-    console.log('ALL LEARNING PATHS',allLearningJourneys)
-    console.log('MY  LEARNING PATHS',myLearningJourneys)
 	// allLearningJourneys = allLearningJourneys.sort((a, b) => { return a.Name - b.Name; });
 	// let allCourses = data.allCourseContents?.CourseContents?.Items;
 	// allCourses = allCourses.sort((a, b) => {
