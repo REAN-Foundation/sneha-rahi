@@ -100,7 +100,7 @@
 
 	const handleCourseCloseClick = async () => {
 		await courseContents
-		// window.location.href = `/users/${userId}/learning-journeys/${learningJourneyId}`
+		 window.location.href = `/users/${userId}/learning-journeys/${learningJourneyId}`
 	};
 </script>
 
