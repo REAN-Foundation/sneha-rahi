@@ -18,7 +18,7 @@ const getConversationDetails = (userId, x) => {
         lastName: userId === x.OtherUser.id ? x.InitiatingUser.LastName : x.OtherUser.LastName,
         prefix: userId === x.OtherUser.id ? x.InitiatingUser.Prefix : x.OtherUser.Prefix,
         profileImage: profileImage ?? null,
-        lastChatDate: hrt(new Date(x.LastMessageTimestamp), '%relative% ago'),
+        lastChatDate: !x.LastMessageTimestamp ? 0 :  hrt(new Date(x.LastMessageTimestamp), '%relative% ago'),
     }
 }
 

@@ -12,7 +12,7 @@
 	export let data: PageServerData;
 	let learningJourney = data.learningPath;
 	let courseContents = data.courseContentsForLearningPath;
-	courseContents = courseContents.sort((a, b) => {
+    courseContents = courseContents.sort((a, b) => {
 		return a.Sequence - b.Sequence;
 	});
 	const userId = data.userId;
@@ -100,7 +100,7 @@
 
 	const handleCourseCloseClick = async () => {
 		await courseContents
-		window.location.href = `/users/${userId}/learning-journeys/${learningJourneyId}`
+		// window.location.href = `/users/${userId}/learning-journeys/${learningJourneyId}`
 	};
 </script>
 

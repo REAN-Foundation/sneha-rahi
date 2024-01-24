@@ -7,7 +7,7 @@
 	export let data: PageServerData;
 	let favourites = data.favouriteConversations;
 	let recentUsers = data.recentConversations;
-	console.log('Favourites users',`${JSON.stringify(favourites, null, 2)}`);
+    console.log('Favourites users',`${JSON.stringify(favourites, null, 2)}`);
 	console.log('Recent users',`${JSON.stringify(recentUsers, null, 2)}`);
 
 	const ENTER_KEY_CODE = 13;
@@ -37,10 +37,10 @@
 		const keyCode = e.keyCode;
 		if (keyCode == ENTER_KEY_CODE) {
 			const text = searchInput.value;
-			if (text.length > 2) {
-				await searchUsers(text);
-			}
-		}
+			if (text) {
+                await searchUsers(text);
+            }
+    	}
 	}
 
 	const searchUsers = async (text) => {
@@ -235,8 +235,8 @@
 				<h3 class="m-1">No recent conversations!</h3>
 			{:else}
 				{#each recentUsers as conversation}
-
-						<div class="grid grid-flex-rows-6 mb-3 gap-2 mt-2">
+                    {#if conversation.lastChatDate}
+                        <div class="grid grid-flex-rows-6 mb-3 gap-2 mt-2">
 							<div class="grid grid-flow-col ">
 								<a href={`/users/${userId}/chat/${conversation.id}`}>
 								<!-- <img src="/assets/chat/png/account-img-1.png" alt="" /> -->
@@ -264,7 +264,7 @@
 								</div>
 							</div>
 						</div>
-
+                        {/if}
 				{/each}
 			{/if}
 
