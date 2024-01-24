@@ -169,8 +169,7 @@
 		{:else}
 			{#each courseContents as content}
 			{#if content.ContentType == 'Video' && content.Sequence !== 1}
-			<div class="h-1 mt-2 mb-4 bg-[#e3e3e3] w-11/12"></div>
-
+				<div class="h-1 mt-2 mb-4 bg-[#e3e3e3] w-11/12"></div>
 			{/if}
 			<!-- {#each learningJourney.Courses.sort((a, b) => a.Sequence - b.Sequence) as course}
 			{#each course.Modules.sort((a, b) => a.Sequence - b.Sequence) as module}

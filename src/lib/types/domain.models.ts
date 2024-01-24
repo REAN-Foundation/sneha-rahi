@@ -6,10 +6,12 @@ export interface UserModel{
     Phone?        : string;
     Address?      : AddressDomainModel ;
 };
+
 export interface AddressDomainModel {
-    AddressLine?        : string; 
+    AddressLine? : string;
     Type         : string;
 }
+
 export interface PersonRole {
     id          : number,
     RoleName    : string;
@@ -26,6 +28,7 @@ export interface OtpModel {
     RoleId?    : number;
     Purpose?   : string;
 };
+
 export interface LoginModel {
     UserName    ?: string;
     Email       ?: string;
