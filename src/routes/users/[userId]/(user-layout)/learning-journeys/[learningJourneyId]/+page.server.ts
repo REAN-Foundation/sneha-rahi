@@ -84,7 +84,6 @@ export const load: PageServerLoad = async ({ request, params }) => {
                 }
             }
         }
-
         // console.log(`courseContentsForLearningPath = ${JSON.stringify(courseContentsForLearningPath, null, 2)}`);
 
         return {
