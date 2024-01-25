@@ -9,6 +9,7 @@
 	import { selectedLanguage } from '$lib/store/general.store';
 	import english from '$lib/localization/english.json';
   import hinglish from '$lib/localization/hinglish.json'
+	import { enhance } from '$app/forms';
 
 	/////////////////////////////////////////////////////////////////
 	export let data: PageServerData;
@@ -198,7 +199,7 @@
 					>
 				</div>
 			{/if}
-			<form class="max-[375px]:w-full" method="post">
+			<form class="max-[375px]:w-full" method="post" use:enhance>
 				<div class="hidden">
 					<input name="phone" class="hidden" value={data.phone} />
 				</div>

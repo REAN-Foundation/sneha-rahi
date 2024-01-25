@@ -1,15 +1,15 @@
 import type { PageServerLoad} from './$types';
-import type {  RequestEvent } from '@sveltejs/kit';
 import { getUserById} from '../../../../../routes/api/services/user';
 import { searchUserConversations } from '../../../../../routes/api/services/chat';
 import { BACKEND_API_URL } from '$env/static/private';
 
 /////////////////////////////////////////////////////////////////////////
 
-export const load: PageServerLoad = async (event: RequestEvent) => {
-  const sessionId = event.cookies.get('sessionId');
+export const load: PageServerLoad = async ({cookies, params, depends}) => {
+    depends('app:settings')
+  const sessionId = cookies.get('sessionId');
   console.log('sessionId', sessionId);
-    const userId = event.params.userId;
+    const userId = params.userId;
     const _user = await getUserById(sessionId, userId);
     const _allConversations = await searchUserConversations(sessionId, userId);
     const user = _user.Patient;

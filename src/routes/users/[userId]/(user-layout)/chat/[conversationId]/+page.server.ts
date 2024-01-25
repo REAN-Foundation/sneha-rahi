@@ -6,10 +6,11 @@ import { getDateSegregatedMessages } from './conversation.utils';
 
 ////////////////////////////////////////////////////////////////////////
 
-export const load: PageServerLoad = async (event) => {
-    const userId = event.params.userId;
-    const sessionId = event.cookies.get('sessionId');
-    const conversationId = event.params.conversationId;
+export const load: PageServerLoad = async ({params, cookies, depends}) => {
+    const userId = params.userId;
+    const sessionId = cookies.get('sessionId');
+    const conversationId = params.conversationId;
+    depends('app:chat/conversationId')
     try {
         const messages_ = await getConversationMessages(sessionId, conversationId);
         const messages = await getDateSegregatedMessages(messages_.ConversationMessages);

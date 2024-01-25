@@ -2,7 +2,7 @@
 	import type { PageServerData } from './$types';
 	import Image from '$lib/components/image.svelte';
 	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
+	import { goto, invalidate, invalidateAll } from '$app/navigation';
 	import { showMessage } from '$lib/utils/message.utils';
 	import { slide } from 'svelte/transition';
 	import Youtube from '$lib/components/youtube-embed/youtube.svelte';
@@ -99,8 +99,10 @@
 	};
 
 	const handleCourseCloseClick = async () => {
+        console.log('Closed event get called.....');
 		await courseContents
 		window.location.href = `/users/${userId}/learning-journeys/${learningJourneyId}`
+        // invalidate('app:learning-journeys/learningJourneyId');
 	};
 </script>
 

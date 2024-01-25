@@ -23,10 +23,10 @@ const getConversationDetails = (userId, x) => {
 }
 
 
-export const load: PageServerLoad = async (event) => {
+export const load: PageServerLoad = async ({cookies, params, depends}) => {
     try {
-        const sessionId = event.cookies.get('sessionId');
-        const userId = event.params.userId;
+        const sessionId = cookies.get('sessionId');
+        const userId = params.userId;
         const askSnehaUserId = ASK_SNEHA_USER_ID;
         const favouriteConversations_ = await getMyFavouriteConversations(sessionId, userId);
         const recentConversations_ = await getMyRecentConversations(sessionId, userId);
@@ -34,6 +34,7 @@ export const load: PageServerLoad = async (event) => {
         const recentConversationsWithoutSnahaUser = recentConversations_.Conversations.filter((Conversations) => Conversations.OtherUserId != askSnehaUserId );
         const favouriteConversations = favouriteConversations_.Conversations.map(x => getConversationDetails(userId, x));
         const recentConversations = recentConversationsWithoutSnahaUser.map(x => getConversationDetails(userId, x));
+        depends('app:chat');
         return {
             sessionId,
             userId,

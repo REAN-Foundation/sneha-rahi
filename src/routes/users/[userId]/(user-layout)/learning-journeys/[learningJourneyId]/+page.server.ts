@@ -8,7 +8,7 @@ import { getAllQuizTemplates } from '../../../../../../routes/api/services/quiz'
 
 ////////////////////////////////////////////////////////////////////////
 
-export const load: PageServerLoad = async ({ request, params }) => {
+export const load: PageServerLoad = async ({ request, params, depends }) => {
     try {
         const cookies = cookie.parse(request.headers.get('cookie') || '');
         const sessionId = cookies['sessionId'];
@@ -22,7 +22,7 @@ export const load: PageServerLoad = async ({ request, params }) => {
         const learningPath = _learningPath.LearningPath;
         const userLearningPaths = _userLearningPaths.UserLearningPaths;
         const userCourseContents = _userLearnings.UserCourseContents;
-
+        depends('app:learning-journeys/learningJourneyId')
         let courseContentsForLearningPath =[];
         for ( const course of learningPath.Courses){
                 for (const module of course.Modules){
