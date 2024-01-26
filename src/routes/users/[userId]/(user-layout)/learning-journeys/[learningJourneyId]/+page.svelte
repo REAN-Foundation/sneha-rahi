@@ -11,12 +11,18 @@
 
 	export let data: PageServerData;
 	let learningJourney = data.learningPath;
-	let courseContents = data.courseContentsForLearningPath;
-    courseContents = courseContents.sort((a, b) => {
+    let courseContents;
+	$: {
+        courseContents = data.courseContentsForLearningPath;
+        courseContents = courseContents.sort((a, b) => {
 		return a.Sequence - b.Sequence;
 	});
+    }
+    
 	const userId = data.userId;
 	const learningJourneyId = $page.params.learningJourneyId;
+
+    let isVideoClosed= false;
 
 	function getYouTubeId(url) {
 		let id = '';
@@ -100,9 +106,9 @@
 
 	const handleCourseCloseClick = async () => {
         console.log('Closed event get called.....');
-		await courseContents
-		window.location.href = `/users/${userId}/learning-journeys/${learningJourneyId}`
-        // invalidate('app:learning-journeys/learningJourneyId');
+		// await courseContents
+		// window.location.href = `/users/${userId}/learning-journeys/${learningJourneyId}`
+        invalidate('app:learning-journeys/learningJourneyId');
 	};
 </script>
 
@@ -203,7 +209,8 @@
 										<h3 class="text-center mb-3 w-full">{content.Title}</h3>
 										<!-- svelte-ignore a11y-media-has-caption -->
 										<!-- <div>  -->
-										<Youtube
+										<Youtube 
+                                            bind:isVideoClosed
 											id={getYouTubeId(content.ResourceLink)}
 											on:closeVideo={handleCourseCloseClick}
 										>
