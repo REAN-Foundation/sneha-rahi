@@ -44,7 +44,7 @@
 	}
 
     function showToast() {
-        toast.success("Please follow the sequence!");
+        toast.error("Please follow the sequence!");
   }
 
   function handleKeyPress(event) {

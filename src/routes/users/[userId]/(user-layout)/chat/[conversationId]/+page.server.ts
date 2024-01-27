@@ -1,8 +1,8 @@
 import type { PageServerLoad } from "./$types";
 import { getConversationById, getConversationMessages } from "../../../../../api/services/chat";
 import { BACKEND_API_URL } from '$env/static/private';
-import hrt from 'human-readable-time';
 import { getDateSegregatedMessages } from './conversation.utils';
+import { TimeHelper } from "$lib/utils/time.helper";
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -46,7 +46,7 @@ const getConversationDetails = (userId, conversation) => {
         lastName: userId === conversation.OtherUser.id ? conversation.InitiatingUser.LastName : conversation.OtherUser.LastName,
         prefix: userId === conversation.OtherUser.id ? conversation.InitiatingUser.Prefix : conversation.OtherUser.Prefix,
         profileImage: profileImage ?? null,
-        lastChatDate: hrt(new Date(conversation.LastMessageTimestamp), '%relative% ago'),
+        lastChatDate: TimeHelper.getHumanReadableDate(conversation.LastMessageTimestamp),
     }
 };
 
