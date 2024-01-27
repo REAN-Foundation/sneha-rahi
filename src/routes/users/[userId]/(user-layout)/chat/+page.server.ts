@@ -1,8 +1,7 @@
 import type { PageServerLoad } from "./$types";
 import { getMyFavouriteConversations, getMyRecentConversations } from "../../../../api/services/chat";
-import hrt from 'human-readable-time';
 import { BACKEND_API_URL, ASK_SNEHA_USER_ID } from "$env/static/private";
-
+import { TimeHelper } from "$lib/utils/time.helper";
 ////////////////////////////////////////////////////////////////////////
 
 const getConversationDetails = (userId, x) => {
@@ -18,7 +17,7 @@ const getConversationDetails = (userId, x) => {
         lastName: userId === x.OtherUser.id ? x.InitiatingUser.LastName : x.OtherUser.LastName,
         prefix: userId === x.OtherUser.id ? x.InitiatingUser.Prefix : x.OtherUser.Prefix,
         profileImage: profileImage ?? null,
-        lastChatDate: !x.LastMessageTimestamp ? 0 :  hrt(new Date(x.LastMessageTimestamp), '%relative% ago'),
+        lastChatDate: TimeHelper.getHumanReadableDate(x.LastMessageTimestamp),
     }
 }
 

@@ -1,7 +1,7 @@
 import type { PageServerLoad } from "./$types";
 import Parser from 'rss-parser';
-import hrt from 'human-readable-time';
 import { getCommunityFeed, getRaahiFeed } from "../../../../api/services/newsfeed";
+import { TimeHelper } from "$lib/utils/time.helper";
 
 ////////////////////////////////////////////////////////////////////
 
@@ -87,7 +87,7 @@ async function loadRSSFeeds(raahiFeed, communityFeed) {
       id: item.guid,
       title: item.title,
       link: item.link,
-      pubDate: hrt(new Date(item.pubDate), '%relative% ago'),
+      pubDate: TimeHelper.getHumanReadableDate(item.pubDate),
       content: item.content,
       image: item.enclosure?.url,
       author: item.author,

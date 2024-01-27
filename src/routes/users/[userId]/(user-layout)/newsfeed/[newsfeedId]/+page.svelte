@@ -3,14 +3,12 @@
 	import type { PageServerData } from './$types';
 	import { page } from '$app/stores';
 	import Image from '$lib/components/image.svelte';
+	import { TimeHelper } from '$lib/utils/time.helper';
 	export let data: PageServerData;
 	const userId = $page.params.userId;
 	let feedItem = data.feedItem;
-	const pubdate = new Date(data.feedItem.PublishingDate);
-	const creationDate = new Date(pubdate);
-	const timeAgo = formatDistanceToNow(creationDate);
-	console.log('pubdate', pubdate);
-	console.log('pubdate', creationDate);
+
+    const timeAgo = TimeHelper.getHumanReadableDate(data.feedItem.PublishingDate);
 	console.log('feedItem', feedItem);
 </script>
 
@@ -18,7 +16,7 @@
 	<h2 class=" text-[#5B7AA3] flex  justify-center uppercase tracking-widest font-bold text-base">
 		Newsfeed
 	</h2>
-	<h4 class="text-right  text-[13px] font-semibold mb-1">{timeAgo} ago</h4>
+	<h4 class="text-right  text-[13px] font-semibold mb-1">{timeAgo ? `${timeAgo}`: ''}</h4>
 	<div
 		class="w-[340px] max-[425px]:w-full min-h-0 max-h-[500px] overflow-auto scrollbar-medium rounded-lg bg-[#d7eaf7]"
 	>
