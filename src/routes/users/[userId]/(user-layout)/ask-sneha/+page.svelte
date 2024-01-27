@@ -172,7 +172,7 @@
 					</div>
 					<img class="absolute right-2 " src="/assets/images/ask-sneha/png/mask.png" alt="" />
 				</div> -->
-				<p class="flex text-xs justify-center mb-3 mt-3">{md.dateStr}</p>
+				<p class="flex text-xs justify-center mb-3 mt-3">{md.dateStr ? md.dateStr : ''}</p>
 				{#each md.messagesForTheDay as message}
 					{#if message.SenderId == userId}
 						<!-- <div class="grid grid-cols-6 gap-4">
