@@ -9,7 +9,9 @@ export const load: PageServerLoad = async (event) => {
         const userId = event.params.userId;
         const allLearningPaths = await getAllLearningPaths(sessionId);
         const userLearningPaths = await getUserLearningPaths(sessionId, userId);
-        const learningPaths = allLearningPaths.LearningPaths.Items.reverse();
+        const learningPaths = allLearningPaths.LearningPaths.Items.sort((a, b) => {
+            return b.PreferenceWeight - a.PreferenceWeight;
+        });
         const userLearning = userLearningPaths.UserLearningPaths;
 
         for (let i = 0 ; i < learningPaths.length; i++) {
@@ -32,6 +34,7 @@ export const load: PageServerLoad = async (event) => {
                 learningPaths[i+1]['Disabled'] = true;
             }
        }
+       
         // const allCourseContents = await getAllCourseContents(sessionId);
         return {
             sessionId,
@@ -49,3 +52,4 @@ export const load: PageServerLoad = async (event) => {
         };
     }
 };
+
