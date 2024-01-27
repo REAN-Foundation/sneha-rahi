@@ -3,7 +3,7 @@
 	import Image from '$lib/components/image.svelte';
 	import { page } from '$app/stores';
 	import toast from 'svelte-french-toast';
-	import { invalidate } from '$app/navigation';
+	import { goto, invalidate } from '$app/navigation';
 
 	export let data: PageServerData;
 	let favourites = data.favouriteConversations;
@@ -72,10 +72,11 @@
 		console.log(`conversation found: `, JSON.stringify(resp, null, 2));
 		const conversation = JSON.parse(resp);
 		if (conversation) {
-			// const redirectPath = `/users/${userId}/chat/${conversation.id}`;
+			const redirectPath = `/users/${userId}/chat/${conversation.id}`;
 			// console.log(redirectPath);
 			// window.location.href = redirectPath;
-            invalidate('app:chat/conversationId');
+            // invalidate('app:chat/conversationId');
+            goto(redirectPath);
 		}
 		else {
 			console.log(`Conversation not found! Starting new one`);

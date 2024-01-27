@@ -6,6 +6,7 @@
 	import { showMessage } from '$lib/utils/message.utils';
 	import { slide } from 'svelte/transition';
 	import Youtube from '$lib/components/youtube-embed/youtube.svelte';
+    import toast, { Toaster } from 'svelte-french-toast';
 
 	/////////////////////////////////////////////////////////////////
 
@@ -110,6 +111,10 @@
 		// window.location.href = `/users/${userId}/learning-journeys/${learningJourneyId}`
         invalidate('app:learning-journeys/learningJourneyId');
 	};
+
+    function showToast() {
+        toast.success("Please follow the sequence!");
+  }
 </script>
 
 <!-- <div
@@ -184,17 +189,21 @@
 			{#each module.Contents as content} -->
 				<button
 					on:click|capture={async (e) => {
-						content.ShowVideo = true;
-						await handleCourseContentClick(
-							e,
-							content.ResourceLink,
-							content.ContentType,
-							content.ActionTemplateId
-						);
-					}}
+						if (!content.Disabled) {
+                            content.ShowVideo = true;
+						    await handleCourseContentClick(
+                                e,
+                                content.ResourceLink,
+                                content.ContentType,
+                                content.ActionTemplateId
+                            );
+                        } else {
+                            showToast();
+                        }
+    				}}
 					id={content.id}
 					name={content.id}
-					disabled={content.Disabled}
+					
 					class="leading-4 tracking-normal font-bold w-[375px] max-[425px]:w-full"
 				>
 					<div class="flex flex-grow-col mb-4">

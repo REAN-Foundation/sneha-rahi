@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Image from '$lib/components/image.svelte';
 	import type { PageServerData } from './$types';
+    import toast, { Toaster } from 'svelte-french-toast';
 
 	export let data: PageServerData;
 	let myLearningJourneys = data.userLearningPaths?.UserLearningPaths;
@@ -41,6 +42,16 @@
 			}
 		});
 	}
+
+    function showToast() {
+        toast.success("Please follow the sequence!");
+  }
+
+  function handleKeyPress(event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      showToast();
+    }
+  }
 </script>
 
 <!-- <div class="card card-compact w-[375px] h-[701px] card-bordered border-slate-200  bg-base-100  rounded-none rounded-t-[44px] shadow-sm "> -->
@@ -85,7 +96,7 @@
                         </div>
                     </a>
                 {:else}
-                    <div class="flex flex-row">
+                    <div on:click={showToast} on:keydown={handleKeyPress} class="flex flex-row">
                         <Image
                             cls="mb-2 rounded-md"
                             source={learningJourney.ImageUrl + '?disposition=inline'}
