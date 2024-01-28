@@ -61,11 +61,12 @@
 		e,
 		resourceLink: string,
 		contentType: string,
+        contentId: string,
 		actionTemplateId?: string
 	) => {
-		console.log(e.currentTarget);
-		const contentId = e.currentTarget.id;
-		console.log(`contentId = ${contentId}`);
+		// console.log(e.currentTarget);
+		// const contentId = e.currentTarget.id;
+		// console.log(`contentId = ${contentId}`);
 
 		if (contentType === 'Video') {
 			const videoModel = {
@@ -115,6 +116,25 @@
     function showToast() {
         toast.error("Please follow the sequence!");
   }
+
+  const handleCourseCompleteEvent = async (e) => {
+        console.log('Course complete event get called.....');
+        await handleCourseContentClick(
+							e,
+							e.detail.content.ResourceLink,
+							e.detail.content.ContentType,
+                            e.detail.content.id,
+							e.detail.content.ActionTemplateId,
+						);
+		// await courseContents
+		// window.location.href = `/users/${userId}/learning-journeys/${learningJourneyId}`
+        invalidate('app:learning-journeys/learningJourneyId');
+	};
+
+    const handleCourseClosedClick = () => {
+        invalidate('app:learning-journeys/learningJourneyId');
+    }
+
 </script>
 
 <!-- <div
@@ -191,13 +211,15 @@
 					on:click|capture={async (e) => {
 						if (!content.Disabled) {
                             content.ShowVideo = true;
-						    await handleCourseContentClick(
+                            if (content.ContentType === 'Assessment') {
+                                await handleCourseContentClick(
                                 e,
                                 content.ResourceLink,
                                 content.ContentType,
                                 content.ActionTemplateId
-                            );
-                        } else {
+                                );
+                            }
+						} else {
                             showToast();
                         }
     				}}
@@ -220,8 +242,10 @@
 										<!-- <div>  -->
 										<Youtube 
                                             bind:isVideoClosed
-											id={getYouTubeId(content.ResourceLink)}
-											on:closeVideo={handleCourseCloseClick}
+                                            content={content}
+											videoId={getYouTubeId(content.ResourceLink)}
+                                            on:completedVideo={handleCourseCompleteEvent}
+                                            on:closeVideo={handleCourseClosedClick}
 										>
 											<!-- <button /> -->
 										</Youtube>
