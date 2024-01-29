@@ -8,10 +8,11 @@
 	import { LocalStorageUtils } from '$lib/utils/local.storage.utils';
 	import { selectedLanguage } from '$lib/store/general.store';
 	import english from '$lib/localization/english.json';
-  import hinglish from '$lib/localization/hinglish.json'
+	import hinglish from '$lib/localization/hinglish.json'
 	import { enhance } from '$app/forms';
 
 	/////////////////////////////////////////////////////////////////
+
 	export let data: PageServerData;
 	let localizedContent = $selectedLanguage === 'hinglish' ? hinglish : english;
 	let otp1,

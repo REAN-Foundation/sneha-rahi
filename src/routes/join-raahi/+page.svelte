@@ -76,7 +76,7 @@
 						{localizedContent.SignUpDescription}
 					</p>
 				</div>
-				<form class="max-[425px]:w-full" 
+				<form class="max-[425px]:w-full"
                     method="post"
                     use:enhance
                     >

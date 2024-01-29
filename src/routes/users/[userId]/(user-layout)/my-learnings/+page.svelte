@@ -7,7 +7,7 @@
 	let myLearningJourneys = data.userLearningPaths?.UserLearningPaths;
 	let allLearningJourneys = data.allLearningPaths?.LearningPaths.Items;
 
-    
+
 	// allLearningJourneys = allLearningJourneys.sort((a, b) => { return a.Name - b.Name; });
 	// let allCourses = data.allCourseContents?.CourseContents?.Items;
 	// allCourses = allCourses.sort((a, b) => {

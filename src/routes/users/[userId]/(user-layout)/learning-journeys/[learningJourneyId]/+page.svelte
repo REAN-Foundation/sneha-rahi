@@ -19,7 +19,7 @@
 		return a.Sequence - b.Sequence;
 	});
     }
-    
+
 	const userId = data.userId;
 	const learningJourneyId = $page.params.learningJourneyId;
 
@@ -203,7 +203,7 @@
     				}}
 					id={content.id}
 					name={content.id}
-					
+
 					class="leading-4 tracking-normal font-bold w-[375px] max-[425px]:w-full"
 				>
 					<div class="flex flex-grow-col mb-4">
@@ -218,7 +218,7 @@
 										<h3 class="text-center mb-3 w-full">{content.Title}</h3>
 										<!-- svelte-ignore a11y-media-has-caption -->
 										<!-- <div>  -->
-										<Youtube 
+										<Youtube
                                             bind:isVideoClosed
 											id={getYouTubeId(content.ResourceLink)}
 											on:closeVideo={handleCourseCloseClick}

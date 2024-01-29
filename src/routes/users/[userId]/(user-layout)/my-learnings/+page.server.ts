@@ -18,14 +18,14 @@ export const load: PageServerLoad = async (event) => {
             for (let j = 0 ; j < userLearning.length; j++) {
                if (learningPaths[i].id == userLearning[j].id) {
                     learningPaths[i]['PercentageCompletion'] = userLearning[j].PercentageCompletion;
-                } 
+                }
             }
             if (!('PercentageCompletion' in learningPaths[i])) {
                 learningPaths[i]['PercentageCompletion'] = 0;
             }
         }
         learningPaths[0]['Disabled'] = false;
-     
+
         for (let i = 0; i < learningPaths.length - 1; i++) {
             if (learningPaths[i].PercentageCompletion === 1) {
                 learningPaths[i]['Disabled'] = false
@@ -34,7 +34,7 @@ export const load: PageServerLoad = async (event) => {
                 learningPaths[i+1]['Disabled'] = true;
             }
        }
-       
+
         // const allCourseContents = await getAllCourseContents(sessionId);
         return {
             sessionId,

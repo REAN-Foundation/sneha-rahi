@@ -1,28 +1,27 @@
 <script>
-	// @ts-nocheck
 	export let id = null;
 	import { createEventDispatcher } from 'svelte';
+
 	const dispatch = createEventDispatcher();
 	export const title = '';
-  let scale =''
-  export let isVideoClosed;
-  $:{
-    isVideoClosed = false;
-  }
-  
-	
-    const onClose = () => {
-        isVideoClosed = true;
+	let scale =''
+	export let isVideoClosed;
+
+	$:{
+		isVideoClosed = false;
+	}
+
+	const onClose = () => {
+		isVideoClosed = true;
 		dispatch('closeVideo');
 	};
-
- 
 
 	let videoInfo = {};
 	videoInfo = fetch(
 		`//www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`
 	).then((res) => res.json());
 </script>
+
 {#if !isVideoClosed}
     {#await videoInfo then { title, width, height }}
     <div class="relative hover:[#00000030]-" style="--aspect-ratio:{width / height || '16/9'}" {title}>
