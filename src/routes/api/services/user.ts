@@ -150,6 +150,10 @@ const getLoginModel = (otp: string, phone: string, loginRoleId: number): LoginMo
 export const searchUsersByName = async (sessionId: string, name?: string, phone?: string) => {
     let url = BACKEND_API_URL + '/patients/search?pbirthDateIndex=0&itemsPerPbirthDate=5';
     if (name) {
+        name = name.trim();
+        if (name.includes(' ')) {
+            name = name.split(' ')[0];
+        }
         url += `&name=${name}`;
     }
     if (phone) {
