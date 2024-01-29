@@ -88,7 +88,7 @@
 				{#each Object.values(communityFeedItems) as news}
 					<div class="mb-6">
 						<a href={`/users/${userId}/newsfeed/${news.id}`}>
-							<h4 class="text-right  text-[13px] font-semibold mb-1">{news.pubDate}</h4>
+							<h4 class="text-right  text-[13px] font-semibold mb-1">{news.pubDate ? news.pubDate : ''}</h4>
 							<div class="flex flex-col items-center justify-center w-[340px] max-[425px]:w-full h-[280px]  rounded-lg bg-[#d7eaf7]">
 								<div class="flex flex-row p-1">
 									<div class="w-[70px] mt-2 ml-2 h-[40px] rounded-lg bg-[#fff]">

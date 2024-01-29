@@ -2,21 +2,28 @@
 	import type { PageServerData } from './$types';
 	import Image from '$lib/components/image.svelte';
 	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
+	import { goto, invalidate, invalidateAll } from '$app/navigation';
 	import { showMessage } from '$lib/utils/message.utils';
 	import { slide } from 'svelte/transition';
 	import Youtube from '$lib/components/youtube-embed/youtube.svelte';
+    import toast, { Toaster } from 'svelte-french-toast';
 
 	/////////////////////////////////////////////////////////////////
 
 	export let data: PageServerData;
 	let learningJourney = data.learningPath;
-	let courseContents = data.courseContentsForLearningPath;
-    courseContents = courseContents.sort((a, b) => {
+    let courseContents;
+	$: {
+        courseContents = data.courseContentsForLearningPath;
+        courseContents = courseContents.sort((a, b) => {
 		return a.Sequence - b.Sequence;
 	});
+    }
+    
 	const userId = data.userId;
 	const learningJourneyId = $page.params.learningJourneyId;
+
+    let isVideoClosed= false;
 
 	function getYouTubeId(url) {
 		let id = '';
@@ -99,9 +106,15 @@
 	};
 
 	const handleCourseCloseClick = async () => {
-		await courseContents
-		 window.location.href = `/users/${userId}/learning-journeys/${learningJourneyId}`
+        console.log('Closed event get called.....');
+		// await courseContents
+		// window.location.href = `/users/${userId}/learning-journeys/${learningJourneyId}`
+        invalidate('app:learning-journeys/learningJourneyId');
 	};
+
+    function showToast() {
+        toast.error("Please follow the sequence!");
+  }
 </script>
 
 <!-- <div
@@ -176,17 +189,21 @@
 			{#each module.Contents as content} -->
 				<button
 					on:click|capture={async (e) => {
-						content.ShowVideo = true;
-						await handleCourseContentClick(
-							e,
-							content.ResourceLink,
-							content.ContentType,
-							content.ActionTemplateId
-						);
-					}}
+						if (!content.Disabled) {
+                            content.ShowVideo = true;
+						    await handleCourseContentClick(
+                                e,
+                                content.ResourceLink,
+                                content.ContentType,
+                                content.ActionTemplateId
+                            );
+                        } else {
+                            showToast();
+                        }
+    				}}
 					id={content.id}
 					name={content.id}
-					disabled={content.Disabled}
+					
 					class="leading-4 tracking-normal font-bold w-[375px] max-[425px]:w-full"
 				>
 					<div class="flex flex-grow-col mb-4">
@@ -201,7 +218,8 @@
 										<h3 class="text-center mb-3 w-full">{content.Title}</h3>
 										<!-- svelte-ignore a11y-media-has-caption -->
 										<!-- <div>  -->
-										<Youtube
+										<Youtube 
+                                            bind:isVideoClosed
 											id={getYouTubeId(content.ResourceLink)}
 											on:closeVideo={handleCourseCloseClick}
 										>

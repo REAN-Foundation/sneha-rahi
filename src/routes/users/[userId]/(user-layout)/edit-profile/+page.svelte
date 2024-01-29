@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageServerData } from './$types';
-
+    import {enhance} from '$app/forms'
 	//////////////////////////////////////////////////////
 
 	export let data: PageServerData;
@@ -37,6 +37,8 @@
 		class="max-[425px]:w-full overflow-auto scrollbar-medium"
 		method="post"
 		action="?/updateProfile"
+        use:enhance
+
 	>
 		<div class="text-[#5B7AA3] mx-2 mt-3 font-semibold">
 			<span>First Name</span>

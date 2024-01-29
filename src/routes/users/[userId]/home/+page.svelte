@@ -139,9 +139,9 @@
 									>
 								</div>
 									<div class="flex flex-col mt-5">
-										<a href={chatLink}>
+										<!-- <a href={chatLink}>
 											<img class="mb-5 max-[425px]:w-full" src="/assets/images/home/png/chat.png" alt="" /></a
-										>
+										> -->
 										<a href={myProfileLink}>
 											<img class="max-[425px]:w-full" src="/assets/images/home/png/my-profile.png" alt="" /></a
 										>

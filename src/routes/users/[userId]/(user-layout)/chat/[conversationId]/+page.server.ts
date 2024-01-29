@@ -1,15 +1,16 @@
 import type { PageServerLoad } from "./$types";
 import { getConversationById, getConversationMessages } from "../../../../../api/services/chat";
 import { BACKEND_API_URL } from '$env/static/private';
-import hrt from 'human-readable-time';
 import { getDateSegregatedMessages } from './conversation.utils';
+import { TimeHelper } from "$lib/utils/time.helper";
 
 ////////////////////////////////////////////////////////////////////////
 
-export const load: PageServerLoad = async (event) => {
-    const userId = event.params.userId;
-    const sessionId = event.cookies.get('sessionId');
-    const conversationId = event.params.conversationId;
+export const load: PageServerLoad = async ({params, cookies, depends}) => {
+    const userId = params.userId;
+    const sessionId = cookies.get('sessionId');
+    const conversationId = params.conversationId;
+    depends('app:chat/conversationId')
     try {
         const messages_ = await getConversationMessages(sessionId, conversationId);
         const messages = await getDateSegregatedMessages(messages_.ConversationMessages);
@@ -45,7 +46,7 @@ const getConversationDetails = (userId, conversation) => {
         lastName: userId === conversation.OtherUser.id ? conversation.InitiatingUser.LastName : conversation.OtherUser.LastName,
         prefix: userId === conversation.OtherUser.id ? conversation.InitiatingUser.Prefix : conversation.OtherUser.Prefix,
         profileImage: profileImage ?? null,
-        lastChatDate: hrt(new Date(conversation.LastMessageTimestamp), '%relative% ago'),
+        lastChatDate: TimeHelper.getHumanReadableDate(conversation.LastMessageTimestamp),
     }
 };
 

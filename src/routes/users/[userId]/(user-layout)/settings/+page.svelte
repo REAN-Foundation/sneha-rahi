@@ -4,7 +4,7 @@
 	import Confirm from '$lib/components/modal/confirm.svelte';
 	import Image from '$lib/components/image.svelte';
 	import { showMessage } from '$lib/utils/message.utils';
-	import { goto } from '$app/navigation';
+	import { goto, invalidate } from '$app/navigation';
 	import toast from 'svelte-french-toast';
 	import { selectedLanguage } from '$lib/store/general.store';
 
@@ -64,7 +64,8 @@
         });
 		const response = await res.json();
 		console.log(JSON.stringify(response, null, 2));
-		window.location.href = `/users/${userId}/settings`;
+		// window.location.href = `/users/${userId}/settings`;
+        invalidate('app:settings');
 	};
 
     const onFileSelected = async (e) => {

@@ -3,6 +3,7 @@
 	import Image from '$lib/components/image.svelte';
 	import { page } from '$app/stores';
 	import toast from 'svelte-french-toast';
+	import { goto, invalidate } from '$app/navigation';
 
 	export let data: PageServerData;
 	let favourites = data.favouriteConversations;
@@ -72,8 +73,10 @@
 		const conversation = JSON.parse(resp);
 		if (conversation) {
 			const redirectPath = `/users/${userId}/chat/${conversation.id}`;
-			console.log(redirectPath);
-			window.location.href = redirectPath;
+			// console.log(redirectPath);
+			// window.location.href = redirectPath;
+            // invalidate('app:chat/conversationId');
+            goto(redirectPath);
 		}
 		else {
 			console.log(`Conversation not found! Starting new one`);
@@ -92,9 +95,10 @@
 			console.log(`conversation found: `, JSON.stringify(resp, null, 2));
 			const conversation = JSON.parse(resp);
 			if (conversation) {
-				const redirectPath = `/users/${userId}/chat/${conversation.id}`;
-				console.log(redirectPath);
-				window.location.href = redirectPath;
+				// const redirectPath = `/users/${userId}/chat/${conversation.id}`;
+				// console.log(redirectPath);
+				// window.location.href = redirectPath;
+                invalidate('app:chat/conversationId');
 			}
 			else {
 				toast.error('Unable to start conversation!')
@@ -126,7 +130,8 @@
 		else {
 			toast.error('Unable to delete chat');
 		}
-		window.location.href = `/users/${userId}/chat`;
+		// window.location.href = `/users/${userId}/chat`;
+        invalidate('app:chat')
 	};
 
 </script>
