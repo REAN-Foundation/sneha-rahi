@@ -4,6 +4,7 @@
 	import { page } from '$app/stores';
 	import type { PageServerData } from './$types';
 	import { browser } from "$app/environment";
+	import { invalidate } from '$app/navigation';
 
 	// import { onMount } from 'svelte';
 
@@ -88,7 +89,8 @@
 				history.forward();
 			}
 			else {
-				window.location.href = `/users/${userId}/learning-journeys/${learningJourneyId}`;
+				// window.location.href = `/users/${userId}/learning-journeys/${learningJourneyId}`;
+                invalidate('app:learning-journeys/learningJourneyId');
 			}
 		}
 	};
@@ -145,7 +147,7 @@
 		</button>
 	</div>
 	<!-- <div class="flex justify-center"> -->
-	<div class="flex ">	
+	<div class="flex ">
 		{#if alreadyAnswered}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div class="link w-[100%]" on:click={goForwardInHistory}>

@@ -10,6 +10,7 @@
 	import { selectedLanguage } from '$lib/store/general.store';
 	import english from '$lib/localization/english.json';
 	import hinglish from '$lib/localization/hinglish.json';
+	import { enhance } from '$app/forms';
 
 	/////////////////////////////////////////////////////////////////
 
@@ -75,7 +76,10 @@
 						{localizedContent.SignUpDescription}
 					</p>
 				</div>
-				<form class="max-[425px]:w-full" method="post">
+				<form class="max-[425px]:w-full"
+                    method="post"
+                    use:enhance
+                    >
 					<!-- <div class="text-[#5B7AA3] mx-2 mt-1 py-2 px-3 font-semibold text-start">
 						<span>First Name</span>
 					</div> -->

@@ -1,10 +1,13 @@
 <script lang="ts">
 	import Image from '$lib/components/image.svelte';
 	import type { PageServerData } from './$types';
+    import toast, { Toaster } from 'svelte-french-toast';
 
 	export let data: PageServerData;
 	let myLearningJourneys = data.userLearningPaths?.UserLearningPaths;
 	let allLearningJourneys = data.allLearningPaths?.LearningPaths.Items;
+
+
 	// allLearningJourneys = allLearningJourneys.sort((a, b) => { return a.Name - b.Name; });
 	// let allCourses = data.allCourseContents?.CourseContents?.Items;
 	// allCourses = allCourses.sort((a, b) => {
@@ -39,6 +42,16 @@
 			}
 		});
 	}
+
+    function showToast() {
+        toast.error("Please follow the sequence!");
+  }
+
+  function handleKeyPress(event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      showToast();
+    }
+  }
 </script>
 
 <!-- <div class="card card-compact w-[375px] h-[701px] card-bordered border-slate-200  bg-base-100  rounded-none rounded-t-[44px] shadow-sm "> -->
@@ -48,125 +61,65 @@
 		MY LEARNING
 	</h2>
 
-		{#if myLearningJourneys.length == 0}
+		{#if allLearningJourneys.length === 0 }
 			<h3 class="mb-3 mt-1 font-semibold text-center">
 				You have not yet started learning journey!
 			</h3>
 		{:else}
-		<div class="overflow-auto scrollbar-medium min-h-0 max-h-[200px]">
-			{#each myLearningJourneys as journey}
-				<div class="flex flex-row">
-					<Image
-						cls="mb-2 rounded-md"
-						source={journey.ImageUrl + '?disposition=inline'}
-						w="40"
-						h="40"
-					/>
-					<!-- <img class="mb-2 " src="/assets/learning-home/svg/about-anaemia.svg" alt="" /> -->
-					<div class="mx-2 w-[250px] max-[425px]:w-full">
-						<h3 class="mb-4 mt-1">{journey.Name}</h3>
-						<div class=" bg-[#c5e8c5] rounded-full h-[10px]">
-							<div
-								class="bg-[#70ae6e] rounded-full h-[10px]"
-								style={'width:' + (journey.PercentageCompletion * 100).toString() + '%'}
-							/>
-						</div>
-					</div>
-					<div class="mt-7 font-bold">
-						{(journey.PercentageCompletion * 100).toFixed().toString()}%
-					</div>
-				</div>
+		<div class="overflow-auto scrollbar-medium min-h-[600px] max-h-[650px]">
+			{#each allLearningJourneys as learningJourney}
+                {#if !learningJourney.Disabled}
+                    <a href={`/users/${data.userId}/learning-journeys/${learningJourney.id}`}>
+                        <div class="flex flex-row">
+                            <Image
+                                cls="mb-2 rounded-md"
+                                source={learningJourney.ImageUrl + '?disposition=inline'}
+                                w="80"
+                                h="80"
+                            />
+                            <!-- <img class="mb-2 " src="/assets/learning-home/svg/about-anaemia.svg" alt="" /> -->
+                            <div class="mx-2 w-[250px] max-[425px]:w-full">
+                                <!-- <h3 class="mb-5 mt-1">{learningJourney.Name}</h3> -->
+                                <h3 class="mb-5 mt-5 font-semibold text-center tracking-normal text-ellipsis">
+									{learningJourney.Name.length > 20 ? learningJourney.Name.substring(0, 18) + '...' : learningJourney.Name}
+								</h3>
+                                <div class="bg-[#c5e8c5] rounded-full h-[10px]">
+                                    <div
+                                        class="bg-[#70ae6e] rounded-full h-[10px]"
+                                        style={'width:' + (learningJourney.PercentageCompletion * 100).toString() + '%'}
+                                    />
+                                </div>
+                            </div>
+                            <div class="mt-7 font-bold">
+                                {(learningJourney.PercentageCompletion * 100).toFixed().toString()}%
+                            </div>
+                        </div>
+                    </a>
+                {:else}
+                    <div on:click={showToast} on:keydown={handleKeyPress} class="flex flex-row">
+                        <Image
+                            cls="mb-2 rounded-md"
+                            source={learningJourney.ImageUrl + '?disposition=inline'}
+                            w="80"
+                            h="80"
+                        />
+                        <!-- <img class="mb-2 " src="/assets/learning-home/svg/about-anaemia.svg" alt="" /> -->
+                        <div class="mx-2 w-[250px] max-[425px]:w-full">
+                            <h3 class="mb-5 mt-3">{learningJourney.Name}</h3>
+                            <div class=" bg-[#c5e8c5] rounded-full h-[10px]">
+                                <div
+                                    class="bg-[#70ae6e] rounded-full h-[10px]"
+                                    style={'width:' + (learningJourney.PercentageCompletion * 100).toString() + '%'}
+                                />
+                            </div>
+                        </div>
+                        <div class="mt-7 font-bold">
+                            {(learningJourney.PercentageCompletion * 100).toFixed().toString()}%
+                        </div>
+                    </div>
+                {/if}
 			{/each}
 		</div>
 	{/if}
-	
-	<div class="w-[340px] max-[425px]:w-full">
-		<div class="flex mb-4 relative">
-			<h2 class="text-xl ">Learning Journeys</h2>
-		</div>
-		{#if myLearningJourneys.length > 0}
-		<div class="overflow-auto scrollbar-medium min-h-[400px] max-h-[450px] w-[340px] max-[425px]:w-full">
-			<div class="grid grid-cols-2 gap-4">
-				{#each allLearningJourneys as learningJourney}
-					<a href={`/users/${data.userId}/learning-journeys/${learningJourney.id}`}>
-							<div class=" flex-col justify-center">
-								{#if learningJourney.ImageUrl == null}
-									<img
-										class="mb-4 w-[162px] h-[162px] "
-										src="/assets/images/learning-home/svg/growing-up-affect.svg"
-										alt=""
-									/>
-								{:else}
-									<Image
-										cls="mt-2 mb-3 mr-1 rounded"
-										source={learningJourney.ImageUrl + '?disposition=inline'}
-										w="162"
-										h="162"
-									/>
-								{/if}
-								<h3 class="font-semibold text-center tracking-normal text-ellipsis">
-									{learningJourney.Name.length > 20 ? learningJourney.Name.substring(0, 18) + '...' : learningJourney.Name}
-								</h3>
-							</div>	
-				</a>
-				{/each}
-				<!-- <a href="/course-home">
-						<div class=" flex-col justify-center mb-6 ">
-							<img
-								class="mb-4 w-[162px] h-[162px] "
-								src="/assets/learning-home/svg/growing-up-affect.svg"
-								alt=""
-							/>
-							<h3 class="text-center">How does growing up affect me?</h3>
-						</div>
-					</a>
-					<div class=" flex-col justify-center mb-6">
-						<img class=" mb-4 " src="/assets/learning-home/svg/anaemia.svg" alt="" />
-						<h3 class="text-center">All about Anaemia</h3>
-					</div>
-					<div class=" flex-col justify-center mb-6">
-						<img class=" mb-4 " src="/assets/learning-home/svg/emotions.svg" alt="" />
-						<h3 class="text-center">Understanding my Emotions</h3>
-					</div>
-					<div class=" flex-col justify-center mb-6">
-						<img
-							class=" mb-4 "
-							src="/assets/learning-home/svg/female-reproductive-health.svg"
-							alt=""
-						/>
-						<h3 class="text-center">Female reproductive health</h3>
-					</div> -->
-			</div>
-		</div>
-		{:else}
-		<div class="overflow-auto scrollbar-medium h-[500px] w-[340px] max-[425px]:w-full">
-			<div class="grid grid-cols-2 gap-4">
-				{#each allLearningJourneys as learningJourney}
-					<a href={`/users/${data.userId}/learning-journeys/${learningJourney.id}`}>
-							<div class=" flex-col justify-center">
-								{#if learningJourney.ImageUrl == null}
-									<img
-										class="mb-4 w-[162px] h-[162px] "
-										src="/assets/images/learning-home/svg/growing-up-affect.svg"
-										alt=""
-									/>
-								{:else}
-									<Image
-										cls="mt-2 mb-3 mr-1 rounded"
-										source={learningJourney.ImageUrl + '?disposition=inline'}
-										w="162"
-										h="162"
-									/>
-								{/if}
-								<h3 class="font-semibold text-center tracking-normal text-ellipsis">
-									{learningJourney.Name.length > 20 ? learningJourney.Name.substring(0, 18) + '...' : learningJourney.Name}
-								</h3>
-							</div>	
-				</a>
-				{/each}
-			</div>
-		</div>
-		{/if}
-	</div>
 </div>
 <!-- </div> -->

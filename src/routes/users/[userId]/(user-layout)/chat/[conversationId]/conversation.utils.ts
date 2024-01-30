@@ -1,6 +1,7 @@
-import hrt from 'human-readable-time';
 
 ////////////////////////////////////////////////////////////////////////
+
+import { TimeHelper } from "$lib/utils/time.helper";
 
 export const getConversationDetails = (userId, conversation) => {
     //console.log(`x = ${JSON.stringify(conversation, null, 2)}`);
@@ -14,7 +15,7 @@ export const getConversationDetails = (userId, conversation) => {
         lastName: userId === conversation.OtherUser.id ? conversation.InitiatingUser.LastName : conversation.OtherUser.LastName,
         prefix: userId === conversation.OtherUser.id ? conversation.InitiatingUser.Prefix : conversation.OtherUser.Prefix,
         profileImage: profileImage ?? null,
-        lastChatDate: hrt(new Date(conversation.LastMessageTimestamp), '%relative% ago'),
+        lastChatDate: TimeHelper.getHumanReadableDate(conversation.LastMessageTimestamp),
     }
 };
 

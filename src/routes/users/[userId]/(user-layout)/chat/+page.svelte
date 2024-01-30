@@ -3,11 +3,12 @@
 	import Image from '$lib/components/image.svelte';
 	import { page } from '$app/stores';
 	import toast from 'svelte-french-toast';
+	import { goto, invalidate } from '$app/navigation';
 
 	export let data: PageServerData;
 	let favourites = data.favouriteConversations;
 	let recentUsers = data.recentConversations;
-	console.log('Favourites users',`${JSON.stringify(favourites, null, 2)}`);
+    console.log('Favourites users',`${JSON.stringify(favourites, null, 2)}`);
 	console.log('Recent users',`${JSON.stringify(recentUsers, null, 2)}`);
 
 	const ENTER_KEY_CODE = 13;
@@ -37,10 +38,10 @@
 		const keyCode = e.keyCode;
 		if (keyCode == ENTER_KEY_CODE) {
 			const text = searchInput.value;
-			if (text.length > 2) {
-				await searchUsers(text);
-			}
-		}
+			if (text) {
+                await searchUsers(text);
+            }
+    	}
 	}
 
 	const searchUsers = async (text) => {
@@ -72,8 +73,10 @@
 		const conversation = JSON.parse(resp);
 		if (conversation) {
 			const redirectPath = `/users/${userId}/chat/${conversation.id}`;
-			console.log(redirectPath);
-			window.location.href = redirectPath;
+			// console.log(redirectPath);
+			// window.location.href = redirectPath;
+            // invalidate('app:chat/conversationId');
+            goto(redirectPath);
 		}
 		else {
 			console.log(`Conversation not found! Starting new one`);
@@ -92,9 +95,10 @@
 			console.log(`conversation found: `, JSON.stringify(resp, null, 2));
 			const conversation = JSON.parse(resp);
 			if (conversation) {
-				const redirectPath = `/users/${userId}/chat/${conversation.id}`;
-				console.log(redirectPath);
-				window.location.href = redirectPath;
+				// const redirectPath = `/users/${userId}/chat/${conversation.id}`;
+				// console.log(redirectPath);
+				// window.location.href = redirectPath;
+                invalidate('app:chat/conversationId');
 			}
 			else {
 				toast.error('Unable to start conversation!')
@@ -126,7 +130,8 @@
 		else {
 			toast.error('Unable to delete chat');
 		}
-		window.location.href = `/users/${userId}/chat`;
+		 window.location.href = `/users/${userId}/chat`;
+        // invalidate('app:chat')
 	};
 
 </script>
@@ -235,8 +240,8 @@
 				<h3 class="m-1">No recent conversations!</h3>
 			{:else}
 				{#each recentUsers as conversation}
-
-						<div class="grid grid-flex-rows-6 mb-3 gap-2 mt-2">
+                    {#if conversation.lastChatDate}
+                        <div class="grid grid-flex-rows-6 mb-3 gap-2 mt-2">
 							<div class="grid grid-flow-col ">
 								<a href={`/users/${userId}/chat/${conversation.id}`}>
 								<!-- <img src="/assets/chat/png/account-img-1.png" alt="" /> -->
@@ -264,7 +269,7 @@
 								</div>
 							</div>
 						</div>
-
+                        {/if}
 				{/each}
 			{/if}
 

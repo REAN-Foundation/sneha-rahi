@@ -2,9 +2,9 @@
 import type { PageServerLoad } from "./$types";
 import {  getConversationById, getConversationMessages, getConversationsBetweenTwoUsers, startConversation } from "../../../../api/services/chat";
 import { ASK_SNEHA_USER_ID, BACKEND_API_URL } from '$env/static/private';
-import hrt from 'human-readable-time';
 import { getUserById } from "../../../../api/services/user";
 import { getDateSegregatedMessages } from "../chat/[conversationId]/conversation.utils";
+import { TimeHelper } from "$lib/utils/time.helper";
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -57,7 +57,7 @@ const getConversationDetails = (userId, x) => {
         lastName: userId === x.OtherUser.id ? x.InitiatingUser.LastName : x.OtherUser.LastName,
         prefix: userId === x.OtherUser.id ? x.InitiatingUser.Prefix : x.OtherUser.Prefix,
         profileImage: profileImage ?? null,
-        lastChatDate: hrt(new Date(x.LastMessageTimestamp), '%relative% ago'),
+        lastChatDate: TimeHelper.getHumanReadableDate(x.LastMessageTimestamp),
     }
 }
 

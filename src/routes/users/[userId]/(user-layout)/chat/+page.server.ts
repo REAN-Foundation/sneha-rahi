@@ -1,8 +1,7 @@
 import type { PageServerLoad } from "./$types";
 import { getMyFavouriteConversations, getMyRecentConversations } from "../../../../api/services/chat";
-import hrt from 'human-readable-time';
 import { BACKEND_API_URL, ASK_SNEHA_USER_ID } from "$env/static/private";
-
+import { TimeHelper } from "$lib/utils/time.helper";
 ////////////////////////////////////////////////////////////////////////
 
 const getConversationDetails = (userId, x) => {
@@ -18,15 +17,15 @@ const getConversationDetails = (userId, x) => {
         lastName: userId === x.OtherUser.id ? x.InitiatingUser.LastName : x.OtherUser.LastName,
         prefix: userId === x.OtherUser.id ? x.InitiatingUser.Prefix : x.OtherUser.Prefix,
         profileImage: profileImage ?? null,
-        lastChatDate: hrt(new Date(x.LastMessageTimestamp), '%relative% ago'),
+        lastChatDate: TimeHelper.getHumanReadableDate(x.LastMessageTimestamp),
     }
 }
 
 
-export const load: PageServerLoad = async (event) => {
+export const load: PageServerLoad = async ({cookies, params, depends}) => {
     try {
-        const sessionId = event.cookies.get('sessionId');
-        const userId = event.params.userId;
+        const sessionId = cookies.get('sessionId');
+        const userId = params.userId;
         const askSnehaUserId = ASK_SNEHA_USER_ID;
         const favouriteConversations_ = await getMyFavouriteConversations(sessionId, userId);
         const recentConversations_ = await getMyRecentConversations(sessionId, userId);
@@ -34,6 +33,7 @@ export const load: PageServerLoad = async (event) => {
         const recentConversationsWithoutSnahaUser = recentConversations_.Conversations.filter((Conversations) => Conversations.OtherUserId != askSnehaUserId );
         const favouriteConversations = favouriteConversations_.Conversations.map(x => getConversationDetails(userId, x));
         const recentConversations = recentConversationsWithoutSnahaUser.map(x => getConversationDetails(userId, x));
+        depends('app:chat');
         return {
             sessionId,
             userId,
