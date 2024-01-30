@@ -20,7 +20,7 @@
 	});
     }
     
-	const userId = data.userId;
+    const userId = data.userId;
 	const learningJourneyId = $page.params.learningJourneyId;
 
     let isVideoClosed= false;
@@ -216,6 +216,7 @@
                                 e,
                                 content.ResourceLink,
                                 content.ContentType,
+                                content.id,
                                 content.ActionTemplateId
                                 );
                             }
