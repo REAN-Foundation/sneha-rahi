@@ -130,7 +130,7 @@
 		else {
 			toast.error('Unable to delete chat');
 		}
-		 window.location.href = `/users/${userId}/chat`;
+		window.location.href = `/users/${userId}/chat`;
         // invalidate('app:chat')
 	};
 
