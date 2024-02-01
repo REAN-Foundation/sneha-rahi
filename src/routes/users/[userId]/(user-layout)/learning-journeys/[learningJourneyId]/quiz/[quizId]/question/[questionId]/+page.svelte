@@ -147,7 +147,7 @@
 		</button>
 	</div>
 	<!-- <div class="flex justify-center"> -->
-	<div class="flex ">
+	<div class="flex ">	
 		{#if alreadyAnswered}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div class="link w-[100%]" on:click={goForwardInHistory}>

@@ -19,8 +19,8 @@
 		return a.Sequence - b.Sequence;
 	});
     }
-
-	const userId = data.userId;
+    
+    const userId = data.userId;
 	const learningJourneyId = $page.params.learningJourneyId;
 
     let isVideoClosed= false;
@@ -61,11 +61,12 @@
 		e,
 		resourceLink: string,
 		contentType: string,
+        contentId: string,
 		actionTemplateId?: string
 	) => {
-		console.log(e.currentTarget);
-		const contentId = e.currentTarget.id;
-		console.log(`contentId = ${contentId}`);
+		// console.log(e.currentTarget);
+		// const contentId = e.currentTarget.id;
+		// console.log(`contentId = ${contentId}`);
 
 		if (contentType === 'Video') {
 			const videoModel = {
@@ -115,6 +116,25 @@
     function showToast() {
         toast.error("Please follow the sequence!");
   }
+
+  const handleCourseCompleteEvent = async (e) => {
+        console.log('Course complete event get called.....');
+        await handleCourseContentClick(
+							e,
+							e.detail.content.ResourceLink,
+							e.detail.content.ContentType,
+                            e.detail.content.id,
+							e.detail.content.ActionTemplateId,
+						);
+		// await courseContents
+		// window.location.href = `/users/${userId}/learning-journeys/${learningJourneyId}`
+        invalidate('app:learning-journeys/learningJourneyId');
+	};
+
+    const handleCourseClosedClick = () => {
+        invalidate('app:learning-journeys/learningJourneyId');
+    }
+
 </script>
 
 <!-- <div
@@ -191,19 +211,22 @@
 					on:click|capture={async (e) => {
 						if (!content.Disabled) {
                             content.ShowVideo = true;
-						    await handleCourseContentClick(
+                            if (content.ContentType === 'Assessment') {
+                                await handleCourseContentClick(
                                 e,
                                 content.ResourceLink,
                                 content.ContentType,
+                                content.id,
                                 content.ActionTemplateId
-                            );
-                        } else {
+                                );
+                            }
+						} else {
                             showToast();
                         }
     				}}
 					id={content.id}
 					name={content.id}
-
+					
 					class="leading-4 tracking-normal font-bold w-[375px] max-[425px]:w-full"
 				>
 					<div class="flex flex-grow-col mb-4">
@@ -218,10 +241,12 @@
 										<h3 class="text-center mb-3 w-full">{content.Title}</h3>
 										<!-- svelte-ignore a11y-media-has-caption -->
 										<!-- <div>  -->
-										<Youtube
+										<Youtube 
                                             bind:isVideoClosed
-											id={getYouTubeId(content.ResourceLink)}
-											on:closeVideo={handleCourseCloseClick}
+                                            content={content}
+											videoId={getYouTubeId(content.ResourceLink)}
+                                            on:completedVideo={handleCourseCompleteEvent}
+                                            on:closeVideo={handleCourseClosedClick}
 										>
 											<!-- <button /> -->
 										</Youtube>

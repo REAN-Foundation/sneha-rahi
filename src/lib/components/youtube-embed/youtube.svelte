@@ -1,48 +1,48 @@
-<script>
-	export let id = null;
-	import { createEventDispatcher } from 'svelte';
+<script lang="ts">
+	import { onMount } from 'svelte';
+    import YouTubePlayer from 'youtube-player';
+    import { createEventDispatcher } from 'svelte';
 
-	const dispatch = createEventDispatcher();
+    const dispatch = createEventDispatcher();
+
 	export const title = '';
-	let scale =''
-	export let isVideoClosed;
+    export let isVideoClosed;
+    export let content;
 
-	$:{
-		isVideoClosed = false;
-	}
-
-	const onClose = () => {
-		isVideoClosed = true;
+    $:{
+        isVideoClosed = false;
+    }
+  
+    const onClose = () => {
+        isVideoClosed = true;
 		dispatch('closeVideo');
 	};
 
-	let videoInfo = {};
-	videoInfo = fetch(
-		`//www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`
-	).then((res) => res.json());
+    export let videoId: string;
+    let videoElement: HTMLDivElement | null = null;
+    let player: ReturnType<typeof YouTubePlayer> | null = null;
+
+    onMount(() => {
+        if (videoElement) {
+            player = YouTubePlayer(videoElement);
+            player.loadVideoById(videoId); 
+            player.playVideo();
+            player.on('stateChange', function (event) {
+                //Caturing video ended event
+                if (event.data === 0) {
+                    isVideoClosed = true;
+                    dispatch('completedVideo',{
+                        content
+                    });
+                }
+            });
+        }
+    })
+
 </script>
-
 {#if !isVideoClosed}
-    {#await videoInfo then { title, width, height }}
-    <div class="relative hover:[#00000030]-" style="--aspect-ratio:{width / height || '16/9'}" {title}>
-    <button on:click={() => onClose()} class="absolute right-2 text-white top-6">X</button>
-        <iframe
-            src="https://www.youtube.com/embed/{id}?autoplay=1&rel=0&enablejsapi=1"
-            {title}
-            frameborder="0"
-            allow="autoplay; picture-in-picture; clipboard-write"
-            allowfullscreen
-            in:scale={{ delay: 500, duration: 800 }}
-        />
+    <div class="relative">
+        <div bind:this={videoElement} class="h-48 max-h-full max-w-full"></div>
+        <button on:click={() => onClose()} class="absolute right-6 text-white top-4" >X</button>
     </div>
-    {/await}
 {/if}
-
-
-<style>
-	iframe {
-		height: auto;
-		aspect-ratio: var(--aspect-ratio);
-		width: 100%;
-	}
-</style>
