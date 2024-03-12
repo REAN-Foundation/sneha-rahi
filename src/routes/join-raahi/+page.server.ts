@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { error, type RequestEvent } from '@sveltejs/kit';
+import { error, fail, type RequestEvent } from '@sveltejs/kit';
 import { getOrganizations, registerUser } from '../api/services/user';
 import { errorMessage, successMessage } from '$lib/utils/message.utils';
 import { redirect } from 'sveltekit-flash-message/server';
@@ -42,13 +42,34 @@ export const actions = {
 		const birthDate = data.has('birthDate') ? data.get('birthDate') : null;
 		const organization_ = data.has('organization') ? data.get('organization') : null;
 		const phone = data.has('phone') ? data.get('phone') : null;
+		const gender = data.get('gender');
 		const location_ = data.has('location') ? data.get('location') : null;
 		// const locationId = data.has('locationId') ? data.get('locationId') : null;
-
+		console.log("Gender is",gender);
 		if (!phone && !countryCode) {
 			throw error(400, `Phone is not valid!`);
 		}
+		//////////////////////////////////
+		const errors: Record<string, unknown> = {}
 
+    	if (!phone || !(phone.length==10)) {
+          errors.phone = 'Not a valid number'
+    	}
+
+       // in case of an error return the data and errors
+    	if (Object.keys(errors).length > 0) {
+      const dataShow = {
+        dataShow: Object.fromEntries(data),
+        errors
+     	 }
+     	 return fail(400, dataShow)
+    	}
+		// if (!phone || !countryCode ||!(phone.length==10)) {
+		// 	throw error(400, `Phone number is not valid!`);
+		// 	// throw redirect(400, '/join-raahi', errorMessage(`Phone is not valid!`));
+
+		// }
+		///////////////////////////////////////////
 		const organization = Helper.truncateText(organization_.valueOf() as string, 200);
 		const location = Helper.truncateText(location_.valueOf() as string, 200);
 
@@ -57,6 +78,7 @@ export const actions = {
 			lastName.valueOf() as string,
 			birthDate.valueOf() as Date,
 			phone.valueOf() as string,
+			gender.valueOf() as string,
 			organization,
 			location,
 			// locationId?.valueOf() as string

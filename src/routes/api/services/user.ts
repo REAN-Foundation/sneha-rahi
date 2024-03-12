@@ -47,6 +47,7 @@ export const registerUser = async (
     lastName: string,
     birthDate: Date,
     phone: string,
+    gender: string,
     organization: string,
     location: string,
     // locationId: string
@@ -63,6 +64,7 @@ export const registerUser = async (
         LastName: lastName,
         BirthDate: birthDate,
         Phone: phone,
+        Gender: gender,
         // CohortId:locationId,
         OtherInformation:otherInformation
     };
@@ -185,6 +187,7 @@ export const updateProfile = async (
     lastName: string,
     birthDate: Date,
     phone: string,
+    gender:string,
     organization: string,
     location: string
 ) => {
@@ -198,6 +201,7 @@ export const updateProfile = async (
         LastName: lastName,
         BirthDate: birthDate,
         Phone: phone,
+        Gender: gender,
         OtherInformation:otherInformation
     };
     if (Helper.isPhone(phone)) {

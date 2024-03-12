@@ -15,9 +15,9 @@ const config = {
 		//adapter: adapter(),
 		adapter: adapter({ out: 'build' }),
 		// Only for using ngrok
-		// csrf: {
-		// 	checkOrigin: false,
-		//   }
+		csrf: {
+			checkOrigin: false,
+		  }
 	  
 	}
 };
