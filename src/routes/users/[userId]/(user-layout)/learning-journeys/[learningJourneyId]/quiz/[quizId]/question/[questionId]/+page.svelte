@@ -94,14 +94,32 @@
 			}
 		}
 	};
-
 </script>
+<style>
+	.container {
+	  height: 400px;
+	  overflow-y: auto; /* Enable vertical scrollbar */
+	  scrollbar-width: thick; /* Set the width of the scrollbar (for Firefox) */
+	}
+  
+	/* For WebKit browsers (Chrome, Safari) */
+	.container::-webkit-scrollbar {
+	  width: 8px; /* Set the width of the scrollbar */
+	}
+	
+	.container::-webkit-scrollbar-thumb {
+	  background-color: #888; /* Set the color of the scrollbar thumb */
+	  height:1%;
+	}
+  </style>
+<!-- <div class="container">   -->
 <div class="card-body ">
 	<!-- <button class="h-[5px] w-[73px] bg-[#e3e3e3] flex ml-36 mt-2 rounded" /> -->
 	<h3 class=" text-[#5b7aa3] flex tracking-widest justify-center font-bold text-base ">
 		QUIZ
 	</h3>
 	<h3 class="text-[#5b7aa3] justify-center">{data.quiz.Title}</h3>
+
 	<div class="flex mb-2 ">
 		<h2 class=" text-center text-base font-bold ">
 			{data.currentQuestion.Sequence} of {data.quiz.TotalNumberOfQuestions}
@@ -114,7 +132,8 @@
 		/>
 	</div>
 	<!-- {#if !(questionPointer > answers.length - 1)} -->
-	<div class="h-[400px] overflow-auto scrollbar-medium">
+	<div class="container"> 
+	  <!-- <div class="h-[400px] overflow-auto scrollbar-medium"> -->
 		<p class=" text-left mt-3 mb-3 font-bold text-lg">
 			{data.currentQuestion.Title}
 		</p>
@@ -134,6 +153,7 @@
 				on:answerSelected={onAnswerSelected}>
 			</QuizSingleChoice>
 		{/if}
+	  <!-- </div> -->
 	</div>
 	<div class="flex justify-center">
 		<button
@@ -159,3 +179,4 @@
 		{/if}
 	</div>
 </div>
+<!-- </div> -->
