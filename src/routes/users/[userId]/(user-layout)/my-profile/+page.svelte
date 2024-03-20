@@ -21,6 +21,8 @@
 			? data.user.User.Person.FirstName + ' ' + data.user.User.Person.LastName
 			: null;
 	let Age = data.user.User.Person.Age;
+		let GenderType=data.user.User.Person.Gender;
+		console.log("Gender type of user is",GenderType);
 
     let location = '';
 	const otherInformationString = data.user.HealthProfile?.OtherInformation;
@@ -59,7 +61,11 @@
 				<Image cls="flex rounded-full h-16 w-16" source={avatarSource} w="72" h="72" />
 				<!-- <img class="flex h-24 w-24 rounded-full" src={avatarSource} alt="d" /> -->
 			{:else}
-				<img src="/assets/images/my-profile/png/my-profile-pic.png" alt="" />
+				{#if GenderType==="Male"}
+				<img src="/assets/images/my-profile/png/sign-in-profile-3.png" alt="" />
+				{:else}
+					<img src="/assets/images/my-profile/png/my-profile-pic.png" alt="" />
+				{/if}
 			{/if}
 			<div class="flex flex-col ml-6  ">
 				<h3 class="text-left mt-2 ml-[2px] mb-2 font-bold">{FullName}</h3>
