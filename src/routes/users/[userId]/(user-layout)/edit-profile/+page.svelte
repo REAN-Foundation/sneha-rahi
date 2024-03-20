@@ -124,15 +124,6 @@
 			class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
 		/>
 		<div class="text-[#5B7AA3] mx-2 mt-3 font-semibold">
-			<span>Organization</span>
-		</div>
-		<input
-			placeholder="Enter Organization"
-			name="organization"
-			value={organization}
-			class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
-		/>
-		<div class="text-[#5B7AA3] mx-2 mt-3 font-semibold">
 			<span>Location</span>
 		</div>
 		<input
