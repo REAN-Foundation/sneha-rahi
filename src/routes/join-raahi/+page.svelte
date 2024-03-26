@@ -127,7 +127,7 @@
 						type="date"
 						name="birthDate"
 						required
-					 	class="h-[52px] w-[340px] max-[425px]:max-w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg "
+						class="h-[52px] w-[340px] max-[425px]:max-w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg "
 											
 						/>
 					<div class="flex flex-row">
@@ -150,7 +150,7 @@
 					 {/if}
 
 					 <select id="dropdown" name="gender" required class=" h-[52px] w-[337px] max-[360px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg ">
-						<option value="" disabled selected hidden>Enter gender</option>
+						<option value="" disabled selected hidden>Select gender</option>
 						<option value="Male">Male</option>
 						<option value="Female">Female</option>
 					</select>

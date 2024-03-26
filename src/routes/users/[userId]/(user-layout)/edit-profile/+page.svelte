@@ -96,7 +96,7 @@
 			placeholder="Phone Number"
 			type="number"
 			name="phone"
-			value={(form?.dataShow?.phone) ?? ''}
+			bind:value={phone}
 			required
 			class=" h-[52px] w-[280px] max-[400px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
 		/>
@@ -109,7 +109,7 @@
 			<span>Gender</span>
 		</div>
 		<select id="dropdown" name="gender" required bind:value={gender} class=" h-[52px] w-[337px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg ">
-			<option value="" disabled selected hidden>Enter gender</option>
+			<option value="" disabled selected hidden>Select gender</option>
 			<option value="Male">Male</option>
 			<option value="Female">Female</option>
 		</select>
