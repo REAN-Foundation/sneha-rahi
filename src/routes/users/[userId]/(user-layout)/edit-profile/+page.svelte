@@ -4,14 +4,18 @@
 	//////////////////////////////////////////////////////
 
 	export let data: PageServerData;
+	export let form;
 	let birthDate = new Date(data.user.User.Person.BirthDate).toISOString().split('T')[0];
 	let firstName = data.user.User.Person.FirstName;
 	let lastName = data.user.User.Person.LastName;
 	let phone = data.user.User.Person.Phone;
 	phone = phone.startsWith('+91') ? phone.replace('+91-', '') : phone;
+	let gender = data.user.User.Person.Gender;
+
 	// let addresses = data.user.User.Person.Addresses;
 	let location = '';
 	let organization = '';
+	
 	// if (addresses.length > 0) {
 	// 	let address = addresses[0];
 	// 	location = address.AddressLine ?? address.City;
@@ -74,14 +78,35 @@
 		<div class="text-[#5B7AA3] mx-2 mt-3 font-semibold">
 			<span>Phone</span>
 		</div>
-		<input
+		
+
+		<div class="flex flex-row">
+			<label
+			for="+91"
+			class=" h-[52px] w-[60px] max-[40px]:w-full py-2 px-3 border rounded-lg mr-[0.375rem] bg-[#DFE7FD] mt-1 text-lg "
+			>+91</label>
+			<input
 			placeholder="Phone Number"
-			type=""
+			type="number"
 			name="phone"
-			required
 			bind:value={phone}
-			class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
+			required
+			class=" h-[52px] w-[280px] max-[400px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
 		/>
+		</div>
+		{#if form?.errors?.phone}
+		<p class="error mt-2" style="color: red">Invalid phone number!</p>
+		 {/if}
+
+		 <div class="text-[#5B7AA3] mx-2 mt-3 font-semibold">
+			<span>Gender</span>
+		</div>
+		<select id="dropdown" name="gender" required bind:value={gender} class=" h-[52px] w-[337px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg ">
+			<option value="" disabled selected hidden>Select gender</option>
+			<option value="Male">Male</option>
+			<option value="Female">Female</option>
+		</select>
+
 		<div class="text-[#5B7AA3] mx-2 mt-3 font-semibold">
 			<span>Organization</span>
 		</div>

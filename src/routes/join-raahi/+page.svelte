@@ -11,6 +11,10 @@
 	import english from '$lib/localization/english.json';
 	import hinglish from '$lib/localization/hinglish.json';
 	import { enhance } from '$app/forms';
+	import Error from '$lib/components/icons/error.icon.svelte';
+	export let form
+ 
+  
 
 	/////////////////////////////////////////////////////////////////
 
@@ -29,7 +33,28 @@
 	onMount(() => {
 		show(data);
 		LocalStorageUtils.removeItem('prevUrl');
-	});
+		});
+
+	// const onSelectOrganizationName = async (e) => {
+	// 	let organizationId = e.currentTarget.value;
+	// 	await searchLocation({
+	// 		tenantId: organizationId
+	// 	});
+	// };
+
+	// async function searchLocation(model) {
+	// 	let url = `/api/server/user/search-location`;
+	// 	const res = await fetch(url, {
+	// 		method: 'POST',
+	// 		body: JSON.stringify(model),
+	// 		headers: { 'content-type': 'application/json' }
+	// 	});
+	// 	console.log('res', res);
+	// 	const response = await res.json();
+	// 	console.log('response', response);
+	// 	locations = response;
+	// }
+
 
 	// const onSelectOrganizationName = async (e) => {
 	// 	let organizationId = e.currentTarget.value;
@@ -88,7 +113,7 @@
 						name="firstName"
 						required
 						type="text"
-						class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg "
+						class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg"
 					/>
 					<input
 						placeholder="Last Name"
@@ -102,15 +127,33 @@
 						type="date"
 						name="birthDate"
 						required
-					 	class="h-[52px] w-[340px] max-[425px]:max-w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg"
+						class="h-[52px] w-[340px] max-[425px]:max-w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg "
+											
 						/>
-					<input
+					<div class="flex flex-row">
+						<label
+						for="+91"
+						class=" h-[52px] w-[58px] max-[40px]:w-full py-2 px-3 border rounded-lg mr-[0.375rem] bg-[#DFE7FD] mt-5 text-lg"
+						>+91</label>
+						<input
 						placeholder="Phone Number"
 						type="number"
 						name="phone"
+						value={(form?.dataShow?.phone) ?? ''}
 						required
-						class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg "
+						class=" h-[52px] w-[279px] max-[360px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg "
 					/>
+					
+					</div>
+					{#if form?.errors?.phone}
+					<p class="error mt-2" style="color: red">Invalid phone number!</p>
+					 {/if}
+
+					 <select id="dropdown" name="gender" required class=" h-[52px] w-[337px] max-[360px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg ">
+						<option value="" disabled selected hidden>Select gender</option>
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+					</select>
 					<input
 						placeholder="Enter Organization Name"
 						name="organization"
@@ -120,7 +163,7 @@
 						placeholder="Enter Location Name"
 						name="location"
 						type="text"
-						class="h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg "
+						class="h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-5 text-lg"
 					/>
 					<!-- <select
 						placeholder="select ngo name"
