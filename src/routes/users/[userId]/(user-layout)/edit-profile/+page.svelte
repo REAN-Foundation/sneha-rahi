@@ -78,14 +78,7 @@
 		<div class="text-[#5B7AA3] mx-2 mt-3 font-semibold">
 			<span>Phone</span>
 		</div>
-		<!-- <input
-			placeholder="Phone Number"
-			type=""
-			name="phone"
-			required
-			bind:value={phone}
-			class=" h-[52px] w-[340px] max-[425px]:w-full py-2 px-3 border rounded-lg bg-[#DFE7FD] mt-1 text-lg "
-		/> -->
+		
 
 		<div class="flex flex-row">
 			<label

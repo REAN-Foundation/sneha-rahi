@@ -64,11 +64,7 @@ export const actions = {
      	 }
      	 return fail(400, dataShow)
     	}
-		// if (!phone || !countryCode ||!(phone.length==10)) {
-		// 	throw error(400, `Phone number is not valid!`);
-		// 	// throw redirect(400, '/join-raahi', errorMessage(`Phone is not valid!`));
-
-		// }
+	
 		///////////////////////////////////////////
 		const organization = Helper.truncateText(organization_.valueOf() as string, 200);
 		const location = Helper.truncateText(location_.valueOf() as string, 200);
