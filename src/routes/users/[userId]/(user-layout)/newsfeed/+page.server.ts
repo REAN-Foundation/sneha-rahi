@@ -11,7 +11,10 @@ export const load: PageServerLoad = async (event) => {
       const sessionId = event.cookies.get('sessionId');
       const raahiFeed = await getRaahiFeed(sessionId);
       const communityFeed = await getCommunityFeed(sessionId);
-
+      // console.log("communityFeed...",communityFeed);
+      // console.log("communityFeed type...",typeof(communityFeed));
+      console.log("rss feeds---",await loadRSSFeeds(raahiFeed, 
+        communityFeed));
       return await loadRSSFeeds(raahiFeed, 
         communityFeed
         );
@@ -88,6 +91,7 @@ async function loadRSSFeeds(raahiFeed, communityFeed) {
       title: item.title,
       link: item.link,
       pubDate: TimeHelper.getHumanReadableDate(item.pubDate),
+      date: new Date(item.pubDate),
       content: item.content,
       image: item.enclosure?.url,
       author: item.author,
@@ -95,8 +99,9 @@ async function loadRSSFeeds(raahiFeed, communityFeed) {
   });
   // console.log("Raahi feed items",raahiFeedItems);
   console.log("Community feed items",communityFeedItems);
+  const communityFeedItemsSort=communityFeedItems.sort((a, b) => b.date - a.date);
   return {
     // raahiFeedItems: raahiFeedItems,
-    communityFeedItems: communityFeedItems
+    communityFeedItems: communityFeedItemsSort
   };
 }
