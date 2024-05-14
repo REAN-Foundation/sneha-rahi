@@ -11,14 +11,11 @@ export const load: PageServerLoad = async (event) => {
       const sessionId = event.cookies.get('sessionId');
       const raahiFeed = await getRaahiFeed(sessionId);
       const communityFeed = await getCommunityFeed(sessionId);
-      // console.log("communityFeed...",communityFeed);
-      // console.log("communityFeed type...",typeof(communityFeed));
-      console.log("rss feeds---",await loadRSSFeeds(raahiFeed, 
-        communityFeed));
+     
       return await loadRSSFeeds(raahiFeed, 
         communityFeed
         );
-        //return await loadStaticFeeds();
+       
     }
     catch (error) {
         console.error(`Error retrieving news-feed: ${error.message}`);
